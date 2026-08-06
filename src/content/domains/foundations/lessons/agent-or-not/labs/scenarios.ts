@@ -16,7 +16,7 @@ export const categoryLabels: Record<SystemCategory, string> = {
   agent: "Agent",
 };
 
-export const scenarios: Scenario[] = [
+export const scenarios: readonly Scenario[] = [
   {
     id: "translate",
     title: "翻译按钮",
@@ -30,8 +30,7 @@ export const scenarios: Scenario[] = [
   {
     id: "meeting",
     title: "会议摘要",
-    description:
-      "上传会议记录后，模型一次性生成摘要、待办事项和负责人。",
+    description: "上传会议记录后，模型一次性生成摘要、待办事项和负责人。",
     answer: "model-call",
     signal: "输出字段多，不等于步骤多",
     explanation:
@@ -56,14 +55,12 @@ export const scenarios: Scenario[] = [
       "OCR 识别发票，模型提取字段；置信度低于 0.8 时进入人工审核，否则写入财务系统。",
     answer: "workflow",
     signal: "分支存在，但条件由代码写死",
-    explanation:
-      "流程包含模型、分支和人工参与，但下一步仍由预设规则决定。",
+    explanation: "流程包含模型、分支和人工参与，但下一步仍由预设规则决定。",
   },
   {
     id: "weekly-report",
     title: "每周经营报告",
-    description:
-      "每周一自动查数据库、生成图表、调用模型写摘要，然后发送邮件。",
+    description: "每周一自动查数据库、生成图表、调用模型写摘要，然后发送邮件。",
     answer: "workflow",
     signal: "自动运行不等于自主决策",
     explanation:
@@ -76,8 +73,7 @@ export const scenarios: Scenario[] = [
       "模型可选择搜索、天气或计算器；看到结果后可以改变行动，最多执行 5 步。",
     answer: "agent",
     signal: "模型动态选行动，观察会改变下一步",
-    explanation:
-      "系统具备最小 Agent 特征，并用步数预算定义了终止边界。",
+    explanation: "系统具备最小 Agent 特征，并用步数预算定义了终止边界。",
   },
   {
     id: "research",

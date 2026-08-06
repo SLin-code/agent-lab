@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useProgress } from "../app/ProgressContext";
-import { lessons, stages } from "../content/course-manifest";
+import { domains, lessons } from "../content/curriculum/catalog";
 
 export function HomePage() {
   const firstLesson = lessons[0];
@@ -18,7 +18,7 @@ export function HomePage() {
           </h1>
           <p>
             从一次模型调用出发，逐步搭出 Context、Harness、Loop、Graph
-            与持续改进系统。每个概念都能操作，每个系统都允许失败。
+            与持续改进系统。每个概念都能操作，每一课都以可复查的输出结束。
           </p>
           <div className="hero-actions">
             <Link
@@ -85,6 +85,11 @@ export function HomePage() {
           <strong>过程可见</strong>
           <p>观察路径、状态与反馈如何改变下一步。</p>
         </div>
+        <div>
+          <span>04</span>
+          <strong>输出即学习</strong>
+          <p>把判断、Trace、图或实现沉淀成可复查作品。</p>
+        </div>
       </section>
 
       <section className="learning-path" id="path">
@@ -96,9 +101,11 @@ export function HomePage() {
           <p>第一课已经可以体验，其余课程会沿这条主线逐步开放。</p>
         </div>
         <ol className="stage-list">
-          {stages.map((stage) => {
+          {domains.map((domain) => {
             const stageLessons = lessons.filter(
-              (lesson) => lesson.stageId === stage.id,
+              (lesson) =>
+                lesson.domainId === domain.id &&
+                lesson.status === "ready",
             );
             const ready = stageLessons.some(
               (lesson) => lesson.status === "ready",
@@ -106,15 +113,15 @@ export function HomePage() {
             return (
               <li
                 className={ready ? "stage-card is-ready" : "stage-card"}
-                key={stage.id}
+                key={domain.id}
               >
                 <div className="stage-index">
-                  {String(stage.order).padStart(2, "0")}
+                  {String(domain.order).padStart(2, "0")}
                 </div>
                 <div className="stage-content">
-                  <span className="stage-kicker">{stage.shortTitle}</span>
-                  <h3>{stage.title}</h3>
-                  <p>{stage.summary}</p>
+                  <span className="stage-kicker">{domain.shortTitle}</span>
+                  <h3>{domain.title}</h3>
+                  <p>{domain.summary}</p>
                   {stageLessons.map((lesson) => (
                     <Link
                       className="stage-lesson-link"
@@ -123,7 +130,7 @@ export function HomePage() {
                     >
                       <span>{completed.has(lesson.id) ? "✓" : "▶"}</span>
                       {lesson.title}
-                      <small>{lesson.duration} min</small>
+                      <small>{lesson.durationMinutes} min</small>
                     </Link>
                   ))}
                 </div>

@@ -2,6 +2,8 @@
 
 一个由浅入深的 Agent 交互式教程。重点不是堆文章，而是让学习者直接操作流程图、运行日志、状态变化与控制边界。
 
+项目的核心思想是**输出即学习**：每一课都要求学习者留下一个可复查、可分享、可继续迭代的作品，而不只是在页面上点完交互。
+
 在线体验：[https://slin-code.github.io/agent-lab/](https://slin-code.github.io/agent-lab/)
 
 ## 本地运行
@@ -31,10 +33,20 @@ pnpm dev
 
 ## 添加下一课
 
-1. 在 `src/content/course-manifest.ts` 登记课程元数据。
-2. 在 `src/content/lessons/` 新建课程组件。
-3. 在 `src/pages/LessonPage.tsx` 的 `lessonRegistry` 注册组件。
-4. 将该课的交互实验放入 `src/labs/<lesson-slug>/`。
+```bash
+pnpm new:lesson <domain-id> <lesson-slug> "中文标题"
+```
+
+课程按知识方向放在 `src/content/domains/<domain-id>/`。每课把元数据、正文、数据和专属实验放在同一目录；目录创建后会自动注册，不需要再修改中央 manifest 或路由表。
+
+开始贡献前请阅读：
+
+- [项目架构](docs/architecture.md)
+- [“输出即学习”契约](docs/learning-contract.md)
+- [课程创作指南](docs/authoring-guide.md)
+- [贡献说明](CONTRIBUTING.md)
+
+面向 Agent 的仓库级约束位于 `AGENTS.md`，可确保新页面复用相同骨架、视觉 token、交互边界与来源规则。
 
 ## 检查
 

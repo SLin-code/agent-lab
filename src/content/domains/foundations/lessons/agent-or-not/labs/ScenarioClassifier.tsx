@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { LabFrame } from "@/components/lab/LabFrame";
 import {
   categoryLabels,
   scenarios,
@@ -23,27 +24,18 @@ export function ScenarioClassifier() {
   const isLast = currentIndex === scenarios.length - 1;
   const score = useMemo(
     () =>
-      scenarios.filter(
-        (item) => answers[item.id] === item.answer,
-      ).length,
+      scenarios.filter((item) => answers[item.id] === item.answer).length,
     [answers],
   );
 
   function choose(category: SystemCategory) {
     if (isRevealed) return;
-    setAnswers((current) => ({
-      ...current,
-      [scenario.id]: category,
-    }));
+    setAnswers((current) => ({ ...current, [scenario.id]: category }));
   }
 
   function reveal() {
     if (!answer) return;
-    setRevealed((current) => {
-      const next = new Set(current);
-      next.add(scenario.id);
-      return next;
-    });
+    setRevealed((current) => new Set(current).add(scenario.id));
   }
 
   function next() {
@@ -57,22 +49,21 @@ export function ScenarioClassifier() {
   }
 
   return (
-    <div className="lab classifier-lab">
-      <div className="lab-topbar">
-        <div>
-          <span className="lab-label">CLASSIFICATION LAB</span>
-          <strong>它到底是什么？</strong>
-        </div>
+    <LabFrame
+      className="classifier-lab"
+      eyebrow="CLASSIFICATION LAB"
+      meta={
         <span className="lab-progress-label">
           {currentIndex + 1} / {scenarios.length}
         </span>
-      </div>
+      }
+      title="它到底是什么？"
+    >
       <div className="progress-track" aria-hidden="true">
         <span
           style={{
             width:
-              ((currentIndex + (isRevealed ? 1 : 0)) /
-                scenarios.length) *
+              ((currentIndex + (isRevealed ? 1 : 0)) / scenarios.length) *
                 100 +
               "%",
           }}
@@ -137,13 +128,9 @@ export function ScenarioClassifier() {
           >
             <div className="answer-heading">
               <strong>
-                {answer === scenario.answer
-                  ? "判断正确"
-                  : "再看一次控制权"}
+                {answer === scenario.answer ? "判断正确" : "再看一次控制权"}
               </strong>
-              <span>
-                正确答案：{categoryLabels[scenario.answer]}
-              </span>
+              <span>正确答案：{categoryLabels[scenario.answer]}</span>
             </div>
             <div className="signal-line">
               <span>关键证据</span>
@@ -191,6 +178,6 @@ export function ScenarioClassifier() {
           )}
         </div>
       ) : null}
-    </div>
+    </LabFrame>
   );
 }

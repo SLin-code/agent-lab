@@ -1,4 +1,5 @@
 import { useId, useRef, useState } from "react";
+import { LabFrame } from "@/components/lab/LabFrame";
 
 export type AgentPhase =
   | "goal"
@@ -127,16 +128,16 @@ export function AgentLoopPlayer({
   }
 
   return (
-    <section className="lab agent-loop-player" aria-label={scenario.title}>
-      <header className="lab-topbar">
-        <div>
-          <span className="lab-label">{scenario.eyebrow}</span>
-          <strong>{scenario.title}</strong>
-        </div>
+    <LabFrame
+      className="agent-loop-player"
+      eyebrow={scenario.eyebrow}
+      meta={
         <span className="trace-status">
           {isComplete ? "COMPLETED" : "RUNNING"}
         </span>
-      </header>
+      }
+      title={scenario.title}
+    >
 
       <div className="agent-loop-objective">
         <span>任务目标</span>
@@ -291,6 +292,6 @@ export function AgentLoopPlayer({
           ))}
         </ol>
       </div>
-    </section>
+    </LabFrame>
   );
 }

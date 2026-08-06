@@ -1,24 +1,27 @@
 import { useParams } from "react-router-dom";
 import { LessonShell } from "../components/layout/LessonShell";
-import { lessonBySlug } from "../content/course-manifest";
-import { AgentOrNotLesson } from "../content/lessons/AgentOrNotLesson";
+import { LessonHero } from "../components/lesson/LessonHero";
+import {
+  domainById,
+  lessonDefinitionBySlug,
+} from "../content/curriculum/catalog";
 import { NotFoundPage } from "./NotFoundPage";
-
-const lessonRegistry = {
-  "agent-or-not": AgentOrNotLesson,
-};
 
 export function LessonPage() {
   const { slug } = useParams();
-  const lesson = slug ? lessonBySlug.get(slug) : undefined;
-  if (!lesson) return <NotFoundPage />;
+  const definition = slug
+    ? lessonDefinitionBySlug.get(slug)
+    : undefined;
+  const domain = definition
+    ? domainById.get(definition.meta.domainId)
+    : undefined;
+  if (!definition || !domain) return <NotFoundPage />;
 
-  const LessonBody =
-    lessonRegistry[lesson.id as keyof typeof lessonRegistry];
-  if (!LessonBody) return <NotFoundPage />;
+  const { meta: lesson, Component: LessonBody } = definition;
 
   return (
     <LessonShell lesson={lesson}>
+      <LessonHero domain={domain} lesson={lesson} />
       <LessonBody lesson={lesson} />
     </LessonShell>
   );

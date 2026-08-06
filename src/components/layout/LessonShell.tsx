@@ -1,11 +1,13 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { useProgress } from "../../app/ProgressContext";
+import { LearningOutput } from "../lesson/LearningOutput";
+import { LessonSources } from "../lesson/LessonSources";
 import {
+  domains,
   lessons,
-  stages,
   type Lesson,
-} from "../../content/course-manifest";
+} from "../../content/curriculum/catalog";
 
 export function LessonShell({
   lesson,
@@ -24,19 +26,22 @@ export function LessonShell({
           ← 返回学习路径
         </Link>
         <ol className="rail-stages">
-          {stages.map((stage) => {
+          {domains.map((domain) => {
             const stageLessons = lessons.filter(
-              (item) => item.stageId === stage.id,
+              (item) =>
+                item.domainId === domain.id && item.status === "ready",
             );
             return (
               <li
-                className={stage.id === lesson.stageId ? "is-current" : ""}
-                key={stage.id}
+                className={
+                  domain.id === lesson.domainId ? "is-current" : ""
+                }
+                key={domain.id}
               >
                 <span className="rail-stage-number">
-                  {String(stage.order).padStart(2, "0")}
+                  {String(domain.order).padStart(2, "0")}
                 </span>
-                <span>{stage.shortTitle}</span>
+                <span>{domain.shortTitle}</span>
                 {stageLessons.map((item) => (
                   <Link
                     aria-current={
@@ -60,6 +65,8 @@ export function LessonShell({
       </aside>
       <article className="lesson-article">
         {children}
+        <LearningOutput lessonId={lesson.id} output={lesson.output} />
+        <LessonSources sources={lesson.sources} />
         <div className="lesson-complete">
           <div>
             <strong>

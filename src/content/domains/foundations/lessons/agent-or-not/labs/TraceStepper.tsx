@@ -1,7 +1,7 @@
 import {
   AgentLoopPlayer,
   type AgentLoopScenario,
-} from "../shared/AgentLoopPlayer";
+} from "@/labs/shared/AgentLoopPlayer";
 
 const refundInvestigation: AgentLoopScenario = {
   eyebrow: "INTERACTIVE AGENT LOOP · TRACE 001",

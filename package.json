@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "typecheck": "tsc -b --pretty false"
+    "typecheck": "tsc -b --pretty false",
+    "new:lesson": "node scripts/create-lesson.mjs"
   },
   "dependencies": {
     "react": "^19.1.0",

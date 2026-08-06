@@ -1,31 +1,12 @@
-import { LessonSection } from "../../components/lesson/LessonSection";
-import type { Lesson } from "../course-manifest";
-import { ScenarioClassifier } from "../../labs/agent-or-not/ScenarioClassifier";
-import { TraceStepper } from "../../labs/agent-or-not/TraceStepper";
+import { LessonSection } from "@/components/lesson/LessonSection";
+import { LessonTakeaway } from "@/components/lesson/LessonTakeaway";
+import type { Lesson } from "@/content/curriculum/catalog";
+import { ScenarioClassifier } from "./labs/ScenarioClassifier";
+import { TraceStepper } from "./labs/TraceStepper";
 
-export function AgentOrNotLesson({ lesson }: { lesson: Lesson }) {
+export function AgentOrNotLesson({ lesson: _lesson }: { lesson: Lesson }) {
   return (
     <>
-      <header className="lesson-hero">
-        <div className="lesson-meta">
-          <span>阶段 01 · Agent 心智</span>
-          <span className="stability stability-stable">Stable</span>
-          <span>{lesson.duration} 分钟</span>
-          <span>面向所有人</span>
-        </div>
-        <h1>{lesson.title}</h1>
-        <p>{lesson.summary}</p>
-        <div className="lesson-thesis">
-          真正的区别，不是模型有多聪明，而是
-          <strong>谁在决定下一步。</strong>
-        </div>
-        <ul className="lesson-objectives">
-          {lesson.objectives.map((objective) => (
-            <li key={objective}>{objective}</li>
-          ))}
-        </ul>
-      </header>
-
       <LessonSection
         number="01"
         title="同一个模型，两种完全不同的系统"
@@ -113,9 +94,7 @@ export function AgentOrNotLesson({ lesson }: { lesson: Lesson }) {
         </p>
         <div className="rule-callout">
           <strong>两问判断法</strong>
-          <p>
-            谁持续拥有跨观察的行动选择权？观察会不会反过来改变下一步？
-          </p>
+          <p>谁持续拥有跨观察的行动选择权？观察会不会反过来改变下一步？</p>
         </div>
       </LessonSection>
 
@@ -222,35 +201,10 @@ export function AgentOrNotLesson({ lesson }: { lesson: Lesson }) {
         </div>
       </LessonSection>
 
-      <section className="lesson-conclusion">
-        <span>TAKEAWAY</span>
-        <blockquote>
-          模型负责提出可能的下一步；
-          <strong>Agent System 负责让下一步在边界内真正发生。</strong>
-        </blockquote>
-      </section>
-
-      <section className="lesson-sources">
-        <div>
-          <span className="eyebrow">SOURCES</span>
-          <h2>来源与核验</h2>
-          <p>稳定原理与厂商实现分层维护，避免把产品 API 当成定义。</p>
-        </div>
-        <ul>
-          {lesson.sources.map((source) => (
-            <li key={source.url}>
-              <a href={source.url} target="_blank" rel="noreferrer">
-                {source.title}
-              </a>
-              <span>
-                {source.publisher}
-                {source.supports ? ` · 支持：${source.supports}` : ""}
-                {` · 核验于 ${source.verifiedAt}`}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <LessonTakeaway>
+        模型负责提出可能的下一步；
+        <strong>Agent System 负责让下一步在边界内真正发生。</strong>
+      </LessonTakeaway>
     </>
   );
 }
