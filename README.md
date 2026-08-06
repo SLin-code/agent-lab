@@ -1,6 +1,8 @@
 # AgentPath｜Agent 通识课
 
-一个由浅入深的 Agent 交互式教程。重点不是堆文章，而是让学习者直接操作运行路径、Trace、State Diff 与控制边界。
+一个由浅入深的 Agent 交互式教程。重点不是堆文章，而是让学习者直接操作流程图、运行日志、状态变化与控制边界。
+
+在线体验：[https://slin-code.github.io/agent-lab/](https://slin-code.github.io/agent-lab/)
 
 ## 本地运行
 
@@ -40,3 +42,7 @@ pnpm dev
 pnpm typecheck
 pnpm build
 ```
+
+## 发布
+
+推送到 `main` 后，GitHub Actions 会自动构建并发布到 GitHub Pages。工作流位于 `.github/workflows/deploy-pages.yml`。
