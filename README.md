@@ -6,7 +6,7 @@
 
 ## 本地运行
 
-需要 Node.js 22.12+ 与 pnpm。
+需要 Node.js 22.13+ 与 pnpm。
 
 ```bash
 pnpm install
