@@ -122,43 +122,51 @@ export function AgentOrNotLesson({ lesson: _lesson }: { lesson: Lesson }) {
         title="三类系统的控制权差异"
         lead="复杂度不是目标。能用稳定 Workflow 完成，就不必增加自治。"
       >
-        <div className="table-wrap">
+        <div
+          aria-label="模型调用、Workflow 与 Agent 的控制权比较；可横向滚动"
+          className="table-wrap"
+          role="region"
+          tabIndex={0}
+        >
           <table className="comparison-table">
+            <caption className="visually-hidden">
+              模型调用、Workflow 与 Agent 的控制权差异
+            </caption>
             <thead>
               <tr>
-                <th>维度</th>
-                <th>模型调用</th>
-                <th>Workflow</th>
-                <th>Agent</th>
+                <th scope="col">维度</th>
+                <th scope="col">模型调用</th>
+                <th scope="col">Workflow</th>
+                <th scope="col">Agent</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th>下一步由谁决定</th>
+                <th scope="row">下一步由谁决定</th>
                 <td>没有下一步</td>
                 <td>代码</td>
                 <td>模型与控制策略</td>
               </tr>
               <tr>
-                <th>执行路径</th>
+                <th scope="row">执行路径</th>
                 <td>单步</td>
                 <td>预定义</td>
                 <td>运行时形成</td>
               </tr>
               <tr>
-                <th>环境反馈</th>
+                <th scope="row">环境反馈</th>
                 <td>无</td>
                 <td>进入固定分支</td>
                 <td>影响后续决策</td>
               </tr>
               <tr>
-                <th>停止方式</th>
+                <th scope="row">停止方式</th>
                 <td>输出即结束</td>
                 <td>流程结束</td>
                 <td>成功、失败、预算、审批或移交</td>
               </tr>
               <tr>
-                <th>适合任务</th>
+                <th scope="row">适合任务</th>
                 <td>翻译、摘要、分类</td>
                 <td>规则稳定的自动化</td>
                 <td>路径难以预先写死的开放任务</td>
@@ -192,11 +200,11 @@ export function AgentOrNotLesson({ lesson: _lesson }: { lesson: Lesson }) {
           </article>
           <article>
             <strong>“Agent 必须完全自主”</strong>
-            <p>可靠 Agent 通常有明确权限、预算、审批点和停止条件。</p>
+            <p>可靠 Agent 通常有明确的工具边界、人工检查点和停止条件。</p>
           </article>
           <article>
             <strong>“多 Agent 一定更先进”</strong>
-            <p>更多 Agent 会增加成本、延迟、协调问题和失败面。</p>
+            <p>更多 Agent 会增加复杂度，也可能放大延迟、成本与错误传播；是否值得要由评估证明。</p>
           </article>
         </div>
       </LessonSection>

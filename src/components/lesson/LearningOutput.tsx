@@ -3,16 +3,58 @@ import type { LearningOutput as LearningOutputSpec } from "../../content/curricu
 
 interface SavedOutput {
   draft: string;
-  checkedCriteria: number[];
+  checkedCriteria: string[];
 }
 
-function readSavedOutput(lessonId: string): SavedOutput {
+export type LearningOutputStorageStatus = "saving" | "saved" | "error";
+
+function readSavedOutput(
+  lessonId: string,
+  criteria: LearningOutputSpec["criteria"],
+  outputRevision: number,
+): SavedOutput {
   try {
     const value = window.localStorage.getItem(
       `agent-path-output-v1:${lessonId}`,
     );
     if (!value) return { draft: "", checkedCriteria: [] };
-    return JSON.parse(value) as SavedOutput;
+    const parsed: unknown = JSON.parse(value);
+    if (!parsed || typeof parsed !== "object") {
+      return { draft: "", checkedCriteria: [] };
+    }
+
+    const candidate = parsed as {
+      draft?: unknown;
+      checkedCriteria?: unknown;
+      revision?: unknown;
+    };
+    const criterionIds = new Set(criteria.map((criterion) => criterion.id));
+    const checkedCriteria =
+      candidate.revision === outputRevision &&
+      Array.isArray(candidate.checkedCriteria)
+      ? candidate.checkedCriteria
+          .map((item) => {
+            if (typeof item === "string") {
+              if (criterionIds.has(item)) return item;
+              return criteria.find((criterion) => criterion.text === item)?.id;
+            }
+            if (typeof item === "number") {
+              return criteria.find(
+                (criterion) => criterion.legacyIndex === item,
+              )?.id;
+            }
+            return undefined;
+          })
+          .filter(
+            (item): item is string =>
+              typeof item === "string" && criterionIds.has(item),
+          )
+      : [];
+
+    return {
+      draft: typeof candidate.draft === "string" ? candidate.draft : "",
+      checkedCriteria,
+    };
   } catch {
     return { draft: "", checkedCriteria: [] };
   }
@@ -21,17 +63,30 @@ function readSavedOutput(lessonId: string): SavedOutput {
 export function LearningOutput({
   lessonId,
   output,
+  onReadyChange,
+  onStorageStatusChange,
 }: {
   lessonId: string;
   output: LearningOutputSpec;
+  onReadyChange?: (ready: boolean) => void;
+  onStorageStatusChange?: (status: LearningOutputStorageStatus) => void;
 }) {
   const fieldId = useId();
-  const [saved] = useState(() => readSavedOutput(lessonId));
+  const [saved] = useState(() =>
+    readSavedOutput(lessonId, output.criteria, output.revision),
+  );
   const [draft, setDraft] = useState(saved.draft);
-  const [checkedCriteria, setCheckedCriteria] = useState(
+  const [checkedCriteria, setCheckedCriteria] = useState<Set<string>>(
     () => new Set(saved.checkedCriteria),
   );
   const [copyStatus, setCopyStatus] = useState("");
+  const [storageStatus, setStorageStatus] =
+    useState<LearningOutputStorageStatus>("saving");
+  const isReady =
+    draft.trim().length > 0 &&
+    output.criteria.every((criterion) =>
+      checkedCriteria.has(criterion.id)
+    );
 
   useEffect(() => {
     try {
@@ -40,24 +95,39 @@ export function LearningOutput({
         JSON.stringify({
           draft,
           checkedCriteria: [...checkedCriteria],
+          revision: output.revision,
         }),
       );
+      setStorageStatus("saved");
     } catch {
-      // The draft remains available in memory if storage is unavailable.
+      setStorageStatus("error");
     }
-  }, [checkedCriteria, draft, lessonId]);
+  }, [checkedCriteria, draft, lessonId, output.revision]);
 
-  function toggleCriterion(index: number) {
+  useEffect(() => {
+    onReadyChange?.(isReady);
+  }, [isReady, onReadyChange]);
+
+  useEffect(() => {
+    onStorageStatusChange?.(storageStatus);
+  }, [onStorageStatusChange, storageStatus]);
+
+  function toggleCriterion(criterionId: string) {
+    setStorageStatus("saving");
     setCheckedCriteria((current) => {
       const next = new Set(current);
-      if (next.has(index)) next.delete(index);
-      else next.add(index);
+      if (next.has(criterionId)) next.delete(criterionId);
+      else next.add(criterionId);
       return next;
     });
   }
 
   async function copyDraft() {
-    if (!draft.trim() || !navigator.clipboard) return;
+    if (!draft.trim()) return;
+    if (!navigator.clipboard) {
+      setCopyStatus("当前浏览器不支持复制，请手动选择文本");
+      return;
+    }
     try {
       await navigator.clipboard.writeText(draft);
       setCopyStatus("已复制");
@@ -74,8 +144,20 @@ export function LearningOutput({
           <h2>输出，才算真正学会</h2>
           <p>{output.description}</p>
         </div>
-        <span className="learning-output-status">
-          {draft.trim() ? "已自动保存在当前浏览器" : "等待你的输出"}
+        <span
+          aria-live="polite"
+          className="learning-output-status"
+          role="status"
+        >
+          {storageStatus === "saving"
+            ? "正在保存输出…"
+            : storageStatus === "error"
+              ? "未能自动保存，请先复制输出"
+              : isReady
+                ? "输出与自检已完成 · 已保存"
+                : draft.trim()
+                  ? `已自检 ${checkedCriteria.size} / ${output.criteria.length} · 已保存`
+                  : "等待你的输出"}
         </span>
       </header>
 
@@ -85,9 +167,21 @@ export function LearningOutput({
             <strong>{output.title}</strong>
             <span>{output.prompt}</span>
           </label>
+          <p
+            className="learning-output-transfer"
+            id={`${fieldId}-transfer`}
+          >
+            <strong>迁移挑战</strong>
+            {output.transferPrompt}
+          </p>
           <textarea
+            aria-describedby={`${fieldId}-transfer`}
             id={fieldId}
-            onChange={(event) => setDraft(event.target.value)}
+            onChange={(event) => {
+              setStorageStatus("saving");
+              setCopyStatus("");
+              setDraft(event.target.value);
+            }}
             placeholder={output.placeholder}
             rows={7}
             value={draft}
@@ -108,17 +202,17 @@ export function LearningOutput({
 
         <fieldset className="learning-output-criteria">
           <legend>提交前自检</legend>
-          {output.criteria.map((criterion, index) => {
-            const id = `${fieldId}-criterion-${index}`;
+          {output.criteria.map((criterion) => {
+            const id = `${fieldId}-criterion-${criterion.id}`;
             return (
-              <label key={criterion} htmlFor={id}>
+              <label key={criterion.id} htmlFor={id}>
                 <input
-                  checked={checkedCriteria.has(index)}
+                  checked={checkedCriteria.has(criterion.id)}
                   id={id}
-                  onChange={() => toggleCriterion(index)}
+                  onChange={() => toggleCriterion(criterion.id)}
                   type="checkbox"
                 />
-                <span>{criterion}</span>
+                <span>{criterion.text}</span>
               </label>
             );
           })}

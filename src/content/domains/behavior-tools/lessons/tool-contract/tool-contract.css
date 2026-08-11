@@ -1,0 +1,703 @@
+.tool-contract-lesson .tool-contract-boundary-map {
+  display: grid;
+  align-items: center;
+  grid-template-columns: minmax(0, 0.82fr) 34px minmax(0, 1.25fr) 34px minmax(0, 0.9fr);
+  gap: 10px;
+}
+
+.tool-contract-lesson .tool-contract-boundary-model,
+.tool-contract-lesson .tool-contract-boundary-host,
+.tool-contract-lesson .tool-contract-boundary-outcomes {
+  min-height: 218px;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+  background: var(--surface);
+}
+
+.tool-contract-lesson .tool-contract-boundary-model,
+.tool-contract-lesson .tool-contract-boundary-host {
+  display: flex;
+  flex-direction: column;
+}
+
+.tool-contract-lesson .tool-contract-boundary-model > span,
+.tool-contract-lesson .tool-contract-boundary-host > span,
+.tool-contract-lesson .tool-contract-parts article > span,
+.tool-contract-lesson .tool-contract-evidence-comparison article > span,
+.tool-contract-lesson .tool-contract-failures article > span {
+  color: var(--blue);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+}
+
+.tool-contract-lesson .tool-contract-boundary-model strong,
+.tool-contract-lesson .tool-contract-boundary-host strong {
+  margin-top: 34px;
+  font-size: 20px;
+}
+
+.tool-contract-lesson .tool-contract-boundary-model p {
+  margin: 9px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.tool-contract-lesson .tool-contract-boundary-host {
+  border-color: color-mix(in srgb, var(--blue) 28%, var(--border));
+  background: color-mix(in srgb, var(--blue-soft) 52%, var(--surface));
+}
+
+.tool-contract-lesson .tool-contract-boundary-host ul {
+  display: grid;
+  margin: 16px 0 0;
+  padding: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  list-style: none;
+}
+
+.tool-contract-lesson .tool-contract-boundary-host li {
+  padding: 9px 10px;
+  border-radius: var(--radius-small);
+  color: var(--muted);
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  font-size: 11px;
+}
+
+.tool-contract-lesson .tool-contract-boundary-arrow {
+  color: var(--blue);
+  font-size: 22px;
+  text-align: center;
+}
+
+.tool-contract-lesson .tool-contract-boundary-outcomes {
+  display: grid;
+  align-content: center;
+  gap: 8px;
+  background: var(--surface-soft);
+}
+
+.tool-contract-lesson .tool-contract-boundary-outcomes span {
+  padding: 9px 11px;
+  border-left: 3px solid var(--blue);
+  border-radius: 0 var(--radius-small) var(--radius-small) 0;
+  background: var(--surface);
+  font-size: 12px;
+  font-weight: 680;
+}
+
+.tool-contract-lesson .tool-contract-key-point,
+.tool-contract-lesson .tool-contract-reading-rule {
+  margin-top: 16px;
+  padding: 16px 18px;
+  border: 1px solid color-mix(in srgb, var(--blue) 18%, var(--border));
+  border-radius: var(--radius-medium);
+  color: var(--muted);
+  background: color-mix(in srgb, var(--blue-soft) 52%, transparent);
+  font-size: 13px;
+}
+
+.tool-contract-lesson .tool-contract-key-point span {
+  margin-right: 10px;
+  color: var(--blue-dark);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.tool-contract-lesson .tool-contract-parts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.tool-contract-lesson .tool-contract-parts article {
+  min-height: 230px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--surface) 76%, transparent);
+}
+
+.tool-contract-lesson .tool-contract-parts h3,
+.tool-contract-lesson .tool-contract-failures h3 {
+  margin: 25px 0 10px;
+  font-size: 20px;
+}
+
+.tool-contract-lesson .tool-contract-parts p,
+.tool-contract-lesson .tool-contract-failures p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.tool-contract-lesson .tool-contract-parts article > strong {
+  display: block;
+  margin-top: 18px;
+  color: var(--blue-dark);
+  font-size: 12px;
+}
+
+.tool-contract-lesson .tool-contract-scope-note,
+.tool-contract-lesson .tool-contract-lab-note {
+  margin: 16px 0 0;
+  padding: 15px 17px;
+  border-left: 3px solid var(--amber);
+  color: var(--muted);
+  background: color-mix(in srgb, var(--surface) 58%, transparent);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.tool-contract-lesson .tool-contract-scope-note strong {
+  color: var(--ink);
+}
+
+.tool-contract-lesson .tool-contract-lab-status {
+  color: var(--lab-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 720;
+}
+
+.tool-contract-lesson .tool-contract-lab-status.is-rejected {
+  color: color-mix(in srgb, var(--red) 78%, white);
+}
+
+.tool-contract-lesson .tool-contract-lab-status.is-pending {
+  color: var(--amber);
+}
+
+.tool-contract-lesson .tool-contract-lab-status.is-executed,
+.tool-contract-lesson .tool-contract-lab-status.is-duplicate {
+  color: color-mix(in srgb, var(--green) 68%, white);
+}
+
+.tool-contract-lesson .tool-contract-request-grid {
+  display: grid;
+  padding: 22px;
+  border-bottom: 1px solid var(--lab-border);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.tool-contract-lesson .tool-contract-call-card,
+.tool-contract-lesson .tool-contract-policy-card {
+  padding: 18px;
+  border: 1px solid var(--lab-border);
+  border-radius: var(--radius-medium);
+  background: color-mix(in srgb, var(--lab-raised) 90%, transparent);
+}
+
+.tool-contract-lesson .tool-contract-card-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tool-contract-lesson .tool-contract-card-heading span {
+  color: var(--lab-accent);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.tool-contract-lesson .tool-contract-card-heading strong {
+  font-size: 12px;
+}
+
+.tool-contract-lesson .tool-contract-call-card dl {
+  display: grid;
+  margin: 18px 0 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.tool-contract-lesson .tool-contract-call-card dl > div {
+  padding: 10px;
+  border-radius: var(--radius-small);
+  background: var(--lab);
+}
+
+.tool-contract-lesson .tool-contract-call-card dt,
+.tool-contract-lesson .tool-contract-receipt dt {
+  color: var(--lab-muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.tool-contract-lesson .tool-contract-call-card dd,
+.tool-contract-lesson .tool-contract-receipt dd {
+  margin: 5px 0 0;
+  color: var(--lab-text);
+  font-size: 12px;
+  font-weight: 680;
+}
+
+.tool-contract-lesson .tool-contract-policy-card ul {
+  display: grid;
+  margin: 15px 0 0;
+  padding: 0;
+  gap: 7px;
+  list-style: none;
+}
+
+.tool-contract-lesson .tool-contract-policy-card li {
+  display: grid;
+  padding: 8px 10px;
+  border-radius: var(--radius-small);
+  color: color-mix(in srgb, var(--lab-text) 76%, var(--lab-muted));
+  background: var(--lab);
+  font-size: 11px;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 8px;
+}
+
+.tool-contract-lesson .tool-contract-policy-card li > span {
+  color: var(--lab-muted);
+}
+
+.tool-contract-lesson .tool-contract-policy-card li.is-changed {
+  outline: 1px solid var(--lab-accent);
+  background: color-mix(in srgb, var(--blue) 15%, var(--lab));
+}
+
+.tool-contract-lesson .tool-contract-gates {
+  display: grid;
+  padding: 22px;
+  border-bottom: 1px solid var(--lab-border);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0;
+}
+
+.tool-contract-lesson .tool-contract-gate-wrap {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+}
+
+.tool-contract-lesson .tool-contract-gate {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  min-height: 124px;
+  flex: 1;
+  align-content: space-between;
+  padding: 14px;
+  border: 1px solid var(--lab-border);
+  border-radius: var(--radius-medium);
+  background: var(--lab-raised);
+  gap: 10px;
+}
+
+.tool-contract-lesson .tool-contract-gate-index {
+  color: var(--lab-muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.tool-contract-lesson .tool-contract-gate div {
+  display: grid;
+  gap: 5px;
+}
+
+.tool-contract-lesson .tool-contract-gate strong {
+  font-size: 12px;
+}
+
+.tool-contract-lesson .tool-contract-gate small {
+  overflow-wrap: anywhere;
+  color: var(--lab-muted);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.tool-contract-lesson .tool-contract-gate em {
+  color: var(--lab-muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+}
+
+.tool-contract-lesson .tool-contract-gate.is-active {
+  border-color: var(--lab-accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--blue) 15%, transparent);
+}
+
+.tool-contract-lesson .tool-contract-gate.is-active em {
+  color: var(--lab-accent);
+}
+
+.tool-contract-lesson .tool-contract-gate.is-passed {
+  border-color: color-mix(in srgb, var(--green) 52%, var(--lab-border));
+}
+
+.tool-contract-lesson .tool-contract-gate.is-passed em {
+  color: color-mix(in srgb, var(--green) 68%, white);
+}
+
+.tool-contract-lesson .tool-contract-gate.is-blocked {
+  border-color: color-mix(in srgb, var(--red) 60%, var(--lab-border));
+}
+
+.tool-contract-lesson .tool-contract-gate.is-blocked em {
+  color: color-mix(in srgb, var(--red) 76%, white);
+}
+
+.tool-contract-lesson .tool-contract-gate.is-skipped {
+  border-style: dashed;
+  background: color-mix(in srgb, var(--lab-muted) 5%, var(--lab-raised));
+}
+
+.tool-contract-lesson .tool-contract-gate-arrow {
+  width: 18px;
+  flex: none;
+  color: var(--lab-muted);
+  font-size: 11px;
+  text-align: center;
+}
+
+.tool-contract-lesson .tool-contract-prediction {
+  display: grid;
+  padding: 28px 22px;
+  grid-template-columns: minmax(190px, 0.7fr) minmax(0, 1.3fr);
+  gap: 24px;
+}
+
+.tool-contract-lesson .tool-contract-prediction > div:first-child > span,
+.tool-contract-lesson .tool-contract-feedback > span {
+  color: var(--amber);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.tool-contract-lesson .tool-contract-prediction h4,
+.tool-contract-lesson .tool-contract-feedback h4 {
+  margin: 10px 0 0;
+  font-size: 20px;
+}
+
+.tool-contract-lesson .tool-contract-outcomes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.tool-contract-lesson .tool-contract-outcomes button {
+  display: grid;
+  min-height: 64px;
+  padding: 10px 12px;
+  border: 1px solid var(--lab-border);
+  border-radius: var(--radius-medium);
+  color: var(--lab-text);
+  background: var(--lab-raised);
+  cursor: pointer;
+  text-align: left;
+  gap: 5px;
+}
+
+.tool-contract-lesson .tool-contract-outcomes button:hover,
+.tool-contract-lesson .tool-contract-outcomes button.is-selected {
+  border-color: var(--lab-accent);
+  background: color-mix(in srgb, var(--blue) 18%, var(--lab-raised));
+}
+
+.tool-contract-lesson .tool-contract-outcomes button small {
+  color: var(--lab-muted);
+}
+
+.tool-contract-lesson .tool-contract-feedback {
+  min-height: 190px;
+  margin: 22px;
+  padding: 22px;
+  border: 1px solid var(--lab-border);
+  border-radius: var(--radius-medium);
+  background: var(--lab-raised);
+}
+
+.tool-contract-lesson .tool-contract-feedback.is-rejected {
+  border-color: color-mix(in srgb, var(--red) 50%, var(--lab-border));
+}
+
+.tool-contract-lesson .tool-contract-feedback.is-pending {
+  border-color: color-mix(in srgb, var(--amber) 52%, var(--lab-border));
+}
+
+.tool-contract-lesson .tool-contract-feedback.is-executed,
+.tool-contract-lesson .tool-contract-feedback.is-duplicate {
+  border-color: color-mix(in srgb, var(--green) 48%, var(--lab-border));
+}
+
+.tool-contract-lesson .tool-contract-feedback p {
+  max-width: 780px;
+  margin: 12px 0 0;
+  color: color-mix(in srgb, var(--lab-text) 78%, var(--lab-muted));
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.tool-contract-lesson .tool-contract-feedback > small {
+  display: block;
+  margin-top: 12px;
+  color: var(--lab-muted);
+  font-size: 11px;
+}
+
+.tool-contract-lesson .tool-contract-receipt {
+  display: grid;
+  margin: 16px 0 0;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.tool-contract-lesson .tool-contract-receipt > div {
+  padding: 9px 10px;
+  border-radius: var(--radius-small);
+  background: var(--lab);
+}
+
+.tool-contract-lesson .tool-contract-lab-controls {
+  display: flex;
+  min-height: 72px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 20px;
+  border-top: 1px solid var(--lab-border);
+  background: color-mix(in srgb, var(--lab-raised) 88%, transparent);
+}
+
+.tool-contract-lesson .tool-contract-lab-controls > span {
+  color: var(--lab-muted);
+  font-size: 11px;
+}
+
+.tool-contract-lesson .tool-contract-evidence-comparison {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  gap: 14px;
+}
+
+.tool-contract-lesson .tool-contract-evidence-comparison article {
+  min-height: 290px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface);
+}
+
+.tool-contract-lesson .tool-contract-evidence-weak blockquote {
+  margin: 50px 0 16px;
+  padding: 18px;
+  border-radius: var(--radius-medium);
+  color: var(--muted);
+  background: var(--surface-soft);
+  font-size: 17px;
+}
+
+.tool-contract-lesson .tool-contract-evidence-weak p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.tool-contract-lesson .tool-contract-evidence-strong {
+  border-color: color-mix(in srgb, var(--green) 32%, var(--border)) !important;
+}
+
+.tool-contract-lesson .tool-contract-evidence-strong dl {
+  display: grid;
+  margin: 25px 0 0;
+  gap: 8px;
+}
+
+.tool-contract-lesson .tool-contract-evidence-strong dl > div {
+  display: grid;
+  padding: 11px 12px;
+  border-radius: var(--radius-small);
+  background: color-mix(in srgb, var(--green-soft) 62%, var(--surface));
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 10px;
+}
+
+.tool-contract-lesson .tool-contract-evidence-strong dt {
+  color: #087553;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.tool-contract-lesson .tool-contract-evidence-strong dd {
+  margin: 0;
+  color: var(--ink);
+  font-size: 12px;
+}
+
+.tool-contract-lesson .tool-contract-reading-rule {
+  color: var(--ink);
+}
+
+.tool-contract-lesson .tool-contract-reading-rule strong {
+  margin-right: 8px;
+  color: var(--blue-dark);
+}
+
+.tool-contract-lesson .tool-contract-failures {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.tool-contract-lesson .tool-contract-failures article {
+  display: flex;
+  min-height: 290px;
+  flex-direction: column;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+}
+
+.tool-contract-lesson .tool-contract-failures article > strong {
+  margin-top: auto;
+  padding-top: 20px;
+  color: var(--blue-dark);
+  font-size: 12px;
+}
+
+@media (max-width: 760px) {
+  .tool-contract-lesson .tool-contract-boundary-map {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-contract-lesson .tool-contract-boundary-model,
+  .tool-contract-lesson .tool-contract-boundary-host,
+  .tool-contract-lesson .tool-contract-boundary-outcomes {
+    min-height: 0;
+  }
+
+  .tool-contract-lesson .tool-contract-boundary-model strong,
+  .tool-contract-lesson .tool-contract-boundary-host strong {
+    margin-top: 20px;
+  }
+
+  .tool-contract-lesson .tool-contract-boundary-arrow {
+    transform: rotate(90deg);
+  }
+
+  .tool-contract-lesson .tool-contract-boundary-host ul,
+  .tool-contract-lesson .tool-contract-parts,
+  .tool-contract-lesson .tool-contract-request-grid,
+  .tool-contract-lesson .tool-contract-evidence-comparison,
+  .tool-contract-lesson .tool-contract-failures {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-contract-lesson .tool-contract-parts article,
+  .tool-contract-lesson .tool-contract-failures article,
+  .tool-contract-lesson .tool-contract-evidence-comparison article {
+    min-height: 0;
+  }
+
+  .tool-contract-lesson .tool-contract-request-grid,
+  .tool-contract-lesson .tool-contract-gates {
+    padding: 18px;
+  }
+
+  .tool-contract-lesson .tool-contract-card-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .tool-contract-lesson .tool-contract-gates {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .tool-contract-lesson .tool-contract-gate-wrap {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .tool-contract-lesson .tool-contract-gate {
+    width: 100%;
+    min-height: 88px;
+    grid-template-columns: 28px minmax(0, 1fr) auto;
+    align-items: center;
+    align-content: center;
+  }
+
+  .tool-contract-lesson .tool-contract-gate-arrow {
+    width: auto;
+    height: 20px;
+    transform: rotate(90deg);
+  }
+
+  .tool-contract-lesson .tool-contract-prediction {
+    padding: 24px 18px;
+    grid-template-columns: 1fr;
+  }
+
+  .tool-contract-lesson .tool-contract-feedback {
+    margin: 18px;
+    padding: 18px;
+  }
+
+  .tool-contract-lesson .tool-contract-receipt {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tool-contract-lesson .tool-contract-lab-controls {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .tool-contract-lesson .tool-contract-lab-controls .button {
+    width: 100%;
+  }
+
+  .tool-contract-lesson .tool-contract-evidence-weak blockquote {
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 380px) {
+  .tool-contract-lesson .tool-contract-call-card dl,
+  .tool-contract-lesson .tool-contract-outcomes,
+  .tool-contract-lesson .tool-contract-receipt {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-contract-lesson .tool-contract-call-card,
+  .tool-contract-lesson .tool-contract-policy-card {
+    padding: 14px;
+  }
+
+  .tool-contract-lesson .tool-contract-gate {
+    grid-template-columns: 22px minmax(0, 1fr);
+  }
+
+  .tool-contract-lesson .tool-contract-gate em {
+    grid-column: 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tool-contract-lesson *,
+  .tool-contract-lesson *::before,
+  .tool-contract-lesson *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

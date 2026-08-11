@@ -1,6 +1,8 @@
 import {
   existsSync,
   mkdirSync,
+  readdirSync,
+  readFileSync,
   writeFileSync,
 } from "node:fs";
 import { resolve } from "node:path";
@@ -19,9 +21,11 @@ if (!domainId || !slug || !title || domainId === "--help") {
   process.exit(domainId === "--help" ? 0 : 1);
 }
 
-const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const slugPattern = /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/;
 if (!slugPattern.test(domainId) || !slugPattern.test(slug)) {
-  console.error("Domain and slug must use lowercase kebab-case.");
+  console.error(
+    "Domain and slug must start with a letter and use lowercase kebab-case.",
+  );
   process.exit(1);
 }
 
@@ -33,17 +37,47 @@ const domainDirectory = resolve(
   "domains",
   domainId,
 );
-const lessonDirectory = resolve(domainDirectory, "lessons", slug);
+const domainsDirectory = resolve(
+  repositoryRoot,
+  "src",
+  "content",
+  "domains",
+);
+const lessonsDirectory = resolve(domainDirectory, "lessons");
+const lessonDirectory = resolve(lessonsDirectory, slug);
 
 if (!existsSync(resolve(domainDirectory, "domain.ts"))) {
   console.error(`Unknown domain: ${domainId}`);
   process.exit(1);
 }
 
-if (existsSync(lessonDirectory)) {
-  console.error(`Lesson already exists: ${lessonDirectory}`);
-  process.exit(1);
+for (const domainEntry of readdirSync(domainsDirectory, {
+  withFileTypes: true,
+})) {
+  if (!domainEntry.isDirectory()) continue;
+  const candidate = resolve(
+    domainsDirectory,
+    domainEntry.name,
+    "lessons",
+    slug,
+  );
+  if (existsSync(candidate)) {
+    console.error(`Lesson id/slug already exists: ${candidate}`);
+    process.exit(1);
+  }
 }
+
+const existingOrders = existsSync(lessonsDirectory)
+  ? readdirSync(lessonsDirectory, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => resolve(lessonsDirectory, entry.name, "meta.ts"))
+      .filter(existsSync)
+      .map((metaPath) => {
+        const match = readFileSync(metaPath, "utf8").match(/\border:\s*(\d+)/);
+        return match ? Number(match[1]) : 0;
+      })
+  : [];
+const nextOrder = Math.max(0, ...existingOrders) + 1;
 
 const componentName =
   slug
@@ -54,43 +88,64 @@ const componentName =
 mkdirSync(resolve(lessonDirectory, "labs"), { recursive: true });
 
 writeFileSync(
-  resolve(lessonDirectory, "index.tsx"),
-  `import { defineLesson } from "@/content/curriculum/types";
-import { ${componentName} } from "./Lesson";
+  resolve(lessonDirectory, "meta.ts"),
+  `import { defineLessonMeta } from "@/content/curriculum/types";
 
-export default defineLesson({
-  meta: {
-    schemaVersion: 1,
-    id: "${slug}",
-    slug: "${slug}",
-    domainId: "${domainId}",
-    order: 1,
-    title: ${JSON.stringify(title)},
-    summary: "用一句话说明学习者将在这里理解什么。",
-    durationMinutes: 20,
-    audience: "all",
-    stability: "converging",
-    status: "draft",
-    tags: ["replace-me"],
-    objectives: ["写下一个可观察、可验证的学习目标"],
-    prerequisites: [],
-    thesis: {
-      statement: "这一课最重要的判断是",
-      emphasis: "替换成你的核心观点。",
+export default defineLessonMeta({
+  schemaVersion: 1,
+  id: "${slug}",
+  slug: "${slug}",
+  domainId: "${domainId}",
+  order: ${nextOrder},
+  title: ${JSON.stringify(title)},
+  summary: "用一句话说明学习者将在这里理解什么。",
+  durationMinutes: 20,
+  audience: "all",
+  stability: "converging",
+  status: "draft",
+  tags: ["replace-me"],
+  objectives: [
+    { id: "todo-understand", text: "TODO：写下一个可观察的理解目标" },
+    { id: "todo-apply", text: "TODO：写下一个可以迁移应用的目标" },
+  ],
+  interactions: [
+    {
+      id: "todo-prediction",
+      kind: "prediction",
+      title: "TODO：先预测再反馈的交互",
+      objectiveIds: ["todo-understand"],
+      resettable: false,
+      deterministic: false,
     },
-    output: {
-      title: "本课作品",
-      description: "说明为什么这个输出能够证明学习发生了。",
-      prompt: "给学习者一个具体、可完成、可复查的输出任务。",
-      criteria: ["写下至少一条明确的自检标准"],
-      placeholder: "从这里开始……",
-    },
-    sources: [],
-    lastVerified: "${new Date().toISOString().slice(0, 10)}",
+  ],
+  prerequisites: [],
+  thesis: {
+    statement: "这一课最重要的判断是",
+    emphasis: "替换成你的核心观点。",
   },
-  Component: ${componentName},
+  output: {
+    revision: 1,
+    title: "本课作品",
+    description: "说明为什么这个输出能够证明学习发生了。",
+    prompt: "给学习者一个具体、可完成、可复查的输出任务。",
+    transferPrompt: "TODO：换一个新情境，让学习者迁移刚学到的方法。",
+    objectiveIds: ["todo-understand", "todo-apply"],
+    criteria: [
+      { id: "todo-criterion-one", text: "TODO：第一条自检标准" },
+      { id: "todo-criterion-two", text: "TODO：第二条自检标准" },
+    ],
+    placeholder: "从这里开始……",
+  },
+  claims: [],
+  sources: [],
 });
 `,
+  "utf8",
+);
+
+writeFileSync(
+  resolve(lessonDirectory, "index.tsx"),
+  `export { ${componentName} as default } from "./Lesson";\n`,
   "utf8",
 );
 
@@ -98,9 +153,9 @@ writeFileSync(
   resolve(lessonDirectory, "Lesson.tsx"),
   `import { LessonSection } from "@/components/lesson/LessonSection";
 import { LessonTakeaway } from "@/components/lesson/LessonTakeaway";
-import type { Lesson } from "@/content/curriculum/catalog";
+import type { LessonComponentProps } from "@/content/curriculum/types";
 
-export function ${componentName}({ lesson: _lesson }: { lesson: Lesson }) {
+export function ${componentName}({ lesson: _lesson }: LessonComponentProps) {
   return (
     <>
       <LessonSection
@@ -123,9 +178,11 @@ export function ${componentName}({ lesson: _lesson }: { lesson: Lesson }) {
 
 writeFileSync(
   resolve(lessonDirectory, "labs", "README.md"),
-  `# Lesson labs\n\nPut lesson-specific interaction state, fixtures and data here. Reuse \`LabFrame\` for presentation chrome.\n`,
+  `# 本课交互实验\n\n将本课专属的交互状态、固定数据和案例放在这里；展示外框复用 \`LabFrame\`。\n`,
   "utf8",
 );
 
 console.log(`Created ${lessonDirectory}`);
-console.log("Next: fill metadata, build one interaction, then run pnpm typecheck.");
+console.log(
+  "Next: fill metadata, build one interaction, then run pnpm typecheck and pnpm build.",
+);

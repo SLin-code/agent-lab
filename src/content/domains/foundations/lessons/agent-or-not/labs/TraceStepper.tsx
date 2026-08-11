@@ -1,7 +1,7 @@
 import {
   AgentLoopPlayer,
   type AgentLoopScenario,
-} from "@/labs/shared/AgentLoopPlayer";
+} from "./AgentLoopPlayer";
 
 const refundInvestigation: AgentLoopScenario = {
   eyebrow: "INTERACTIVE AGENT LOOP · TRACE 001",
@@ -41,8 +41,8 @@ const refundInvestigation: AgentLoopScenario = {
       detail: "工具结果写回运行状态，后续决策开始拥有新的证据。",
     },
     {
-      id: "r1-revise",
-      phase: "revise",
+      id: "r1-evaluate",
+      phase: "evaluate",
       round: 1,
       actor: "Verifier",
       summary: "范围缩小了，但证据还不够",
@@ -73,8 +73,8 @@ const refundInvestigation: AgentLoopScenario = {
       detail: "SDK 升级后支付超时集中出现；小流量回滚样本恢复到基线。",
     },
     {
-      id: "r2-revise",
-      phase: "revise",
+      id: "r2-evaluate",
+      phase: "evaluate",
       round: 2,
       actor: "Verifier",
       summary: "证据达到预设标准",

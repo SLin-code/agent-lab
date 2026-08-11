@@ -36,7 +36,7 @@ export function LessonHero({
       </div>
       <ul className="lesson-objectives" aria-label="本课学习目标">
         {lesson.objectives.map((objective) => (
-          <li key={objective}>{objective}</li>
+          <li key={objective.id}>{objective.text}</li>
         ))}
       </ul>
     </header>

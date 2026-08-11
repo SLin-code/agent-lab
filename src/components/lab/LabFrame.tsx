@@ -3,13 +3,13 @@ import { useId, type ReactNode } from "react";
 export function LabFrame({
   eyebrow,
   title,
-  meta,
+  status,
   className,
   children,
 }: {
   eyebrow: string;
   title: string;
-  meta?: ReactNode;
+  status?: ReactNode;
   className?: string;
   children: ReactNode;
 }) {
@@ -23,9 +23,18 @@ export function LabFrame({
       <header className="lab-topbar">
         <div>
           <span className="lab-label">{eyebrow}</span>
-          <strong id={titleId}>{title}</strong>
+          <h3 id={titleId}>{title}</h3>
         </div>
-        {meta}
+        {status ? (
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            className="lab-status"
+            role="status"
+          >
+            {status}
+          </div>
+        ) : null}
       </header>
       {children}
     </section>

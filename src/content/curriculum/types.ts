@@ -1,8 +1,33 @@
-import type { ComponentType } from "react";
+import type { ComponentType, LazyExoticComponent } from "react";
 
 export type Stability = "stable" | "converging" | "frontier";
 export type LessonStatus = "draft" | "review" | "ready";
 export type Audience = "all" | "beginner" | "developer";
+export type InteractionKind =
+  | "prediction"
+  | "trace"
+  | "simulation"
+  | "debugger"
+  | "builder";
+
+export interface LearningObjective {
+  id: string;
+  text: string;
+}
+
+export interface LearningInteraction {
+  id: string;
+  kind: InteractionKind;
+  title: string;
+  objectiveIds: readonly string[];
+  resettable: boolean;
+  deterministic: boolean;
+}
+
+export interface Claim {
+  id: string;
+  statement: string;
+}
 
 export interface Source {
   id: string;
@@ -10,7 +35,7 @@ export interface Source {
   publisher: string;
   url: string;
   verifiedAt: string;
-  supports: string;
+  supportsClaimIds: readonly string[];
 }
 
 export interface KnowledgeDomain {
@@ -21,11 +46,20 @@ export interface KnowledgeDomain {
   summary: string;
 }
 
+export interface OutputCriterion {
+  id: string;
+  text: string;
+  legacyIndex?: number;
+}
+
 export interface LearningOutput {
+  revision: number;
   title: string;
   description: string;
   prompt: string;
-  criteria: readonly string[];
+  transferPrompt: string;
+  objectiveIds: readonly string[];
+  criteria: readonly OutputCriterion[];
   placeholder?: string;
 }
 
@@ -42,26 +76,34 @@ export interface Lesson {
   stability: Stability;
   status: LessonStatus;
   tags: readonly string[];
-  objectives: readonly string[];
+  objectives: readonly LearningObjective[];
+  interactions: readonly LearningInteraction[];
   prerequisites: readonly string[];
   thesis: {
     statement: string;
     emphasis: string;
   };
   output: LearningOutput;
+  claims: readonly Claim[];
   sources: readonly Source[];
-  lastVerified: string;
+  lastVerified?: string;
 }
+
+export interface LessonComponentProps {
+  lesson: Lesson;
+}
+
+export type LessonComponent = ComponentType<LessonComponentProps>;
 
 export interface LessonDefinition {
   meta: Lesson;
-  Component: ComponentType<{ lesson: Lesson }>;
+  Component: LazyExoticComponent<LessonComponent>;
 }
 
 export function defineDomain(domain: KnowledgeDomain) {
   return domain;
 }
 
-export function defineLesson(definition: LessonDefinition) {
-  return definition;
+export function defineLessonMeta(meta: Lesson) {
+  return meta;
 }

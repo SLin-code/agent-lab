@@ -31,7 +31,7 @@
   border: 1px solid var(--border);
   border-radius: 999px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   background: var(--surface);
 }
 
@@ -61,6 +61,21 @@
   line-height: 1.6;
 }
 
+.learning-output-transfer {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-left: 3px solid var(--blue);
+  color: var(--muted);
+  background: var(--blue-soft);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.learning-output-transfer strong {
+  margin-right: 8px;
+  color: var(--blue-dark);
+}
+
 .learning-output-editor textarea {
   width: 100%;
   min-height: 180px;
@@ -86,7 +101,7 @@
   gap: 12px;
   margin-top: 12px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .learning-output-actions span:nth-child(2) {
@@ -94,7 +109,7 @@
 }
 
 .learning-output-actions .button {
-  min-height: 38px;
+  min-height: 44px;
   border-color: var(--border);
   color: var(--ink);
   background: var(--surface-soft);

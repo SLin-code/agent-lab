@@ -763,6 +763,13 @@ p {
   border-bottom: 1px solid var(--border);
 }
 
+.lesson-loading {
+  min-height: 280px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+}
+
 .lesson-section-heading {
   display: grid;
   margin-bottom: 32px;
@@ -1045,8 +1052,15 @@ p {
   gap: 4px;
 }
 
-.lab-topbar strong {
+.lab-topbar h3 {
+  margin: 0;
   font-size: 14px;
+}
+
+.lab-topbar > .lab-status {
+  display: flex;
+  flex: none;
+  align-items: center;
 }
 
 .lab .lab-label {
@@ -1057,7 +1071,7 @@ p {
 .trace-status {
   color: var(--lab-muted);
   font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .progress-track {
@@ -1080,13 +1094,14 @@ p {
 .scenario-number {
   color: #7f8a9a;
   font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.1em;
 }
 
-.scenario-stage h3 {
+.scenario-stage h4 {
   margin: 12px 0 10px;
   font-size: 30px;
+  font-weight: 720;
   letter-spacing: -0.04em;
 }
 
@@ -1175,7 +1190,7 @@ p {
   margin-top: 16px;
   color: #dfe4ed;
   font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .signal-line span {
@@ -1228,7 +1243,7 @@ p {
   flex: none;
   color: var(--amber);
   font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.08em;
 }
 
@@ -1287,14 +1302,12 @@ p {
   padding: 12px 14px;
   border: 1px solid var(--lab-border);
   border-radius: 14px;
-  opacity: 0.48;
   color: var(--lab-muted);
   background: rgba(25, 31, 42, 0.94);
   grid-template-columns: 26px minmax(0, 1fr);
   column-gap: 8px;
   transform: translate(-50%, -50%);
   transition:
-    opacity 180ms ease,
     border-color 180ms ease,
     box-shadow 180ms ease,
     transform 180ms ease;
@@ -1314,16 +1327,14 @@ p {
 .agent-loop-node small {
   margin-top: 3px;
   color: var(--lab-muted);
-  font-size: 9px;
+  font-size: 12px;
 }
 
 .agent-loop-node.is-visited {
-  opacity: 0.82;
   border-color: color-mix(in srgb, var(--phase-color) 45%, var(--lab-border));
 }
 
 .agent-loop-node.is-active {
-  opacity: 1;
   border-color: var(--phase-color);
   box-shadow: 0 0 0 3px var(--phase-glow), 0 12px 30px rgba(0, 0, 0, 0.22);
   transform: translate(-50%, -50%) scale(1.035);
@@ -1364,11 +1375,22 @@ p {
   left: 50%;
 }
 
-.agent-loop-node-revise {
+.agent-loop-node-evaluate {
   --phase-color: #ed7c7c;
   --phase-glow: rgba(237, 124, 124, 0.14);
   top: 58%;
   left: 19%;
+}
+
+.agent-loop-exit-note {
+  position: absolute;
+  top: 5%;
+  left: 69%;
+  color: #8da896;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 12px;
+  white-space: nowrap;
+  transform: translateX(-50%);
 }
 
 .agent-loop-current {
@@ -1394,7 +1416,7 @@ p {
 
 .agent-loop-current > span {
   color: #8f9bf0;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.08em;
 }
 
@@ -1408,7 +1430,7 @@ p {
   max-width: 170px;
   margin: 8px auto 0;
   color: var(--lab-muted);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.45;
 }
 
@@ -1426,7 +1448,7 @@ p {
 .agent-loop-now span {
   color: #9faaff;
   font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.08em;
 }
 
@@ -1450,7 +1472,7 @@ p {
   gap: 18px;
   padding: 12px 24px;
   color: var(--lab-muted);
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .agent-loop-log-heading strong {
@@ -1498,7 +1520,7 @@ p {
 .agent-loop-log-phase {
   color: #c5ccd7;
   font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.04em;
 }
 
@@ -1515,7 +1537,7 @@ p {
   color: #77d5ac;
 }
 
-.agent-loop-log-phase.is-revise {
+.agent-loop-log-phase.is-evaluate {
   color: #f09090;
 }
 
@@ -1533,7 +1555,7 @@ p {
 .agent-loop-log-copy small {
   overflow: hidden;
   color: var(--lab-muted);
-  font-size: 10px;
+  font-size: 12px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -1542,7 +1564,7 @@ p {
 .agent-loop-step-count {
   color: #7f8a9a;
   font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: 9px;
+  font-size: 12px;
   white-space: nowrap;
 }
 
@@ -1576,6 +1598,25 @@ p {
   overflow-x: auto;
 }
 
+.table-wrap:focus-visible {
+  border-radius: 8px;
+  outline: 3px solid color-mix(in srgb, var(--blue) 60%, transparent);
+  outline-offset: 4px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  border: 0 !important;
+  margin: -1px !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+
 .comparison-table {
   width: 100%;
   min-width: 640px;
@@ -1594,7 +1635,7 @@ p {
 
 .comparison-table thead th {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.04em;
 }
 
@@ -1704,20 +1745,20 @@ p {
   font-size: 13px;
 }
 
-.lesson-sources ul {
+.lesson-sources > ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.lesson-sources li {
+.lesson-sources > ul > li {
   display: grid;
   padding: 14px 0;
   border-bottom: 1px solid var(--border);
-  gap: 4px;
+  gap: 8px;
 }
 
-.lesson-sources li a {
+.lesson-sources > ul > li > a {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
@@ -1726,9 +1767,39 @@ p {
   text-underline-offset: 4px;
 }
 
-.lesson-sources li span {
+.source-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.source-meta span {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
+}
+
+.source-supports {
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--surface-soft);
+}
+
+.source-supports > strong {
+  color: var(--ink);
+  font-size: 12px;
+}
+
+.source-supports ul {
+  display: grid;
+  margin: 8px 0 0;
+  padding-left: 18px;
+  gap: 6px;
+}
+
+.source-supports li {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
 }
 
 .lesson-complete {
@@ -2061,12 +2132,12 @@ p {
     content: "↓";
   }
 
-  .agent-loop-node-revise {
+  .agent-loop-node-evaluate {
     order: 4;
     grid-column: 1;
   }
 
-  .agent-loop-node-revise::after {
+  .agent-loop-node-evaluate::after {
     top: -13px;
     left: 50%;
     content: "↺";
@@ -2085,8 +2156,25 @@ p {
   }
 
   .agent-loop-node-complete {
-    order: 6;
+    order: 7;
     grid-column: 1 / -1;
+  }
+
+  .agent-loop-exit-note {
+    position: relative;
+    top: auto;
+    left: auto;
+    order: 6;
+    padding: 4px 0;
+    text-align: center;
+    white-space: normal;
+    grid-column: 1 / -1;
+    transform: none;
+  }
+
+  .agent-loop-exit-note::after {
+    margin-left: 8px;
+    content: "↓";
   }
 
   .agent-loop-now {

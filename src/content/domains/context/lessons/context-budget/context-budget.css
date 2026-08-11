@@ -1,0 +1,719 @@
+.context-budget-lesson {
+  min-width: 0;
+}
+
+.context-budget-lesson .context-budget-lab {
+  min-width: 0;
+}
+
+.context-budget-lesson .cb-budget-status {
+  color: var(--lab-muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.context-budget-lesson .cb-task-strip {
+  display: grid;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--lab-border);
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 14px;
+  background: color-mix(in srgb, var(--lab) 72%, transparent);
+}
+
+.context-budget-lesson .cb-task-strip span,
+.context-budget-lesson .cb-stage-heading span,
+.context-budget-lesson .cb-result-heading span {
+  color: var(--lab-accent);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.context-budget-lesson .cb-task-strip strong {
+  font-size: 14px;
+}
+
+.context-budget-lesson .cb-task-strip small {
+  color: var(--lab-muted);
+  font-size: 11px;
+}
+
+.context-budget-lesson .cb-budget-meter {
+  display: grid;
+  padding: 14px 22px 0;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+}
+
+.context-budget-lesson .cb-budget-meter > span {
+  color: var(--lab-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.context-budget-lesson .cb-budget-track {
+  overflow: hidden;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--lab-raised);
+}
+
+.context-budget-lesson .cb-budget-track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--blue);
+  transition: width var(--motion-normal) ease;
+}
+
+.context-budget-lesson .cb-selection-stage,
+.context-budget-lesson .cb-result-stage {
+  padding: 26px 22px 30px;
+}
+
+.context-budget-lesson .cb-stage-heading,
+.context-budget-lesson .cb-result-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.context-budget-lesson .cb-stage-heading h4,
+.context-budget-lesson .cb-result-heading h4 {
+  margin: 6px 0 0;
+  font-size: clamp(22px, 3vw, 30px);
+  letter-spacing: -0.035em;
+}
+
+.context-budget-lesson .cb-stage-heading p {
+  max-width: 360px;
+  margin: 0;
+  color: var(--lab-muted);
+  font-size: 12px;
+  text-align: right;
+}
+
+.context-budget-lesson .cb-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.context-budget-lesson .cb-evidence-card {
+  display: grid;
+  min-width: 0;
+  min-height: 190px;
+  padding: 17px;
+  border: 1px solid var(--lab-border);
+  border-radius: var(--radius-medium);
+  color: var(--lab-text);
+  cursor: pointer;
+  background: var(--lab-raised);
+  text-align: left;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 8px;
+  transition:
+    border-color var(--motion-fast) ease,
+    background-color var(--motion-fast) ease,
+    transform var(--motion-fast) ease;
+}
+
+.context-budget-lesson .cb-evidence-card:hover,
+.context-budget-lesson .cb-evidence-card:focus-visible {
+  border-color: var(--lab-accent);
+}
+
+.context-budget-lesson .cb-evidence-card:hover {
+  transform: translateY(-1px);
+}
+
+.context-budget-lesson .cb-evidence-card.is-selected {
+  border-color: var(--lab-accent);
+  background: color-mix(in srgb, var(--blue) 22%, var(--lab-raised));
+  box-shadow: inset 3px 0 0 var(--lab-accent);
+}
+
+.context-budget-lesson .cb-evidence-card.cannot-fit:not(.is-selected) {
+  border-color: color-mix(in srgb, var(--amber) 42%, var(--lab-border));
+  background: color-mix(in srgb, var(--amber) 6%, var(--lab-raised));
+}
+
+.context-budget-lesson
+  .cb-evidence-card.cannot-fit:not(.is-selected)
+  .cb-evidence-meta
+  em.is-stale {
+  color: color-mix(in srgb, var(--red) 78%, white);
+}
+
+.context-budget-lesson .cb-evidence-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.context-budget-lesson .cb-evidence-card-top strong {
+  font-size: 14px;
+}
+
+.context-budget-lesson .cb-evidence-card-top b {
+  flex: none;
+  padding: 4px 7px;
+  border-radius: 999px;
+  color: var(--lab-accent);
+  background: color-mix(in srgb, var(--blue) 18%, transparent);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.context-budget-lesson .cb-evidence-card > small {
+  overflow: hidden;
+  color: var(--lab-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.context-budget-lesson .cb-evidence-detail {
+  color: color-mix(in srgb, var(--lab-text) 84%, var(--lab-muted));
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.context-budget-lesson .cb-evidence-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.context-budget-lesson .cb-evidence-meta em {
+  padding: 4px 7px;
+  border: 1px solid var(--lab-border);
+  border-radius: 999px;
+  color: var(--lab-muted);
+  font-size: 9px;
+  font-style: normal;
+}
+
+.context-budget-lesson .cb-evidence-meta em.is-current {
+  color: var(--green);
+}
+
+.context-budget-lesson .cb-evidence-meta em.is-stale {
+  color: var(--red);
+}
+
+.context-budget-lesson .cb-evidence-meta em.is-unknown {
+  color: var(--amber);
+}
+
+.context-budget-lesson .cb-evidence-meta em.is-over-budget {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.context-budget-lesson .cb-lab-notice {
+  min-height: 24px;
+  margin: 16px 0 0;
+  color: var(--lab-muted);
+  font-size: 12px;
+}
+
+.context-budget-lesson .cb-result-heading > strong {
+  flex: none;
+  padding: 7px 10px;
+  border: 1px solid var(--lab-border);
+  border-radius: 999px;
+  font-size: 11px;
+}
+
+.context-budget-lesson .cb-result-heading > strong.is-strong {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.context-budget-lesson .cb-result-heading > strong.is-risk {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.context-budget-lesson .cb-result-heading > strong.is-incomplete {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.context-budget-lesson .cb-result-flow {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) auto minmax(0, 0.8fr) auto minmax(0, 1.15fr);
+  align-items: stretch;
+  gap: 10px;
+}
+
+.context-budget-lesson .cb-result-flow > section {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--lab-border);
+  border-radius: var(--radius-medium);
+  background: var(--lab-raised);
+}
+
+.context-budget-lesson .cb-result-flow > i {
+  align-self: center;
+  color: var(--lab-accent);
+  font-style: normal;
+}
+
+.context-budget-lesson .cb-result-flow section > span {
+  color: var(--lab-muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.context-budget-lesson .cb-result-flow h5 {
+  margin: 7px 0 13px;
+  font-size: 16px;
+}
+
+.context-budget-lesson .cb-result-flow ul {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  gap: 7px;
+  list-style: none;
+}
+
+.context-budget-lesson .cb-result-flow li {
+  display: flex;
+  min-width: 0;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--lab-muted);
+  font-size: 10px;
+}
+
+.context-budget-lesson .cb-result-flow li strong {
+  overflow: hidden;
+  color: var(--lab-text);
+  font-weight: 630;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.context-budget-lesson .cb-axis-list li {
+  padding-left: 10px;
+  border-left: 3px solid var(--lab-border);
+}
+
+.context-budget-lesson .cb-axis-list li.is-strong {
+  border-color: var(--green);
+}
+
+.context-budget-lesson .cb-axis-list li.is-weak {
+  border-color: var(--amber);
+}
+
+.context-budget-lesson .cb-axis-list li.is-missing {
+  border-color: var(--red);
+}
+
+.context-budget-lesson .cb-result-flow .cb-route-card {
+  border-color: color-mix(in srgb, var(--blue) 58%, var(--lab-border));
+  background: color-mix(in srgb, var(--blue) 12%, var(--lab-raised));
+}
+
+.context-budget-lesson .cb-route-card p {
+  margin: 0;
+  color: var(--lab-muted);
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+.context-budget-lesson .cb-axis-detail-grid,
+.context-budget-lesson .cb-risk-grid,
+.context-budget-lesson .cb-boundary-grid {
+  display: grid;
+  margin-top: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.context-budget-lesson .cb-axis-detail-grid article,
+.context-budget-lesson .cb-risk-grid section,
+.context-budget-lesson .cb-boundary-grid p {
+  margin: 0;
+  padding: 14px;
+  border: 1px solid var(--lab-border);
+  border-radius: var(--radius-medium);
+  background: color-mix(in srgb, var(--lab-raised) 72%, transparent);
+}
+
+.context-budget-lesson .cb-axis-detail-grid article > span,
+.context-budget-lesson .cb-risk-grid section > span,
+.context-budget-lesson .cb-boundary-grid p > span {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--lab-accent);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 720;
+  letter-spacing: 0.05em;
+}
+
+.context-budget-lesson .cb-axis-detail-grid article.is-strong > span {
+  color: var(--green);
+}
+
+.context-budget-lesson .cb-axis-detail-grid article.is-weak > span {
+  color: var(--amber);
+}
+
+.context-budget-lesson .cb-axis-detail-grid article.is-missing > span {
+  color: var(--red);
+}
+
+.context-budget-lesson .cb-axis-detail-grid p,
+.context-budget-lesson .cb-risk-grid p,
+.context-budget-lesson .cb-risk-grid li,
+.context-budget-lesson .cb-boundary-grid p {
+  color: var(--lab-muted);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.context-budget-lesson .cb-axis-detail-grid p,
+.context-budget-lesson .cb-risk-grid p {
+  margin: 0;
+}
+
+.context-budget-lesson .cb-risk-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.context-budget-lesson .cb-risk-grid ul {
+  display: grid;
+  margin: 0;
+  padding-left: 16px;
+  gap: 5px;
+}
+
+.context-budget-lesson .cb-boundary-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.context-budget-lesson .cb-lab-footer {
+  display: grid;
+  min-height: 74px;
+  padding: 14px 22px;
+  border-top: 1px solid var(--lab-border);
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  background: color-mix(in srgb, var(--lab-raised) 84%, transparent);
+}
+
+.context-budget-lesson .cb-lab-footer > span {
+  color: var(--lab-muted);
+  font-size: 11px;
+  text-align: center;
+}
+
+.context-budget-lesson .cb-after-lab-note,
+.context-budget-lesson .cb-research-note,
+.context-budget-lesson .cb-boundary-note {
+  margin: 18px 0 0;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-medium);
+  color: var(--muted);
+  background: var(--surface-soft);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.context-budget-lesson .cb-filter-grid,
+.context-budget-lesson .cb-visibility-compare,
+.context-budget-lesson .cb-maintenance-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.context-budget-lesson .cb-filter-grid article,
+.context-budget-lesson .cb-visibility-compare article,
+.context-budget-lesson .cb-maintenance-grid article,
+.context-budget-lesson .cb-conflict-grid article {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-medium);
+  background: var(--surface);
+}
+
+.context-budget-lesson .cb-filter-grid article > span,
+.context-budget-lesson .cb-visibility-compare article > span,
+.context-budget-lesson .cb-maintenance-grid article > span,
+.context-budget-lesson .cb-conflict-grid article > span {
+  color: var(--blue);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+}
+
+.context-budget-lesson .cb-filter-grid h3,
+.context-budget-lesson .cb-maintenance-grid h3,
+.context-budget-lesson .cb-conflict-grid h3 {
+  margin: 14px 0 9px;
+  font-size: 18px;
+}
+
+.context-budget-lesson .cb-filter-grid p,
+.context-budget-lesson .cb-visibility-compare p,
+.context-budget-lesson .cb-maintenance-grid p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.context-budget-lesson .cb-principle-callout {
+  display: grid;
+  margin-top: 14px;
+  padding: 18px 20px;
+  border-left: 4px solid var(--blue);
+  border-radius: 0 var(--radius-medium) var(--radius-medium) 0;
+  grid-template-columns: 150px minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+  background: var(--blue-soft);
+}
+
+.context-budget-lesson .cb-principle-callout span {
+  color: var(--blue-dark);
+  font-weight: 750;
+}
+
+.context-budget-lesson .cb-principle-callout p {
+  margin: 0;
+}
+
+.context-budget-lesson .cb-context-flow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: stretch;
+  gap: 8px;
+}
+
+.context-budget-lesson .cb-context-flow article {
+  display: flex;
+  min-width: 0;
+  min-height: 180px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-medium);
+  flex-direction: column;
+  background: var(--surface);
+}
+
+.context-budget-lesson .cb-context-flow article.is-active {
+  border-color: var(--blue);
+  background: var(--blue-soft);
+}
+
+.context-budget-lesson .cb-context-flow article > span {
+  color: var(--blue);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.context-budget-lesson .cb-context-flow article > strong {
+  margin: 18px 0 10px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.context-budget-lesson .cb-context-flow article > small {
+  margin-top: auto;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.context-budget-lesson .cb-context-flow > i {
+  align-self: center;
+  color: var(--blue);
+  font-style: normal;
+}
+
+.context-budget-lesson .cb-visibility-compare {
+  margin-top: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.context-budget-lesson .cb-conflict-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.context-budget-lesson .cb-conflict-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+
+.context-budget-lesson .cb-conflict-pair p {
+  min-height: 92px;
+  margin: 0;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-small);
+  font-size: 12px;
+}
+
+.context-budget-lesson .cb-conflict-pair small {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 8px;
+}
+
+.context-budget-lesson .cb-conflict-pair b {
+  color: var(--red);
+}
+
+.context-budget-lesson .cb-conflict-grid article > strong {
+  display: block;
+  margin-top: 15px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.context-budget-lesson .cb-maintenance-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.context-budget-lesson .cb-refresh-trigger {
+  display: grid;
+  margin-top: 14px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-medium);
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 24px;
+  background: var(--surface-soft);
+}
+
+.context-budget-lesson .cb-refresh-trigger > span {
+  font-weight: 750;
+}
+
+.context-budget-lesson .cb-refresh-trigger ol {
+  display: grid;
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+  gap: 8px;
+}
+
+@media (max-width: 860px) {
+  .context-budget-lesson .cb-result-flow,
+  .context-budget-lesson .cb-context-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .context-budget-lesson .cb-result-flow > i,
+  .context-budget-lesson .cb-context-flow > i {
+    transform: rotate(90deg);
+    justify-self: center;
+  }
+
+  .context-budget-lesson .cb-filter-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .context-budget-lesson .cb-context-flow article {
+    min-height: 130px;
+  }
+}
+
+@media (max-width: 620px) {
+  .context-budget-lesson .cb-task-strip,
+  .context-budget-lesson .cb-lab-footer,
+  .context-budget-lesson .cb-principle-callout,
+  .context-budget-lesson .cb-refresh-trigger {
+    grid-template-columns: 1fr;
+  }
+
+  .context-budget-lesson .cb-task-strip small {
+    line-height: 1.55;
+  }
+
+  .context-budget-lesson .cb-stage-heading,
+  .context-budget-lesson .cb-result-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .context-budget-lesson .cb-stage-heading p {
+    text-align: left;
+  }
+
+  .context-budget-lesson .cb-evidence-grid,
+  .context-budget-lesson .cb-axis-detail-grid,
+  .context-budget-lesson .cb-risk-grid,
+  .context-budget-lesson .cb-boundary-grid,
+  .context-budget-lesson .cb-filter-grid,
+  .context-budget-lesson .cb-visibility-compare,
+  .context-budget-lesson .cb-conflict-grid,
+  .context-budget-lesson .cb-maintenance-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .context-budget-lesson .cb-evidence-card {
+    min-height: 0;
+  }
+
+  .context-budget-lesson .cb-lab-footer > span {
+    order: -1;
+    text-align: left;
+  }
+
+  .context-budget-lesson .cb-lab-footer .button {
+    width: 100%;
+  }
+
+  .context-budget-lesson .cb-conflict-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .context-budget-lesson .cb-conflict-pair b {
+    justify-self: center;
+  }
+
+  .context-budget-lesson .cb-conflict-pair p {
+    min-height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .context-budget-lesson .cb-budget-track span,
+  .context-budget-lesson .cb-evidence-card {
+    transition: none;
+  }
+
+  .context-budget-lesson .cb-evidence-card:hover {
+    transform: none;
+  }
+}

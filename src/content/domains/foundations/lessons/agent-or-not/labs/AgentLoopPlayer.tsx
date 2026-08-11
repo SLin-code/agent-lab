@@ -6,7 +6,7 @@ export type AgentPhase =
   | "decide"
   | "act"
   | "observe"
-  | "revise"
+  | "evaluate"
   | "complete";
 
 export interface AgentTraceEvent {
@@ -22,7 +22,7 @@ export interface AgentLoopScenario {
   eyebrow: string;
   title: string;
   objective: string;
-  events: readonly AgentTraceEvent[];
+  events: readonly [AgentTraceEvent, ...AgentTraceEvent[]];
 }
 
 const phaseMeta: Record<
@@ -33,17 +33,17 @@ const phaseMeta: Record<
   decide: { icon: "◇", label: "决策摘要", caption: "下一步做什么？" },
   act: { icon: "↗", label: "行动 / 工具", caption: "由 Host 真正执行" },
   observe: { icon: "••", label: "观察结果", caption: "环境返回了什么？" },
-  revise: { icon: "↻", label: "校正策略", caption: "证据够不够？" },
+  evaluate: { icon: "◆", label: "证据评估", caption: "完成标准达到吗？" },
   complete: { icon: "✓", label: "完成", caption: "交付可核验结论" },
 };
 
-const phases: AgentPhase[] = [
+const phases: readonly AgentPhase[] = [
   "goal",
   "decide",
-  "complete",
   "act",
   "observe",
-  "revise",
+  "evaluate",
+  "complete",
 ];
 
 const edges: ReadonlyArray<{
@@ -69,11 +69,11 @@ const edges: ReadonlyArray<{
   },
   {
     from: "observe",
-    to: "revise",
+    to: "evaluate",
     path: "M 370 352 C 297 344, 224 316, 188 278",
   },
   {
-    from: "revise",
+    from: "evaluate",
     to: "decide",
     path: "M 174 214 C 184 148, 270 102, 366 86",
   },
@@ -94,6 +94,8 @@ export function AgentLoopPlayer({
   const [activeIndex, setActiveIndex] = useState(0);
   const [furthestIndex, setFurthestIndex] = useState(0);
   const logRef = useRef<HTMLOListElement>(null);
+  const currentRef = useRef<HTMLDivElement>(null);
+  const nextButtonRef = useRef<HTMLButtonElement>(null);
   const current = scenario.events[activeIndex];
   const previous =
     activeIndex > 0 ? scenario.events[activeIndex - 1] : undefined;
@@ -116,6 +118,9 @@ export function AgentLoopPlayer({
     setFurthestIndex(nextIndex);
     setActiveIndex(nextIndex);
     requestAnimationFrame(() => {
+      if (nextIndex === scenario.events.length - 1) {
+        currentRef.current?.focus({ preventScroll: true });
+      }
       if (logRef.current) {
         logRef.current.scrollTop = logRef.current.scrollHeight;
       }
@@ -125,20 +130,25 @@ export function AgentLoopPlayer({
   function reset() {
     setActiveIndex(0);
     setFurthestIndex(0);
+    requestAnimationFrame(() => {
+      nextButtonRef.current?.focus({ preventScroll: true });
+    });
   }
 
   return (
     <LabFrame
       className="agent-loop-player"
       eyebrow={scenario.eyebrow}
-      meta={
-        <span className="trace-status">
+      status={
+        <span
+          aria-label={isComplete ? "运行状态：已完成" : "运行状态：运行中"}
+          className="trace-status"
+        >
           {isComplete ? "COMPLETED" : "RUNNING"}
         </span>
       }
       title={scenario.title}
     >
-
       <div className="agent-loop-objective">
         <span>任务目标</span>
         <strong>{scenario.objective}</strong>
@@ -147,7 +157,7 @@ export function AgentLoopPlayer({
       <div
         className="agent-loop-map"
         role="group"
-        aria-label="目标进入决策，经过行动、观察与校正后返回决策；达到完成标准后退出循环"
+        aria-label="目标进入决策，经过行动、观察与证据评估；证据不足时返回决策，达到完成标准后退出循环"
       >
         <svg
           aria-hidden="true"
@@ -208,10 +218,17 @@ export function AgentLoopPlayer({
           );
         })}
 
+        <div aria-hidden="true" className="agent-loop-exit-note">
+          达到完成标准，退出循环
+        </div>
+
         <div
           aria-atomic="true"
           aria-live="polite"
           className="agent-loop-current"
+          ref={currentRef}
+          role="status"
+          tabIndex={-1}
         >
           <span>
             {current.round === 0 ? "准备" : `第 ${current.round} 轮`}
@@ -238,7 +255,15 @@ export function AgentLoopPlayer({
         >
           ↺ 重置
         </button>
-        <div className="agent-loop-progress">
+        <div
+          aria-label="Agent Run 进度"
+          aria-valuemax={scenario.events.length}
+          aria-valuemin={1}
+          aria-valuenow={furthestIndex + 1}
+          aria-valuetext={`已显示 ${furthestIndex + 1} / ${scenario.events.length} 步`}
+          className="agent-loop-progress"
+          role="progressbar"
+        >
           <span
             style={{
               width: `${((furthestIndex + 1) / scenario.events.length) * 100}%`,
@@ -252,6 +277,7 @@ export function AgentLoopPlayer({
           className="button button-light"
           disabled={isComplete && activeIndex === furthestIndex}
           onClick={revealNext}
+          ref={nextButtonRef}
           type="button"
         >
           {activeIndex < furthestIndex

@@ -8,49 +8,88 @@ import {
 } from "react";
 
 interface ProgressValue {
-  completed: Set<string>;
-  toggleComplete: (lessonId: string) => void;
+  isComplete: (lessonId: string, outputRevision: number) => boolean;
+  persistenceStatus: "saving" | "saved" | "memory-only";
+  toggleComplete: (lessonId: string, outputRevision: number) => void;
 }
 
-const STORAGE_KEY = "agent-path-progress-v1";
+const STORAGE_KEY = "agent-path-progress-v2";
 const ProgressContext = createContext<ProgressValue | null>(null);
 
 function readInitialProgress() {
   try {
     const value = window.localStorage.getItem(STORAGE_KEY);
-    return new Set<string>(value ? JSON.parse(value) : []);
+    if (!value) {
+      return {
+        completions: new Map<string, number>(),
+        persistenceStatus: "saving" as const,
+      };
+    }
+    const parsed: unknown = JSON.parse(value);
+    if (!Array.isArray(parsed)) {
+      return {
+        completions: new Map<string, number>(),
+        persistenceStatus: "saving" as const,
+      };
+    }
+    return {
+      completions: new Map(
+        parsed.filter(
+          (entry): entry is [string, number] =>
+            Array.isArray(entry) &&
+            entry.length === 2 &&
+            typeof entry[0] === "string" &&
+            Number.isInteger(entry[1]) &&
+            entry[1] > 0,
+        ),
+      ),
+      persistenceStatus: "saving" as const,
+    };
   } catch {
-    return new Set<string>();
+    return {
+      completions: new Map<string, number>(),
+      persistenceStatus: "memory-only" as const,
+    };
   }
 }
 
 export function ProgressProvider({ children }: { children: ReactNode }) {
-  const [completed, setCompleted] = useState(readInitialProgress);
+  const [initialProgress] = useState(readInitialProgress);
+  const [completions, setCompletions] = useState(
+    initialProgress.completions,
+  );
+  const [persistenceStatus, setPersistenceStatus] = useState<
+    ProgressValue["persistenceStatus"]
+  >(initialProgress.persistenceStatus);
 
   useEffect(() => {
     try {
       window.localStorage.setItem(
         STORAGE_KEY,
-        JSON.stringify([...completed]),
+        JSON.stringify([...completions]),
       );
+      setPersistenceStatus("saved");
     } catch {
-      // Progress remains usable in memory when browser storage is unavailable.
+      setPersistenceStatus("memory-only");
     }
-  }, [completed]);
+  }, [completions]);
 
   const value = useMemo<ProgressValue>(
     () => ({
-      completed,
-      toggleComplete: (lessonId) => {
-        setCompleted((current) => {
-          const next = new Set(current);
-          if (next.has(lessonId)) next.delete(lessonId);
-          else next.add(lessonId);
+      isComplete: (lessonId, outputRevision) =>
+        completions.get(lessonId) === outputRevision,
+      persistenceStatus,
+      toggleComplete: (lessonId, outputRevision) => {
+        setPersistenceStatus("saving");
+        setCompletions((current) => {
+          const next = new Map(current);
+          if (next.get(lessonId) === outputRevision) next.delete(lessonId);
+          else next.set(lessonId, outputRevision);
           return next;
         });
       },
     }),
-    [completed],
+    [completions, persistenceStatus],
   );
 
   return (

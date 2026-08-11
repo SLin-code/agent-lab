@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { useProgress } from "../app/ProgressContext";
-import { domains, lessons } from "../content/curriculum/catalog";
+import { domains, readyLessons } from "../content/curriculum/catalog";
 
 export function HomePage() {
-  const firstLesson = lessons[0];
-  const { completed } = useProgress();
+  const firstLesson = readyLessons[0];
+  const { isComplete } = useProgress();
 
   return (
     <main>
@@ -21,12 +21,18 @@ export function HomePage() {
             与持续改进系统。每个概念都能操作，每一课都以可复查的输出结束。
           </p>
           <div className="hero-actions">
-            <Link
-              className="button button-primary"
-              to={"/lesson/" + firstLesson.slug}
-            >
-              开始第一课
-            </Link>
+            {firstLesson ? (
+              <Link
+                className="button button-primary"
+                to={"/lesson/" + firstLesson.slug}
+              >
+                开始第一课
+              </Link>
+            ) : (
+              <button className="button button-primary" disabled type="button">
+                课程准备中
+              </button>
+            )}
             <button
               className="text-link"
               type="button"
@@ -98,18 +104,16 @@ export function HomePage() {
             <span className="eyebrow">LEARNING PATH</span>
             <h2>从 Prompt 到 Durable Graph</h2>
           </div>
-          <p>第一课已经可以体验，其余课程会沿这条主线逐步开放。</p>
+          <p>
+            已开放 {readyLessons.length} 门核心课程，后续内容会沿这条主线逐步补齐。
+          </p>
         </div>
         <ol className="stage-list">
           {domains.map((domain) => {
-            const stageLessons = lessons.filter(
-              (lesson) =>
-                lesson.domainId === domain.id &&
-                lesson.status === "ready",
+            const stageLessons = readyLessons.filter(
+              (lesson) => lesson.domainId === domain.id,
             );
-            const ready = stageLessons.some(
-              (lesson) => lesson.status === "ready",
-            );
+            const ready = stageLessons.length > 0;
             return (
               <li
                 className={ready ? "stage-card is-ready" : "stage-card"}
@@ -128,7 +132,11 @@ export function HomePage() {
                       to={"/lesson/" + lesson.slug}
                       key={lesson.id}
                     >
-                      <span>{completed.has(lesson.id) ? "✓" : "▶"}</span>
+                      <span>
+                        {isComplete(lesson.id, lesson.output.revision)
+                          ? "✓"
+                          : "▶"}
+                      </span>
                       {lesson.title}
                       <small>{lesson.durationMinutes} min</small>
                     </Link>
