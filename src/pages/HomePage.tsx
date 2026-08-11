@@ -18,7 +18,7 @@ export function HomePage() {
           </h1>
           <p>
             从一次模型调用出发，逐步搭出 Context、Harness、Loop、Graph
-            与持续改进系统。每个概念都能操作，每一课都以可复查的输出结束。
+            与持续改进系统。每次只改变一个条件，沿同一条 Run 看清结果为什么不同。
           </p>
           <div className="hero-actions">
             {firstLesson ? (
@@ -94,7 +94,7 @@ export function HomePage() {
         <div>
           <span>04</span>
           <strong>输出即学习</strong>
-          <p>把判断、Trace、图或实现沉淀成可复查作品。</p>
+          <p>研究、制作与复盘课程，是建设者自己的学习过程。</p>
         </div>
       </section>
 
@@ -133,7 +133,7 @@ export function HomePage() {
                       key={lesson.id}
                     >
                       <span>
-                        {isComplete(lesson.id, lesson.output.revision)
+                        {isComplete(lesson.id, lesson.revision)
                           ? "✓"
                           : "▶"}
                       </span>

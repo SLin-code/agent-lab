@@ -93,6 +93,7 @@ writeFileSync(
 
 export default defineLessonMeta({
   schemaVersion: 1,
+  revision: 1,
   id: "${slug}",
   slug: "${slug}",
   domainId: "${domainId}",
@@ -122,19 +123,6 @@ export default defineLessonMeta({
   thesis: {
     statement: "这一课最重要的判断是",
     emphasis: "替换成你的核心观点。",
-  },
-  output: {
-    revision: 1,
-    title: "本课作品",
-    description: "说明为什么这个输出能够证明学习发生了。",
-    prompt: "给学习者一个具体、可完成、可复查的输出任务。",
-    transferPrompt: "TODO：换一个新情境，让学习者迁移刚学到的方法。",
-    objectiveIds: ["todo-understand", "todo-apply"],
-    criteria: [
-      { id: "todo-criterion-one", text: "TODO：第一条自检标准" },
-      { id: "todo-criterion-two", text: "TODO：第二条自检标准" },
-    ],
-    placeholder: "从这里开始……",
   },
   claims: [],
   sources: [],
@@ -178,7 +166,7 @@ export function ${componentName}({ lesson: _lesson }: LessonComponentProps) {
 
 writeFileSync(
   resolve(lessonDirectory, "labs", "README.md"),
-  `# 本课交互实验\n\n将本课专属的交互状态、固定数据和案例放在这里；展示外框复用 \`LabFrame\`。\n`,
+  `# 本课交互实验\n\n将本课专属的数据和案例放在这里。外框复用 \`LabFrame\`；固定在第三步二选一的六步实验优先使用 \`MinimalRunExperiment\`，其他过程交互组合 \`MinimalRun\`。\n`,
   "utf8",
 );
 

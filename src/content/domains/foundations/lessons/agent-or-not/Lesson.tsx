@@ -1,7 +1,6 @@
 import { LessonSection } from "@/components/lesson/LessonSection";
 import { LessonTakeaway } from "@/components/lesson/LessonTakeaway";
 import type { Lesson } from "@/content/curriculum/catalog";
-import { ScenarioClassifier } from "./labs/ScenarioClassifier";
 import { TraceStepper } from "./labs/TraceStepper";
 
 export function AgentOrNotLesson({ lesson: _lesson }: { lesson: Lesson }) {
@@ -100,16 +99,8 @@ export function AgentOrNotLesson({ lesson: _lesson }: { lesson: Lesson }) {
 
       <LessonSection
         number="03"
-        title="它到底是不是 Agent？"
-        lead="八个真实场景。不要看产品名称，只看运行结构。"
-      >
-        <ScenarioClassifier />
-      </LessonSection>
-
-      <LessonSection
-        number="04"
-        title="拆开一次最小 Agent Run"
-        lead="点击下一步，观察节点、路径与运行日志怎样一起变化。"
+        title="让观察真正改变下一步"
+        lead="沿同一条六步 Run，只改变控制者，观察路径何时形成反馈循环。"
       >
         <TraceStepper />
         <div className="safety-note">
@@ -118,7 +109,7 @@ export function AgentOrNotLesson({ lesson: _lesson }: { lesson: Lesson }) {
       </LessonSection>
 
       <LessonSection
-        number="05"
+        number="04"
         title="三类系统的控制权差异"
         lead="复杂度不是目标。能用稳定 Workflow 完成，就不必增加自治。"
       >
@@ -181,7 +172,7 @@ export function AgentOrNotLesson({ lesson: _lesson }: { lesson: Lesson }) {
       </LessonSection>
 
       <LessonSection
-        number="06"
+        number="05"
         title="五个最常见的误判"
         lead="营销名称不重要，Trace 和控制流才是证据。"
       >

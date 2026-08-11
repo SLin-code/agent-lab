@@ -46,25 +46,9 @@ export interface KnowledgeDomain {
   summary: string;
 }
 
-export interface OutputCriterion {
-  id: string;
-  text: string;
-  legacyIndex?: number;
-}
-
-export interface LearningOutput {
-  revision: number;
-  title: string;
-  description: string;
-  prompt: string;
-  transferPrompt: string;
-  objectiveIds: readonly string[];
-  criteria: readonly OutputCriterion[];
-  placeholder?: string;
-}
-
 export interface Lesson {
   schemaVersion: 1;
+  revision: number;
   id: string;
   slug: string;
   domainId: string;
@@ -83,7 +67,6 @@ export interface Lesson {
     statement: string;
     emphasis: string;
   };
-  output: LearningOutput;
   claims: readonly Claim[];
   sources: readonly Source[];
   lastVerified?: string;

@@ -8,9 +8,9 @@ import {
 } from "react";
 
 interface ProgressValue {
-  isComplete: (lessonId: string, outputRevision: number) => boolean;
+  isComplete: (lessonId: string, lessonRevision: number) => boolean;
   persistenceStatus: "saving" | "saved" | "memory-only";
-  toggleComplete: (lessonId: string, outputRevision: number) => void;
+  toggleComplete: (lessonId: string, lessonRevision: number) => void;
 }
 
 const STORAGE_KEY = "agent-path-progress-v2";
@@ -76,15 +76,15 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
 
   const value = useMemo<ProgressValue>(
     () => ({
-      isComplete: (lessonId, outputRevision) =>
-        completions.get(lessonId) === outputRevision,
+      isComplete: (lessonId, lessonRevision) =>
+        completions.get(lessonId) === lessonRevision,
       persistenceStatus,
-      toggleComplete: (lessonId, outputRevision) => {
+      toggleComplete: (lessonId, lessonRevision) => {
         setPersistenceStatus("saving");
         setCompletions((current) => {
           const next = new Map(current);
-          if (next.get(lessonId) === outputRevision) next.delete(lessonId);
-          else next.set(lessonId, outputRevision);
+          if (next.get(lessonId) === lessonRevision) next.delete(lessonId);
+          else next.set(lessonId, lessonRevision);
           return next;
         });
       },

@@ -93,14 +93,11 @@ function validateLessonContract(lesson: Lesson) {
   assertIdentifier(lesson.id, `Lesson id ${lesson.id}`);
   assertIdentifier(lesson.slug, `Lesson slug ${lesson.slug}`);
   assertIdentifier(lesson.domainId, `Domain id for ${lesson.id}`);
+  assertPositiveInteger(lesson.revision, `Revision for ${lesson.id}`);
   assertPositiveInteger(lesson.order, `Order for ${lesson.id}`);
   assertPositiveInteger(
     lesson.durationMinutes,
     `Duration for ${lesson.id}`,
-  );
-  assertPositiveInteger(
-    lesson.output.revision,
-    `Output revision for ${lesson.id}`,
   );
   assertUnique(
     lesson.objectives,
@@ -127,18 +124,6 @@ function validateLessonContract(lesson: Lesson) {
     (tag) => tag,
     `tag in ${lesson.id}`,
   );
-  assertUnique(
-    lesson.output.criteria,
-    (criterion) => criterion.id,
-    `output criterion id in ${lesson.id}`,
-  );
-  assertUnique(
-    lesson.output.criteria.filter(
-      (criterion) => criterion.legacyIndex !== undefined,
-    ),
-    (criterion) => String(criterion.legacyIndex),
-    `legacy output criterion index in ${lesson.id}`,
-  );
 
   const objectiveIds = new Set(
     lesson.objectives.map((objective) => objective.id),
@@ -152,11 +137,6 @@ function validateLessonContract(lesson: Lesson) {
       `Interaction ${interaction.id}`,
     );
   }
-  assertKnownIds(
-    lesson.output.objectiveIds,
-    objectiveIds,
-    `Output in lesson ${lesson.id}`,
-  );
   for (const source of lesson.sources) {
     assertKnownIds(
       source.supportsClaimIds,
@@ -196,10 +176,9 @@ function validateLessonContract(lesson: Lesson) {
     );
   }
 
-  const coveredObjectives = new Set([
-    ...lesson.interactions.flatMap((item) => item.objectiveIds),
-    ...lesson.output.objectiveIds,
-  ]);
+  const coveredObjectives = new Set(
+    lesson.interactions.flatMap((item) => item.objectiveIds),
+  );
   for (const objective of lesson.objectives) {
     assertIdentifier(
       objective.id,
@@ -208,7 +187,7 @@ function validateLessonContract(lesson: Lesson) {
     assertText(objective.text, `Objective ${objective.id}`);
     if (!coveredObjectives.has(objective.id)) {
       throw new Error(
-        `Objective ${objective.id} in ${lesson.id} has no interaction or output`,
+        `Objective ${objective.id} in ${lesson.id} has no interaction`,
       );
     }
   }
@@ -217,10 +196,6 @@ function validateLessonContract(lesson: Lesson) {
   assertText(lesson.summary, `Summary for ${lesson.id}`);
   assertText(lesson.thesis.statement, `Thesis for ${lesson.id}`);
   assertText(lesson.thesis.emphasis, `Thesis emphasis for ${lesson.id}`);
-  assertText(lesson.output.title, `Output title for ${lesson.id}`);
-  assertText(lesson.output.description, `Output description for ${lesson.id}`);
-  assertText(lesson.output.prompt, `Output prompt for ${lesson.id}`);
-  assertText(lesson.output.transferPrompt, `Transfer prompt for ${lesson.id}`);
   if (lesson.tags.length === 0) {
     throw new Error(`Ready lesson ${lesson.id} must define tags`);
   }
@@ -228,30 +203,6 @@ function validateLessonContract(lesson: Lesson) {
     assertIdentifier(tag, `Tag ${tag} in ${lesson.id}`);
     assertText(tag, `Tag in ${lesson.id}`);
   });
-  if (lesson.output.criteria.length < 2) {
-    throw new Error(
-      `Ready lesson ${lesson.id} must define at least two output criteria`,
-    );
-  }
-  lesson.output.criteria.forEach((criterion, index) => {
-    assertIdentifier(
-      criterion.id,
-      `Output criterion id ${criterion.id} in ${lesson.id}`,
-    );
-    assertText(
-      criterion.text,
-      `Output criterion ${index + 1} for ${lesson.id}`,
-    );
-    if (
-      criterion.legacyIndex !== undefined &&
-      (!Number.isInteger(criterion.legacyIndex) || criterion.legacyIndex < 0)
-    ) {
-      throw new Error(
-        `Legacy output criterion index ${criterion.id} in ${lesson.id} must be a non-negative integer`,
-      );
-    }
-  });
-
   if (lesson.claims.length === 0 || lesson.sources.length === 0) {
     throw new Error(`Ready lesson ${lesson.id} must declare claims and sources`);
   }
@@ -424,8 +375,6 @@ export type {
   LessonDefinition,
   LearningInteraction,
   LearningObjective,
-  LearningOutput,
-  OutputCriterion,
   Source,
   Stability,
 } from "./types";

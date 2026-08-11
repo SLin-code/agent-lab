@@ -2,13 +2,14 @@ import { defineLessonMeta } from "@/content/curriculum/types";
 
 export default defineLessonMeta({
   schemaVersion: 1,
+  revision: 2,
   id: "harness-boundaries",
   slug: "harness-boundaries",
   domainId: "harness",
   order: 1,
   title: "模型给建议，Harness 决定动作能否发生",
   summary:
-    "用同一个批量停用动作，观察权限、审批、超时、检查点与恢复怎样改变真实执行路径。",
+    "沿同一条六步 Run，只改变检查点，观察一次超时为什么会走向恢复或人工移交。",
   durationMinutes: 22,
   audience: "all",
   stability: "converging",
@@ -30,9 +31,9 @@ export default defineLessonMeta({
   ],
   interactions: [
     {
-      id: "boundary-route-simulator",
+      id: "checkpoint-recovery-run",
       kind: "prediction",
-      title: "高风险动作边界路由实验",
+      title: "检查点单变量恢复实验",
       objectiveIds: [
         "separate-proposal-action",
         "predict-boundary-path",
@@ -46,49 +47,6 @@ export default defineLessonMeta({
   thesis: {
     statement: "模型可以提出行动；",
     emphasis: "Harness 决定它何时、以什么边界真正发生。",
-  },
-  output: {
-    revision: 1,
-    title: "交付一张 Harness 边界卡",
-    description:
-      "把一个高风险动作从模型建议拆成可审批、可停止、可恢复、可核验的运行契约。",
-    prompt:
-      "选择一个高风险动作，画出“模型建议 → 权限判断 → 审批 → 执行 → 核验/恢复”的路径；为每个边界写出触发条件、状态与证据。最后分析一次缺少这些边界的调用：它最可能在哪一步失控，事后又缺少什么证据？",
-    transferPrompt:
-      "不要复用本课的批量停用账号案例。请选择付款、发布、删除数据、修改权限或联系外部用户中的一个新情境。",
-    objectiveIds: [
-      "separate-proposal-action",
-      "predict-boundary-path",
-      "design-recovery-state",
-    ],
-    criteria: [
-      {
-        id: "separate-proposal-execution",
-        text: "明确区分模型提出什么，以及哪个 Host 组件真正执行",
-      },
-      {
-        id: "define-permission-scope",
-        text: "写清允许的资源、动作范围与越界时的阻止状态",
-      },
-      {
-        id: "define-approval-trigger",
-        text: "写清何时需要谁审批，以及拒绝后系统停在哪里",
-      },
-      {
-        id: "define-stop-condition",
-        text: "给出可测量的超时或步数上限，并定义中断状态",
-      },
-      {
-        id: "define-recovery-evidence",
-        text: "说明检查点保存什么、从哪里恢复，以及恢复前如何核验外部副作用",
-      },
-      {
-        id: "analyze-unsafe-call",
-        text: "用一条具体失败路径说明缺少边界会造成什么风险和证据缺口",
-      },
-    ],
-    placeholder:
-      "高风险动作：……\n模型建议：……\n实际执行者：……\n权限范围与越界状态：……\n审批触发条件与拒绝状态：……\n超时/步数上限：……\n检查点内容：……\n恢复前的核验证据：……\n缺少边界时的失败路径：……",
   },
   claims: [
     {

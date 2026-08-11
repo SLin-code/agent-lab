@@ -130,8 +130,8 @@ export function HarnessBoundariesLesson({ lesson: _lesson }: { lesson: Lesson })
 
       <LessonSection
         number="03"
-        title="配置边界，预测这次 Run 会走向哪里"
-        lead="动作始终相同。改变保护条件，观察路径和可恢复状态怎样一起变化。"
+        title="同一次超时，为什么有时能恢复？"
+        lead="沿同一条六步 Run，只改变检查点，观察系统应该继续还是停止。"
       >
         <BoundaryRouteLab />
         <p className="harness-boundaries-lab-note">
@@ -244,10 +244,10 @@ export function HarnessBoundariesLesson({ lesson: _lesson }: { lesson: Lesson })
 
       <LessonSection
         number="06"
-        title="把边界写成别人能接手的设计"
-        lead="输出不是一张漂亮流程图，而是一份可检查的运行契约。"
+        title="五问判断一次 Run 能否被接手"
+        lead="用五个可观察问题复盘边界，不需要再填写一份长文本作业。"
       >
-        <ol className="harness-boundaries-output-questions">
+        <ol className="harness-boundaries-review-questions">
           <li>
             <span>01</span>
             <div>

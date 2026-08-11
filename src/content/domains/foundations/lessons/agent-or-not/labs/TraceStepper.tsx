@@ -1,104 +1,80 @@
 import {
-  AgentLoopPlayer,
-  type AgentLoopScenario,
-} from "./AgentLoopPlayer";
+  MinimalRunExperiment,
+  type MinimalRunExperimentSpec,
+} from "@/components/lab/MinimalRunExperiment";
 
-const refundInvestigation: AgentLoopScenario = {
-  eyebrow: "INTERACTIVE AGENT LOOP · TRACE 001",
-  title: "退款异常调查",
-  objective: "找出本周退款率上升的原因，并给出可核验的结论。",
-  events: [
+type Controller = "workflow" | "agent";
+
+const experiment = {
+  eyebrow: "MINIMAL AGENT RUN",
+  title: "只改变下一步的控制者",
+  goal: {
+    title: "找出退款率上涨原因",
+    detail: "完成标准：结论必须引用可核验的数据，而不是只列出可能原因。",
+  },
+  see: {
+    title: "本周退款率 8.1% → 11.6%",
+    detail: "当前只有整体变化，还不知道异常集中在哪里，也不知道由什么造成。",
+  },
+  decision: {
+    title: "谁来决定下一步？",
+    detail: "只改变控制者，观察同一目标会怎样走向不同路径。",
+    groupLabel: "选择下一步的控制者",
+    actionLabel: "运行这个决定 →",
+    alternateLabel: "换另一种控制者 →",
+  },
+  outcomes: [
     {
-      id: "goal",
-      phase: "goal",
-      round: 0,
-      actor: "User",
-      summary: "定义目标与完成标准",
-      detail: "用户要求结论必须有证据，但没有写死查询顺序。",
+      value: "workflow",
+      choice: {
+        title: "代码按固定流程",
+        description: "不根据新观察改路线",
+      },
+      decide: {
+        title: "代码执行预先写好的下一步",
+        detail: "固定流程不读取新的环境状态，直接进入通用原因摘要。",
+      },
+      act: {
+        title: "生成通用原因摘要",
+        detail: "系统按固定模板列出质量、物流、促销和支付等可能原因。",
+      },
+      observe: {
+        title: "得到一组可能原因",
+        detail: "文本听起来合理，却没有新增任何能够改变判断的环境证据。",
+      },
+      control: {
+        title: "停止：固定流程已经结束",
+        detail: "路径没有因为观察而改变。它可以自动化，但仍是预设 Workflow。",
+      },
+      evidence: "证据：没有新增环境观察 → 路径按预设步骤结束",
     },
     {
-      id: "r1-decide",
-      phase: "decide",
-      round: 1,
-      actor: "Model",
-      summary: "先比较各渠道退款率",
-      detail: "决策摘要：先定位异常集中在哪个渠道，再决定往哪里查。",
-    },
-    {
-      id: "r1-act",
-      phase: "act",
-      round: 1,
-      actor: "Host",
-      summary: "执行退款数据查询",
-      detail: "Host 校验数据权限和查询范围后，才调用内部数据工具。",
-    },
-    {
-      id: "r1-observe",
-      phase: "observe",
-      round: 1,
-      actor: "Tool",
-      summary: "渠道 P 从 7.4% 升至 12.9%",
-      detail: "工具结果写回运行状态，后续决策开始拥有新的证据。",
-    },
-    {
-      id: "r1-evaluate",
-      phase: "evaluate",
-      round: 1,
-      actor: "Verifier",
-      summary: "范围缩小了，但证据还不够",
-      detail: "当前只能确认异常集中在渠道 P，尚不能说明为什么上涨。",
-    },
-    {
-      id: "r2-decide",
-      phase: "decide",
-      round: 2,
-      actor: "Model",
-      summary: "改查版本变更、错误码与对照样本",
-      detail: "上一轮观察改变了行动路线：不再泛查所有可能原因。",
-    },
-    {
-      id: "r2-act",
-      phase: "act",
-      round: 2,
-      actor: "Host",
-      summary: "执行版本与错误码查询",
-      detail: "Host 再次检查范围与权限，并读取发布记录和支付错误日志。",
-    },
-    {
-      id: "r2-observe",
-      phase: "observe",
-      round: 2,
-      actor: "Tool",
-      summary: "升级、超时错误与回滚样本对齐",
-      detail: "SDK 升级后支付超时集中出现；小流量回滚样本恢复到基线。",
-    },
-    {
-      id: "r2-evaluate",
-      phase: "evaluate",
-      round: 2,
-      actor: "Verifier",
-      summary: "证据达到预设标准",
-      detail: "时间、错误码和对照样本相互支持，同时保留未排除的次要因素。",
-    },
-    {
-      id: "r3-decide",
-      phase: "decide",
-      round: 3,
-      actor: "Model",
-      summary: "选择停止调查并整理结论",
-      detail: "完成标准已满足，下一步不再调用工具，而是交付可核验报告。",
-    },
-    {
-      id: "complete",
-      phase: "complete",
-      round: 3,
-      actor: "Host",
-      summary: "交付证据、结论与不确定项",
-      detail: "运行退出循环；结论指向支付 SDK 升级，并附上证据来源和边界。",
+      value: "agent",
+      choice: {
+        title: "模型根据观察选择",
+        description: "新证据可以改变下一步",
+      },
+      decide: {
+        title: "模型根据当前观察选择查询",
+        detail: "控制策略允许模型先查各渠道退款率，再根据结果重新选择行动。",
+      },
+      act: {
+        title: "查询各渠道退款率",
+        detail: "Host 执行数据查询，把真实结果写回本次 Run。",
+      },
+      observe: {
+        title: "渠道 P 退款率升至 12.9%",
+        detail: "新证据把调查范围缩小到渠道 P，但还没有解释原因。",
+      },
+      control: {
+        title: "继续：检查渠道 P 的近期变更",
+        detail: "观察改变了下一步，系统进入第二轮；这才形成反馈循环。",
+      },
+      evidence: "证据：观察到渠道 P 异常 → 下一步改为检查该渠道变更",
     },
   ],
-};
+} satisfies MinimalRunExperimentSpec<Controller>;
 
 export function TraceStepper() {
-  return <AgentLoopPlayer scenario={refundInvestigation} />;
+  return <MinimalRunExperiment spec={experiment} />;
 }

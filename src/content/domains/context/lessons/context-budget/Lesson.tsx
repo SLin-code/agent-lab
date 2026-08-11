@@ -8,12 +8,12 @@ export function ContextBudgetLesson({ lesson: _lesson }: { lesson: Lesson }) {
     <div className="context-budget-lesson">
       <LessonSection
         number="01"
-        title="只有 12 格，你会先放什么？"
-        lead="同一个任务、同一个模型。先选择证据，再观察上下文怎样改变可执行边界。"
+        title="最后一个位置，放什么才会改变决定？"
+        lead="沿同一条六步 Run，只替换一项证据，看系统应该继续检索还是停止。"
       >
         <ContextBudgetLab />
         <p className="cb-after-lab-note">
-          这个实验没有奖励“把 12 格用满”。它检查的是：决定性问题有没有被可靠证据覆盖，以及冲突是否仍然可见。
+          这个实验不奖励“把位置用满”。它只检查一件事：决定性问题有没有被可靠证据覆盖。
         </p>
       </LessonSection>
 

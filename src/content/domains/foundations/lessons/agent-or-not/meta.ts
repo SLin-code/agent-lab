@@ -2,12 +2,13 @@ import { defineLessonMeta } from "@/content/curriculum/types";
 
 export default defineLessonMeta({
   schemaVersion: 1,
+  revision: 3,
   id: "agent-or-not",
   slug: "agent-or-not",
   domainId: "foundations",
   order: 1,
   title: "一次模型调用不等于 Agent",
-  summary: "从八个真实场景出发，判断模型调用、工作流与 Agent 的真正边界。",
+  summary: "沿同一条六步 Run，只改变下一步的控制者，判断 Workflow 与 Agent 的真正边界。",
   durationMinutes: 18,
   audience: "all",
   stability: "stable",
@@ -29,18 +30,14 @@ export default defineLessonMeta({
   ],
   interactions: [
     {
-      id: "system-classifier",
+      id: "agent-control-run",
       kind: "prediction",
-      title: "八个场景分类挑战",
-      objectiveIds: ["classify-system", "locate-control"],
-      resettable: true,
-      deterministic: true,
-    },
-    {
-      id: "agent-loop-trace",
-      kind: "trace",
-      title: "最小 Agent Run 播放器",
-      objectiveIds: ["read-feedback-loop"],
+      title: "下一步控制权单变量实验",
+      objectiveIds: [
+        "classify-system",
+        "locate-control",
+        "read-feedback-loop",
+      ],
       resettable: true,
       deterministic: true,
     },
@@ -49,48 +46,6 @@ export default defineLessonMeta({
   thesis: {
     statement: "真正的区别，不是模型有多聪明，而是",
     emphasis: "谁在决定下一步。",
-  },
-  output: {
-    revision: 2,
-    title: "写下你的 Agent 判定",
-    description: "把直觉变成一段别人可以检查、质疑和复用的判断。",
-    prompt:
-      "完成两部分：先判断一个 AI 系统属于模型调用、Workflow 还是 Agent；再写出一组“观察 → 新行动”的 Trace，说明反馈怎样改变下一步。",
-    transferPrompt:
-      "不要复述本课的退款案例。请选择你实际使用过的 AI 产品，或自己构造一个新的业务场景。",
-    objectiveIds: [
-      "classify-system",
-      "locate-control",
-      "read-feedback-loop",
-    ],
-    criteria: [
-      {
-        id: "classify-system",
-        text: "明确给出系统类型，而不是只描述功能",
-        legacyIndex: 0,
-      },
-      {
-        id: "identify-controller",
-        text: "说明谁持续决定下一步",
-        legacyIndex: 1,
-      },
-      {
-        id: "trace-observation-action",
-        text: "写出一次具体观察，以及它触发的新行动",
-      },
-      {
-        id: "explain-feedback-change",
-        text: "说明环境反馈是否真的改变了后续路径",
-        legacyIndex: 2,
-      },
-      {
-        id: "name-uncertainty",
-        text: "指出至少一个仍需观察 Trace 才能确认的不确定项",
-        legacyIndex: 3,
-      },
-    ],
-    placeholder:
-      "我选择的系统是……\n我的判断是……\n控制权证据是……\n观察到……之后，系统改为……\n还需要从运行 Trace 确认……",
   },
   claims: [
     {

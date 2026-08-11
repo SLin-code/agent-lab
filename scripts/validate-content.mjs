@@ -1,8 +1,40 @@
+import { readdirSync, readFileSync } from "node:fs";
+import { extname, resolve } from "node:path";
 import { createServer } from "vite";
 
 let server;
 
+function sourceFiles(directory) {
+  return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const path = resolve(directory, entry.name);
+    return entry.isDirectory() ? sourceFiles(path) : [path];
+  });
+}
+
+function validateLowBurdenInputs() {
+  const forbiddenPatterns = [
+    { pattern: /<textarea\b/i, label: "textarea" },
+    {
+      pattern: /\bcontentEditable(?:\s*=|\s|>)/i,
+      label: "contentEditable",
+    },
+  ];
+
+  for (const path of sourceFiles(resolve(process.cwd(), "src"))) {
+    if (![".tsx", ".jsx", ".html"].includes(extname(path))) continue;
+    const source = readFileSync(path, "utf8");
+    for (const { pattern, label } of forbiddenPatterns) {
+      if (pattern.test(source)) {
+        throw new Error(
+          `${path} uses forbidden long-form learner input: ${label}`,
+        );
+      }
+    }
+  }
+}
+
 try {
+  validateLowBurdenInputs();
   server = await createServer({
     appType: "custom",
     logLevel: "error",

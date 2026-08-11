@@ -81,8 +81,8 @@ export function ToolContractLesson({ lesson: _lesson }: { lesson: Lesson }) {
 
       <LessonSection
         number="03"
-        title="同一个调用，为什么会走四条路径？"
-        lead="先预测 v1 的结果，再改变契约状态，观察每一扇门如何改变 Host 的下一步。"
+        title="同一个调用，审批证据怎样改变路径？"
+        lead="沿同一条六步 Run，一次只改变审批证据，直接比较零写入与执行核验。"
       >
         <ToolContractLab />
         <div className="tool-contract-lab-note">

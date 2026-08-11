@@ -265,483 +265,6 @@
   font-size: 13px;
 }
 
-.harness-boundaries-lesson .harness-boundaries-lab-status {
-  padding: 5px 9px;
-  border: 1px solid var(--lab-border);
-  border-radius: 999px;
-  color: var(--lab-muted);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.06em;
-}
-
-.harness-boundaries-lesson .harness-boundaries-lab-status.is-approval,
-.harness-boundaries-lesson .harness-boundaries-lab-status.is-recover {
-  border-color: color-mix(in srgb, var(--amber) 55%, var(--lab-border));
-  color: var(--amber);
-}
-
-.harness-boundaries-lesson .harness-boundaries-lab-status.is-final {
-  border-color: color-mix(in srgb, var(--green) 55%, var(--lab-border));
-  color: color-mix(in srgb, var(--green) 70%, white);
-}
-
-.harness-boundaries-lesson .harness-boundaries-action-brief {
-  display: grid;
-  padding: 20px 22px;
-  border-bottom: 1px solid var(--lab-border);
-  background: color-mix(in srgb, var(--lab-raised) 80%, transparent);
-  grid-template-columns: minmax(0, 1fr) minmax(310px, 0.9fr);
-  gap: 24px;
-  align-items: center;
-}
-
-.harness-boundaries-lesson .harness-boundaries-action-brief > div {
-  display: grid;
-  gap: 5px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-action-brief > div span,
-.harness-boundaries-lesson .harness-boundaries-result-summary > span,
-.harness-boundaries-lesson .harness-boundaries-recovery-action > div > span {
-  color: var(--lab-accent);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 720;
-  letter-spacing: 0.09em;
-}
-
-.harness-boundaries-lesson .harness-boundaries-action-brief > div strong {
-  font-size: 16px;
-  line-height: 1.45;
-}
-
-.harness-boundaries-lesson .harness-boundaries-action-brief dl {
-  display: grid;
-  margin: 0;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-action-brief dl > div {
-  min-width: 0;
-  padding: 11px;
-  border: 1px solid var(--lab-border);
-  border-radius: 10px;
-  background: var(--lab);
-}
-
-.harness-boundaries-lesson .harness-boundaries-action-brief dt,
-.harness-boundaries-lesson .harness-boundaries-action-brief dd {
-  margin: 0;
-  font-size: 10px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-action-brief dt {
-  color: var(--lab-muted);
-}
-
-.harness-boundaries-lesson .harness-boundaries-action-brief dd {
-  margin-top: 6px;
-  color: var(--lab-text);
-  line-height: 1.4;
-}
-
-.harness-boundaries-lesson .harness-boundaries-route {
-  display: grid;
-  margin: 0;
-  padding: 18px;
-  border-bottom: 1px solid var(--lab-border);
-  list-style: none;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-route-stage {
-  position: relative;
-  min-width: 0;
-  min-height: 176px;
-  padding: 13px;
-  border: 1px solid var(--lab-border);
-  border-radius: 12px;
-  background: var(--lab-raised);
-  transition:
-    border-color var(--motion-normal) ease,
-    background-color var(--motion-normal) ease;
-}
-
-.harness-boundaries-lesson .harness-boundaries-route-stage:not(:last-child)::after {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  right: -10px;
-  width: 11px;
-  height: 11px;
-  color: var(--lab-muted);
-  background: var(--lab);
-  content: "→";
-  font-size: 11px;
-  line-height: 11px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-route-stage-heading {
-  display: grid;
-  min-height: 47px;
-  gap: 5px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-route-stage-heading > span {
-  color: var(--lab-muted);
-  font-family: var(--font-mono);
-  font-size: 8px;
-  letter-spacing: 0.06em;
-}
-
-.harness-boundaries-lesson .harness-boundaries-route-stage-heading > small {
-  width: max-content;
-  max-width: 100%;
-  padding: 3px 6px;
-  border: 1px solid var(--lab-border);
-  border-radius: 999px;
-  color: var(--lab-muted);
-  font-size: 9px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-route-stage > strong {
-  display: block;
-  margin-top: 9px;
-  font-size: 12px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-route-stage > p {
-  margin: 7px 0 0;
-  color: var(--lab-muted);
-  font-size: 10px;
-  line-height: 1.55;
-}
-
-.harness-boundaries-lesson .harness-boundaries-route-stage.is-passed,
-.harness-boundaries-lesson .harness-boundaries-route-stage.is-saved,
-.harness-boundaries-lesson .harness-boundaries-route-stage.is-completed,
-.harness-boundaries-lesson .harness-boundaries-route-stage.is-recovered {
-  border-color: color-mix(in srgb, var(--green) 52%, var(--lab-border));
-  background: color-mix(in srgb, var(--green) 9%, var(--lab-raised));
-}
-
-.harness-boundaries-lesson .harness-boundaries-route-stage.is-passed small,
-.harness-boundaries-lesson .harness-boundaries-route-stage.is-saved small,
-.harness-boundaries-lesson .harness-boundaries-route-stage.is-completed small,
-.harness-boundaries-lesson .harness-boundaries-route-stage.is-recovered small {
-  border-color: color-mix(in srgb, var(--green) 42%, var(--lab-border));
-  color: color-mix(in srgb, var(--green) 70%, white);
-}
-
-.harness-boundaries-lesson .harness-boundaries-route-stage.is-waiting,
-.harness-boundaries-lesson .harness-boundaries-route-stage.is-timed-out {
-  border-color: color-mix(in srgb, var(--amber) 58%, var(--lab-border));
-  background: color-mix(in srgb, var(--amber) 9%, var(--lab-raised));
-}
-
-.harness-boundaries-lesson .harness-boundaries-route-stage.is-waiting small,
-.harness-boundaries-lesson .harness-boundaries-route-stage.is-timed-out small {
-  border-color: color-mix(in srgb, var(--amber) 50%, var(--lab-border));
-  color: var(--amber);
-}
-
-.harness-boundaries-lesson .harness-boundaries-route-stage.is-blocked,
-.harness-boundaries-lesson .harness-boundaries-route-stage.is-rejected,
-.harness-boundaries-lesson .harness-boundaries-route-stage.is-unknown {
-  border-color: color-mix(in srgb, var(--red) 56%, var(--lab-border));
-  background: color-mix(in srgb, var(--red) 9%, var(--lab-raised));
-}
-
-.harness-boundaries-lesson .harness-boundaries-route-stage.is-blocked small,
-.harness-boundaries-lesson .harness-boundaries-route-stage.is-rejected small,
-.harness-boundaries-lesson .harness-boundaries-route-stage.is-unknown small {
-  border-color: color-mix(in srgb, var(--red) 48%, var(--lab-border));
-  color: color-mix(in srgb, var(--red) 76%, white);
-}
-
-.harness-boundaries-lesson .harness-boundaries-route-stage.is-skipped {
-  border-style: dashed;
-  background: color-mix(in srgb, var(--lab-muted) 5%, var(--lab-raised));
-}
-
-.harness-boundaries-lesson .harness-boundaries-configurator,
-.harness-boundaries-lesson .harness-boundaries-result {
-  padding: 28px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-config-heading {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 30px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-config-heading > div > span {
-  color: var(--lab-accent);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 720;
-  letter-spacing: 0.09em;
-}
-
-.harness-boundaries-lesson .harness-boundaries-config-heading h4,
-.harness-boundaries-lesson .harness-boundaries-result-summary h4 {
-  margin: 7px 0 0;
-  font-size: clamp(21px, 3vw, 28px);
-  letter-spacing: -0.035em;
-}
-
-.harness-boundaries-lesson .harness-boundaries-config-heading > p {
-  max-width: 390px;
-  margin: 0;
-  color: var(--lab-muted);
-  font-size: 12px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-config-grid {
-  display: grid;
-  margin-top: 24px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-choice,
-.harness-boundaries-lesson .harness-boundaries-prediction,
-.harness-boundaries-lesson .harness-boundaries-decision fieldset {
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-.harness-boundaries-lesson .harness-boundaries-choice > legend,
-.harness-boundaries-lesson .harness-boundaries-prediction > legend,
-.harness-boundaries-lesson .harness-boundaries-decision legend {
-  padding: 0;
-  color: var(--lab-muted);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 680;
-  letter-spacing: 0.05em;
-}
-
-.harness-boundaries-lesson .harness-boundaries-choice > div {
-  display: grid;
-  margin-top: 8px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 7px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-choice label,
-.harness-boundaries-lesson .harness-boundaries-prediction label,
-.harness-boundaries-lesson .harness-boundaries-decision label {
-  display: flex;
-  min-width: 0;
-  min-height: 64px;
-  align-items: flex-start;
-  gap: 9px;
-  padding: 11px;
-  border: 1px solid var(--lab-border);
-  border-radius: 11px;
-  color: var(--lab-text);
-  background: var(--lab-raised);
-  cursor: pointer;
-}
-
-.harness-boundaries-lesson .harness-boundaries-choice label:has(input:checked),
-.harness-boundaries-lesson .harness-boundaries-prediction label:has(input:checked),
-.harness-boundaries-lesson .harness-boundaries-decision label:has(input:checked) {
-  border-color: var(--lab-accent);
-  background: color-mix(in srgb, var(--blue) 18%, var(--lab-raised));
-}
-
-.harness-boundaries-lesson .harness-boundaries-choice input,
-.harness-boundaries-lesson .harness-boundaries-prediction input,
-.harness-boundaries-lesson .harness-boundaries-decision input {
-  width: 17px;
-  height: 17px;
-  flex: none;
-  margin: 2px 0 0;
-  accent-color: var(--lab-accent);
-}
-
-.harness-boundaries-lesson .harness-boundaries-choice input:focus-visible,
-.harness-boundaries-lesson .harness-boundaries-prediction input:focus-visible,
-.harness-boundaries-lesson .harness-boundaries-decision input:focus-visible {
-  outline: 3px solid var(--lab-accent);
-  outline-offset: 3px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-choice label > span,
-.harness-boundaries-lesson .harness-boundaries-decision label > span {
-  display: grid;
-  min-width: 0;
-  gap: 4px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-choice label strong,
-.harness-boundaries-lesson .harness-boundaries-decision label strong {
-  font-size: 11px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-choice label small,
-.harness-boundaries-lesson .harness-boundaries-decision label > span {
-  color: var(--lab-muted);
-  font-size: 10px;
-  line-height: 1.45;
-}
-
-.harness-boundaries-lesson .harness-boundaries-decision label strong {
-  color: var(--lab-text);
-}
-
-.harness-boundaries-lesson .harness-boundaries-prediction {
-  margin-top: 24px;
-  padding-top: 22px;
-  border-top: 1px solid var(--lab-border);
-}
-
-.harness-boundaries-lesson .harness-boundaries-prediction > legend {
-  color: var(--lab-text);
-  font-family: var(--font-sans);
-  font-size: 13px;
-  letter-spacing: 0;
-}
-
-.harness-boundaries-lesson .harness-boundaries-prediction > div {
-  display: grid;
-  margin-top: 10px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-prediction label {
-  min-height: 50px;
-  align-items: center;
-  font-size: 11px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-actions {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 22px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-result {
-  display: grid;
-  gap: 18px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-result-summary {
-  padding: 22px;
-  border: 1px solid var(--lab-border);
-  border-radius: 14px;
-  background: var(--lab-raised);
-}
-
-.harness-boundaries-lesson .harness-boundaries-result-summary > p {
-  margin: 8px 0 0;
-  color: var(--lab-muted);
-  font-size: 13px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-prediction-feedback {
-  display: grid;
-  padding: 18px 20px;
-  border: 1px solid var(--lab-border);
-  border-radius: 14px;
-  grid-template-columns: minmax(190px, 0.7fr) minmax(0, 1.3fr);
-  gap: 24px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-prediction-feedback.is-correct {
-  border-color: color-mix(in srgb, var(--green) 50%, var(--lab-border));
-  background: color-mix(in srgb, var(--green) 7%, transparent);
-}
-
-.harness-boundaries-lesson .harness-boundaries-prediction-feedback.is-different {
-  border-color: color-mix(in srgb, var(--amber) 50%, var(--lab-border));
-  background: color-mix(in srgb, var(--amber) 7%, transparent);
-}
-
-.harness-boundaries-lesson .harness-boundaries-prediction-feedback > div {
-  display: grid;
-  align-content: start;
-  gap: 6px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-prediction-feedback strong {
-  color: var(--lab-text);
-  font-size: 13px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-prediction-feedback span {
-  color: var(--lab-muted);
-  font-size: 10px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-prediction-feedback p {
-  margin: 0;
-  color: var(--lab-muted);
-  font-size: 12px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-prediction-feedback b {
-  color: var(--lab-text);
-}
-
-.harness-boundaries-lesson .harness-boundaries-decision,
-.harness-boundaries-lesson .harness-boundaries-recovery-action,
-.harness-boundaries-lesson .harness-boundaries-final-action {
-  padding: 20px;
-  border: 1px solid var(--lab-border);
-  border-radius: 14px;
-  background: color-mix(in srgb, var(--lab-raised) 72%, transparent);
-}
-
-.harness-boundaries-lesson .harness-boundaries-decision fieldset > div {
-  display: grid;
-  margin-top: 10px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 9px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-decision label {
-  min-height: 76px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-recovery-action > div:first-child {
-  display: grid;
-  gap: 7px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-recovery-action strong {
-  font-size: 13px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-recovery-action p,
-.harness-boundaries-lesson .harness-boundaries-final-action p {
-  margin: 0;
-  color: var(--lab-muted);
-  font-size: 12px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-final-action {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.harness-boundaries-lesson .harness-boundaries-final-action p {
-  max-width: 540px;
-}
-
 .harness-boundaries-lesson .harness-boundaries-lab-note {
   margin: 14px 0 0;
   padding: 13px 15px;
@@ -880,14 +403,14 @@
   font-size: 13px;
 }
 
-.harness-boundaries-lesson .harness-boundaries-output-questions {
+.harness-boundaries-lesson .harness-boundaries-review-questions {
   margin: 0;
   padding: 0;
   border-top: 1px solid var(--border);
   list-style: none;
 }
 
-.harness-boundaries-lesson .harness-boundaries-output-questions li {
+.harness-boundaries-lesson .harness-boundaries-review-questions li {
   display: grid;
   padding: 22px 6px;
   border-bottom: 1px solid var(--border);
@@ -895,41 +418,26 @@
   gap: 12px;
 }
 
-.harness-boundaries-lesson .harness-boundaries-output-questions li > span {
+.harness-boundaries-lesson .harness-boundaries-review-questions li > span {
   padding-top: 3px;
   color: var(--blue);
   font-family: var(--font-mono);
   font-size: 11px;
 }
 
-.harness-boundaries-lesson .harness-boundaries-output-questions strong {
+.harness-boundaries-lesson .harness-boundaries-review-questions strong {
   font-size: 16px;
 }
 
-.harness-boundaries-lesson .harness-boundaries-output-questions p {
+.harness-boundaries-lesson .harness-boundaries-review-questions p {
   margin: 6px 0 0;
   color: var(--muted);
   font-size: 13px;
 }
 
-@media (max-width: 900px) {
-  .harness-boundaries-lesson .harness-boundaries-action-brief {
-    grid-template-columns: 1fr;
-  }
-
-  .harness-boundaries-lesson .harness-boundaries-route {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .harness-boundaries-lesson .harness-boundaries-route-stage:nth-child(3)::after {
-    display: none;
-  }
-}
-
 @media (max-width: 760px) {
   .harness-boundaries-lesson .harness-boundaries-opening,
   .harness-boundaries-lesson .harness-boundaries-boundary-grid,
-  .harness-boundaries-lesson .harness-boundaries-config-grid,
   .harness-boundaries-lesson .harness-boundaries-level-difference {
     grid-template-columns: 1fr;
   }
@@ -957,86 +465,9 @@
     transform: rotate(90deg);
   }
 
-  .harness-boundaries-lesson .harness-boundaries-action-brief {
-    padding: 18px;
-  }
-
-  .harness-boundaries-lesson .harness-boundaries-action-brief dl {
-    grid-template-columns: 1fr;
-  }
-
-  .harness-boundaries-lesson .harness-boundaries-route {
-    padding: 16px;
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .harness-boundaries-lesson .harness-boundaries-route-stage {
-    min-height: 0;
-    padding: 14px;
-  }
-
-  .harness-boundaries-lesson .harness-boundaries-route-stage:not(:last-child)::after,
-  .harness-boundaries-lesson .harness-boundaries-route-stage:nth-child(3)::after {
-    display: block;
-    top: auto;
-    right: auto;
-    bottom: -13px;
-    left: 20px;
-    width: 12px;
-    height: 12px;
-    content: "↓";
-    line-height: 12px;
-  }
-
-  .harness-boundaries-lesson .harness-boundaries-route-stage-heading {
-    min-height: 0;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-  }
-
-  .harness-boundaries-lesson .harness-boundaries-route-stage > strong {
-    margin-top: 12px;
-  }
-
-  .harness-boundaries-lesson .harness-boundaries-configurator,
-  .harness-boundaries-lesson .harness-boundaries-result {
-    padding: 20px;
-  }
-
-  .harness-boundaries-lesson .harness-boundaries-config-heading,
-  .harness-boundaries-lesson .harness-boundaries-final-action {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .harness-boundaries-lesson .harness-boundaries-prediction > div {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .harness-boundaries-lesson .harness-boundaries-prediction-feedback,
-  .harness-boundaries-lesson .harness-boundaries-decision fieldset > div {
-    grid-template-columns: 1fr;
-  }
-
-  .harness-boundaries-lesson .harness-boundaries-actions {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .harness-boundaries-lesson .harness-boundaries-actions .button,
-  .harness-boundaries-lesson .harness-boundaries-final-action .button {
-    width: 100%;
-  }
 }
 
 @media (max-width: 420px) {
-  .harness-boundaries-lesson .harness-boundaries-lab .lab-topbar {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 10px;
-  }
-
   .harness-boundaries-lesson .harness-boundaries-opening > article,
   .harness-boundaries-lesson .harness-boundaries-layer-map article,
   .harness-boundaries-lesson .harness-boundaries-boundary-grid article {
@@ -1054,28 +485,7 @@
     gap: 4px;
   }
 
-  .harness-boundaries-lesson .harness-boundaries-configurator,
-  .harness-boundaries-lesson .harness-boundaries-result {
-    padding: 16px;
-  }
-
-  .harness-boundaries-lesson .harness-boundaries-choice > div,
-  .harness-boundaries-lesson .harness-boundaries-prediction > div {
-    grid-template-columns: 1fr;
-  }
-
-  .harness-boundaries-lesson .harness-boundaries-choice label,
-  .harness-boundaries-lesson .harness-boundaries-prediction label {
-    min-height: 54px;
-  }
-
-  .harness-boundaries-lesson .harness-boundaries-output-questions li {
+  .harness-boundaries-lesson .harness-boundaries-review-questions li {
     grid-template-columns: 38px minmax(0, 1fr);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .harness-boundaries-lesson .harness-boundaries-route-stage {
-    transition: none;
   }
 }

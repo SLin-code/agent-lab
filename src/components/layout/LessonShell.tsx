@@ -1,10 +1,6 @@
-import { useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { useProgress } from "../../app/ProgressContext";
-import {
-  LearningOutput,
-  type LearningOutputStorageStatus,
-} from "../lesson/LearningOutput";
 import { LessonSources } from "../lesson/LessonSources";
 import {
   domains,
@@ -24,24 +20,22 @@ export function LessonShell({
     persistenceStatus,
     toggleComplete,
   } = useProgress();
-  const isComplete = readComplete(lesson.id, lesson.output.revision);
-  const [outputReady, setOutputReady] = useState(false);
-  const [outputStorageStatus, setOutputStorageStatus] =
-    useState<LearningOutputStorageStatus>("saving");
+  const isComplete = readComplete(lesson.id, lesson.revision);
+  const currentLessonIndex = readyLessons.findIndex(
+    (item) => item.id === lesson.id,
+  );
+  const nextLesson =
+    currentLessonIndex >= 0
+      ? readyLessons[currentLessonIndex + 1]
+      : undefined;
   const progressMessage =
     persistenceStatus === "memory-only"
       ? "浏览器未允许本地保存；本次状态仅在当前页面有效，刷新后可能丢失。"
       : persistenceStatus === "saving"
         ? "正在保存当前浏览器中的学习进度…"
-        : outputStorageStatus === "error"
-          ? "完成状态可以记录，但学习输出未自动保存；请先复制输出。"
-          : isComplete && outputStorageStatus === "saving"
-            ? "完成状态已记录，学习输出仍在保存…"
-            : isComplete
-              ? "进度已保存在当前浏览器。"
-              : outputReady
-                ? "学习输出与自检已完成，可以记录进度。"
-                : "完成学习输出和全部自检后，才能标记完成。";
+        : isComplete
+          ? "进度已保存在当前浏览器。"
+          : "理解本课关键判断后即可记录进度，不需要提交文字作业。";
 
   return (
     <main className="lesson-layout">
@@ -88,13 +82,6 @@ export function LessonShell({
       </aside>
       <article className="lesson-article">
         {children}
-        <LearningOutput
-          key={`${lesson.id}:${lesson.output.revision}`}
-          lessonId={lesson.id}
-          onReadyChange={setOutputReady}
-          onStorageStatusChange={setOutputStorageStatus}
-          output={lesson.output}
-        />
         <LessonSources claims={lesson.claims} sources={lesson.sources} />
         <div className="lesson-complete">
           <div>
@@ -110,21 +97,27 @@ export function LessonShell({
                 ? "button button-success"
                 : "button button-primary"
             }
-            disabled={!isComplete && !outputReady}
-            onClick={() =>
-              toggleComplete(lesson.id, lesson.output.revision)
-            }
+            onClick={() => toggleComplete(lesson.id, lesson.revision)}
             type="button"
           >
             {isComplete
               ? persistenceStatus === "memory-only"
                 ? "✓ 本次已完成"
                 : "✓ 已完成"
-              : outputReady
-                ? "标记为完成"
-                : "先完成本课输出"}
+              : "标记为已学"}
           </button>
         </div>
+        <nav className="lesson-next" aria-label="继续学习">
+          {nextLesson ? (
+            <Link className="button" to={`/lesson/${nextLesson.slug}`}>
+              下一课 · {nextLesson.title} →
+            </Link>
+          ) : (
+            <Link className="button" to="/">
+              返回学习路径 →
+            </Link>
+          )}
+        </nav>
       </article>
     </main>
   );
