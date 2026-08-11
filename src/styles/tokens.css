@@ -24,6 +24,24 @@
   --lab-text: #eef1f7;
   --lab-muted: #9ca8b8;
   --lab-accent: #8f9bf0;
+  --lab-accent-text: #aeb6ff;
+  --lab-surface-control: #151b25;
+  --lab-surface-deep: #141a24;
+  --lab-surface-selected: #242d54;
+  --lab-line-strong: #4a5566;
+  --lab-text-strong: #dce2eb;
+  --lab-text-dim: #7f8a9a;
+  --lab-neutral: #c5ccd7;
+  --lab-success: #68d6b1;
+  --lab-success-text: #78ddb5;
+  --lab-success-bg: #173027;
+  --lab-warning: #e9aa55;
+  --lab-warning-text: #f0b969;
+  --lab-warning-bg: #2a2118;
+  --lab-danger: #d46f74;
+  --lab-danger-text: #f0999d;
+  --lab-danger-bg: #311d21;
+  --lab-focus: #b4bcff;
 
   --radius-small: 8px;
   --radius-medium: 12px;

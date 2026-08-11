@@ -163,9 +163,6 @@ function validateLessonContract(lesson: Lesson) {
       `Interaction title ${interaction.id} in ${lesson.id}`,
     );
   }
-  if (!lesson.interactions.some((item) => item.kind === "prediction")) {
-    throw new Error(`Ready lesson ${lesson.id} must include a prediction`);
-  }
   if (
     lesson.interactions.some(
       (item) => !item.resettable || !item.deterministic,

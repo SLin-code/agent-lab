@@ -111,9 +111,9 @@ export default defineLessonMeta({
   ],
   interactions: [
     {
-      id: "todo-prediction",
-      kind: "prediction",
-      title: "TODO：先预测再反馈的交互",
+      id: "todo-interaction",
+      kind: "simulation",
+      title: "TODO：选择最能解释概念的可视交互",
       objectiveIds: ["todo-understand"],
       resettable: false,
       deterministic: false,
@@ -149,7 +149,7 @@ export function ${componentName}({ lesson: _lesson }: LessonComponentProps) {
       <LessonSection
         number="01"
         title="从一个真实问题开始"
-        lead="让学习者先预测，再看到解释。"
+        lead="先建立最小心智模型，再选择最适合概念的可视演示。"
       >
         <p>在这里编排课程内容和交互实验。</p>
       </LessonSection>
@@ -166,7 +166,7 @@ export function ${componentName}({ lesson: _lesson }: LessonComponentProps) {
 
 writeFileSync(
   resolve(lessonDirectory, "labs", "README.md"),
-  `# 本课交互实验\n\n将本课专属的数据和案例放在这里。外框复用 \`LabFrame\`；固定在第三步二选一的六步实验优先使用 \`MinimalRunExperiment\`，其他过程交互组合 \`MinimalRun\`。\n`,
+  `# 本课交互实验\n\n将本课专属的数据、案例和状态放在这里。外框可复用 \`LabFrame\`；共享目标、观察、决定、行动、证据与继续/停止等学习语义，但应为本课选择最适合概念的可视模型，例如循环图、门控链、预算与证据覆盖、检查点路径或静态对比。不要默认套用统一流程图。\n`,
   "utf8",
 );
 

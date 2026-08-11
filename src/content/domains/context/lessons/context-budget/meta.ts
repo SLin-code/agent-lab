@@ -2,14 +2,14 @@ import { defineLessonMeta } from "@/content/curriculum/types";
 
 export default defineLessonMeta({
   schemaVersion: 1,
-  revision: 2,
+  revision: 3,
   id: "context-budget",
   slug: "context-budget",
   domainId: "context",
   order: 1,
   title: "上下文不是越多越好",
   summary:
-    "沿同一条六步 Run，只替换最后一项证据，观察相关信息与噪声怎样改变继续或停止。",
+    "在有限的证据槽位中替换最后一项信息，用覆盖矩阵判断应该停止还是继续检索。",
   durationMinutes: 22,
   audience: "all",
   stability: "converging",
@@ -32,8 +32,8 @@ export default defineLessonMeta({
   interactions: [
     {
       id: "context-evidence-run",
-      kind: "prediction",
-      title: "最后一项证据单变量实验",
+      kind: "builder",
+      title: "上下文证据槽位与覆盖矩阵",
       objectiveIds: [
         "allocate-context-budget",
         "assess-context-quality",

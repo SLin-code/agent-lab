@@ -9,7 +9,7 @@ export function ContextBudgetLesson({ lesson: _lesson }: { lesson: Lesson }) {
       <LessonSection
         number="01"
         title="最后一个位置，放什么才会改变决定？"
-        lead="沿同一条六步 Run，只替换一项证据，看系统应该继续检索还是停止。"
+        lead="把最后一格换成账本或画像，看覆盖矩阵为何走向停止或继续检索。"
       >
         <ContextBudgetLab />
         <p className="cb-after-lab-note">

@@ -81,8 +81,8 @@ export function ToolContractLesson({ lesson: _lesson }: { lesson: Lesson }) {
 
       <LessonSection
         number="03"
-        title="同一个调用，审批证据怎样改变路径？"
-        lead="沿同一条六步 Run，一次只改变审批证据，直接比较零写入与执行核验。"
+        title="让一次副作用请求穿过 Host 闸门"
+        lead="选择审批证据，看请求在哪道闸门停下，或如何一路执行到核验。"
       >
         <ToolContractLab />
         <div className="tool-contract-lab-note">

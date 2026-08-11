@@ -5,7 +5,6 @@ import { App } from "./app/App";
 import { ProgressProvider } from "./app/ProgressContext";
 import "./styles/tokens.css";
 import "./styles/global.css";
-import "./styles/minimal-run.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

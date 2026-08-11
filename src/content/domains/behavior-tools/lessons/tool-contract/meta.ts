@@ -2,14 +2,14 @@ import { defineLessonMeta } from "@/content/curriculum/types";
 
 export default defineLessonMeta({
   schemaVersion: 1,
-  revision: 2,
+  revision: 3,
   id: "tool-contract",
   slug: "tool-contract",
   domainId: "behavior-tools",
   order: 1,
   title: "工具调用不等于动作完成",
   summary:
-    "沿同一条六步 Run，只改变审批证据，理解 Host 如何把模型建议变成可拒绝、可执行、可核验的动作。",
+    "让同一个副作用请求逐门穿过 Host 契约，直观看见拒绝、审批、重放、执行与核验。",
   durationMinutes: 20,
   audience: "all",
   stability: "stable",
@@ -32,8 +32,8 @@ export default defineLessonMeta({
   interactions: [
     {
       id: "tool-approval-run",
-      kind: "prediction",
-      title: "审批证据单变量实验",
+      kind: "simulation",
+      title: "Host 动作契约闸门链",
       objectiveIds: [
         "separate-call-from-action",
         "trace-contract-gates",

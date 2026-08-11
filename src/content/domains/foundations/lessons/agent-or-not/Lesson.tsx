@@ -99,8 +99,8 @@ export function AgentOrNotLesson({ lesson: _lesson }: { lesson: Lesson }) {
 
       <LessonSection
         number="03"
-        title="让观察真正改变下一步"
-        lead="沿同一条六步 Run，只改变控制者，观察路径何时形成反馈循环。"
+        title="拆开一次最小 Agent Run"
+        lead="点击下一步，观察节点、路径与运行日志怎样一起变化。"
       >
         <TraceStepper />
         <div className="safety-note">

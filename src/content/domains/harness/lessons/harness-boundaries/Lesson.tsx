@@ -131,7 +131,7 @@ export function HarnessBoundariesLesson({ lesson: _lesson }: { lesson: Lesson })
       <LessonSection
         number="03"
         title="同一次超时，为什么有时能恢复？"
-        lead="沿同一条六步 Run，只改变检查点，观察系统应该继续还是停止。"
+        lead="执行到同一个超时点，看检查点如何把中断变成可恢复或必须对账。"
       >
         <BoundaryRouteLab />
         <p className="harness-boundaries-lab-note">

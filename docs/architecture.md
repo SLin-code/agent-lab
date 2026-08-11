@@ -5,7 +5,7 @@ AgentPath 不是文章集合，而是一套围绕 Agent 的知识生产系统。
 系统分为三层：
 
 1. **知识方向**：负责概念、案例、来源和课程专属实验。
-2. **学习原语**：统一页面节奏、六步 Run、交互外框和可访问性。
+2. **学习原语**：统一页面节奏、Run 语义、交互外框和可访问性，而不统一每课的可视模型。
 3. **课程运行时**：自动发现课程、处理路由并保存学习进度。
 
 ## 目录与职责边界
@@ -17,7 +17,7 @@ src/
   components/
     layout/                    站点与课程外壳
     lesson/                    Hero、Section、Takeaway、Sources
-    lab/                       LabFrame、MinimalRun 与二分支实验原语
+    lab/                       LabFrame 与被真实课程验证的小型交互原语
   content/
     curriculum/
       types.ts                 内容契约
@@ -34,7 +34,6 @@ src/
   styles/
     tokens.css                 稳定视觉决策
     global.css                 共享页面样式
-    minimal-run.css            六步 Run 原语样式
 scripts/
   create-lesson.mjs            创建课程骨架
   validate-content.mjs         执行内容契约校验
@@ -68,22 +67,23 @@ shared primitive → tokens/base only
 
 `lesson.id` 是长期进度键，`lesson.id + lesson.revision` 标识完成记录，`lesson.slug` 是公开 URL。发布后不要修改 ID 或 slug；核心判断或交互语义变化时递增 revision。
 
-## 统一 Run 原语
+## 共享 Run 语义，不共享万能流程图
 
-所有过程型课程优先使用：
+过程型课程应让学习者能够辨认：
 
 ```text
 目标 → 看见 → 决定 → 行动 → 观察 → 继续 / 停止
 ```
 
-`MinimalRun` 只负责显示六步路径、当前步骤和折叠历史。四门真实课程还共同验证了一个更窄的模式：固定在第三步做一次二选一，然后沿两条结果路径运行。`MinimalRunExperiment` 统一这类实验的推进、选择、重置、对比分支与可访问性；课程只提供目标、观察、两个结果和证据。
+这是一份学习与审查语义，不是固定的屏幕布局。课程需要根据概念的真实结构选择模型：Loop 课程突出回边与退出条件，Tool 课程突出门控链，Context 课程突出预算与证据覆盖，Harness 课程突出状态、检查点与恢复路径。若静态对比已经足够，就不增加状态机。
 
-它不是通用状态机。若课程需要三个以上选择、多个变量或不同的决策位置，应直接组合 `MinimalRun`，或重新判断静态图是否更清楚，不要继续向二分支原语堆配置。
+领域专属模型应先放在课程自己的 `labs/`；不要为了复用而抹平循环、分支、预算、门控或恢复等关键结构。若多个课程后来验证了相同的低层能力，再提取节点、连线或状态标签等原语，而不是提取一张固定拓扑。
 
 ## 什么应该共享
 
 - `LessonHero`、`LessonSection`、`LessonTakeaway` 与 `LessonSources` 统一编辑结构。
-- `LabFrame` 统一 Lab 外框；`MinimalRun` 统一六步路径语法；`MinimalRunExperiment` 统一已经被多课验证的单变量二分支实验。
+- `LabFrame` 统一 Lab 外框；Run 语义、焦点管理、触控目标、状态标注与 reduced motion 构成共享基础规则。
+- 可视模型服务于概念：优先复用低层节点、连接线、状态标签等能力，不要求课程复用同一张流程图。
 - 本课专属交互先留在 `<lesson>/labs/`。
 - 只有被两门不同课程实际使用的同一教学行为，才提取到 `labs/shared`。
 

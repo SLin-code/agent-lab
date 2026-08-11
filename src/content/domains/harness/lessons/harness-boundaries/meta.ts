@@ -2,14 +2,14 @@ import { defineLessonMeta } from "@/content/curriculum/types";
 
 export default defineLessonMeta({
   schemaVersion: 1,
-  revision: 2,
+  revision: 3,
   id: "harness-boundaries",
   slug: "harness-boundaries",
   domainId: "harness",
   order: 1,
   title: "模型给建议，Harness 决定动作能否发生",
   summary:
-    "沿同一条六步 Run，只改变检查点，观察一次超时为什么会走向恢复或人工移交。",
+    "沿中断时间线只改变检查点，看同一次超时为什么会走向恢复或人工对账。",
   durationMinutes: 22,
   audience: "all",
   stability: "converging",
@@ -32,8 +32,8 @@ export default defineLessonMeta({
   interactions: [
     {
       id: "checkpoint-recovery-run",
-      kind: "prediction",
-      title: "检查点单变量恢复实验",
+      kind: "simulation",
+      title: "检查点中断与恢复时间线",
       objectiveIds: [
         "separate-proposal-action",
         "predict-boundary-path",

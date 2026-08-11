@@ -297,3 +297,415 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+.tool-contract-gate-lab .tool-gate-input-row {
+  display: grid;
+  padding: 20px 20px 14px;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  gap: 14px;
+}
+
+.tool-contract-gate-lab .tool-gate-request,
+.tool-contract-gate-lab .tool-gate-choice {
+  min-width: 0;
+}
+
+.tool-contract-gate-lab .tool-gate-request {
+  display: grid;
+  padding: 16px;
+  border: 1px solid var(--lab-border);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--lab-raised) 78%, transparent);
+  gap: 7px;
+}
+
+.tool-contract-gate-lab .tool-gate-request > span,
+.tool-contract-gate-lab .tool-gate-pipeline > header span,
+.tool-contract-gate-lab .tool-gate-outcome > span {
+  color: var(--lab-accent);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+}
+
+.tool-contract-gate-lab .tool-gate-request > strong {
+  font-family: var(--font-mono);
+  font-size: 18px;
+}
+
+.tool-contract-gate-lab .tool-gate-request dl {
+  display: grid;
+  margin: 4px 0 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.tool-contract-gate-lab .tool-gate-request dl > div {
+  min-width: 0;
+  padding: 8px;
+  border-radius: 8px;
+  background: #111720;
+}
+
+.tool-contract-gate-lab .tool-gate-request dt,
+.tool-contract-gate-lab .tool-gate-request dd {
+  overflow: hidden;
+  font-family: var(--font-mono);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tool-contract-gate-lab .tool-gate-request dt {
+  color: var(--lab-muted);
+  font-size: 9px;
+}
+
+.tool-contract-gate-lab .tool-gate-request dd {
+  margin: 4px 0 0;
+  color: var(--lab-text);
+  font-size: 11px;
+}
+
+.tool-contract-gate-lab .tool-gate-choice {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.tool-contract-gate-lab .tool-gate-choice legend {
+  margin-bottom: 9px;
+  padding: 0;
+  color: var(--lab-text);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.tool-contract-gate-lab .tool-gate-choice > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.tool-contract-gate-lab .tool-gate-choice button {
+  display: grid;
+  min-height: 82px;
+  padding: 12px;
+  border: 1px solid var(--lab-border);
+  border-radius: 12px;
+  color: var(--lab-text);
+  background: var(--lab-surface-control);
+  cursor: pointer;
+  text-align: left;
+  gap: 5px;
+}
+
+.tool-contract-gate-lab .tool-gate-choice button:hover:not(:disabled),
+.tool-contract-gate-lab .tool-gate-choice button.is-selected {
+  border-color: var(--lab-accent);
+  background: var(--lab-surface-selected);
+}
+
+.tool-contract-gate-lab .tool-gate-choice button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--lab-accent) 58%, transparent);
+  outline-offset: 2px;
+}
+
+.tool-contract-gate-lab .tool-gate-choice button:disabled {
+  cursor: default;
+}
+
+.tool-contract-gate-lab .tool-gate-choice button strong {
+  font-size: 12px;
+}
+
+.tool-contract-gate-lab .tool-gate-choice button small {
+  color: var(--lab-muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.tool-contract-gate-lab .tool-gate-controls {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 20px 14px;
+  gap: 10px;
+}
+
+.tool-contract-gate-lab .tool-gate-controls .button {
+  min-height: 44px;
+}
+
+.tool-contract-gate-lab .tool-gate-pipeline {
+  padding: 16px 20px 18px;
+  border-top: 1px solid var(--lab-border);
+  border-bottom: 1px solid var(--lab-border);
+  background: rgba(9, 13, 19, 0.34);
+}
+
+.tool-contract-gate-lab .tool-gate-pipeline > header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  gap: 16px;
+}
+
+.tool-contract-gate-lab .tool-gate-pipeline > header small {
+  color: var(--lab-muted);
+  font-size: 11px;
+}
+
+.tool-contract-gate-lab .tool-gate-pipeline ol {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+  list-style: none;
+}
+
+.tool-contract-gate-lab .tool-gate-pipeline li {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  min-height: 150px;
+  align-content: start;
+  padding: 13px;
+  border: 1px solid var(--lab-border);
+  border-radius: 12px;
+  color: var(--lab-text);
+  background: var(--lab-surface-control);
+  gap: 10px;
+  transition:
+    border-color var(--motion-fast) ease,
+    background-color var(--motion-fast) ease,
+    box-shadow var(--motion-fast) ease;
+}
+
+.tool-contract-gate-lab .tool-gate-pipeline li:not(:last-child)::after {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: -16px;
+  color: #697485;
+  content: "→";
+  font-family: var(--font-mono);
+  font-size: 14px;
+  transform: translateY(-50%);
+}
+
+.tool-contract-gate-lab .tool-gate-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+}
+
+.tool-contract-gate-lab .tool-gate-heading span {
+  overflow: hidden;
+  color: var(--lab-muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tool-contract-gate-lab .tool-gate-heading b {
+  flex: none;
+  padding: 3px 6px;
+  border: 1px solid var(--lab-border);
+  border-radius: 999px;
+  color: var(--lab-muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 650;
+}
+
+.tool-contract-gate-lab .tool-gate-pipeline li > strong {
+  font-size: 13px;
+}
+
+.tool-contract-gate-lab .tool-gate-pipeline li > p {
+  margin: 0;
+  color: var(--lab-muted);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.tool-contract-gate-lab .tool-gate-pipeline li.is-active {
+  border-color: var(--lab-accent);
+  background: color-mix(in srgb, #303b70 72%, var(--lab-raised));
+  box-shadow: 0 0 0 3px rgba(143, 155, 240, 0.13);
+  animation: tool-gate-pulse 900ms ease-in-out infinite alternate;
+}
+
+.tool-contract-gate-lab .tool-gate-pipeline li.is-active .tool-gate-heading b {
+  border-color: var(--lab-accent);
+  color: #dce0ff;
+}
+
+.tool-contract-gate-lab .tool-gate-pipeline li.is-passed {
+  border-color: color-mix(in srgb, var(--green) 58%, var(--lab-border));
+  background: color-mix(in srgb, var(--green) 9%, var(--lab-surface-control));
+}
+
+.tool-contract-gate-lab .tool-gate-pipeline li.is-passed:not(:last-child)::after,
+.tool-contract-gate-lab .tool-gate-pipeline li.is-passed .tool-gate-heading b {
+  color: var(--lab-success);
+}
+
+.tool-contract-gate-lab .tool-gate-pipeline li.is-passed .tool-gate-heading b {
+  border-color: color-mix(in srgb, var(--green) 62%, var(--lab-border));
+}
+
+.tool-contract-gate-lab .tool-gate-pipeline li.is-blocked {
+  border-color: color-mix(in srgb, var(--red) 72%, var(--lab-border));
+  background: color-mix(in srgb, var(--red) 10%, var(--lab-surface-control));
+}
+
+.tool-contract-gate-lab .tool-gate-pipeline li.is-blocked:not(:last-child)::after {
+  color: var(--lab-danger);
+  content: "×";
+  font-size: 18px;
+}
+
+.tool-contract-gate-lab .tool-gate-pipeline li.is-blocked .tool-gate-heading b {
+  border-color: color-mix(in srgb, var(--red) 70%, var(--lab-border));
+  color: var(--lab-danger-text);
+}
+
+.tool-contract-gate-lab .tool-gate-pipeline li.is-skipped {
+  border-style: dashed;
+  background: #121822;
+}
+
+.tool-contract-gate-lab .tool-gate-outcome {
+  display: grid;
+  margin: 16px 20px 20px;
+  padding: 15px 16px;
+  border: 1px solid var(--lab-border);
+  border-left-width: 3px;
+  border-radius: 10px;
+  background: var(--lab-surface-deep);
+  grid-template-columns: 145px minmax(0, 1fr);
+  align-items: center;
+  gap: 4px 14px;
+}
+
+.tool-contract-gate-lab .tool-gate-outcome > span {
+  grid-row: 1 / span 2;
+}
+
+.tool-contract-gate-lab .tool-gate-outcome > strong {
+  font-size: 13px;
+}
+
+.tool-contract-gate-lab .tool-gate-outcome > small {
+  color: var(--lab-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.tool-contract-gate-lab .tool-gate-outcome.is-running {
+  border-left-color: var(--lab-accent);
+}
+
+.tool-contract-gate-lab .tool-gate-outcome.is-blocked {
+  border-left-color: var(--red);
+}
+
+.tool-contract-gate-lab .tool-gate-outcome.is-blocked > strong {
+  color: var(--lab-danger-text);
+}
+
+.tool-contract-gate-lab .tool-gate-outcome.is-verified {
+  border-left-color: var(--green);
+}
+
+.tool-contract-gate-lab .tool-gate-outcome.is-verified > strong {
+  color: var(--lab-success);
+}
+
+@keyframes tool-gate-pulse {
+  from { box-shadow: 0 0 0 2px rgba(143, 155, 240, 0.09); }
+  to { box-shadow: 0 0 0 5px rgba(143, 155, 240, 0.18); }
+}
+
+@media (max-width: 760px) {
+  .tool-contract-gate-lab .tool-gate-input-row {
+    padding: 14px;
+    grid-template-columns: 1fr;
+  }
+
+  .tool-contract-gate-lab .tool-gate-choice > div {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-contract-gate-lab .tool-gate-controls {
+    align-items: stretch;
+    padding: 0 14px 14px;
+    flex-direction: column;
+  }
+
+  .tool-contract-gate-lab .tool-gate-controls .button {
+    width: 100%;
+  }
+
+  .tool-contract-gate-lab .tool-gate-pipeline {
+    padding: 15px 14px 17px;
+  }
+
+  .tool-contract-gate-lab .tool-gate-pipeline > header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .tool-contract-gate-lab .tool-gate-pipeline ol {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .tool-contract-gate-lab .tool-gate-pipeline li {
+    min-height: 0;
+  }
+
+  .tool-contract-gate-lab .tool-gate-pipeline li:not(:last-child)::after {
+    top: auto;
+    right: 22px;
+    bottom: -18px;
+    content: "↓";
+    transform: none;
+  }
+
+  .tool-contract-gate-lab .tool-gate-pipeline li.is-blocked:not(:last-child)::after {
+    content: "×";
+  }
+
+  .tool-contract-gate-lab .tool-gate-outcome {
+    margin: 14px;
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .tool-contract-gate-lab .tool-gate-outcome > span {
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .tool-contract-gate-lab .tool-gate-request dl {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tool-contract-gate-lab .tool-gate-pipeline li.is-active {
+    animation: none;
+  }
+}

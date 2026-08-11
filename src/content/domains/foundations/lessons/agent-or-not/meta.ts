@@ -2,13 +2,13 @@ import { defineLessonMeta } from "@/content/curriculum/types";
 
 export default defineLessonMeta({
   schemaVersion: 1,
-  revision: 3,
+  revision: 4,
   id: "agent-or-not",
   slug: "agent-or-not",
   domainId: "foundations",
   order: 1,
   title: "一次模型调用不等于 Agent",
-  summary: "沿同一条六步 Run，只改变下一步的控制者，判断 Workflow 与 Agent 的真正边界。",
+  summary: "沿循环转换图拆开一次真实 Run，看观察怎样改变下一步，并让系统继续或退出。",
   durationMinutes: 18,
   audience: "all",
   stability: "stable",
@@ -31,8 +31,8 @@ export default defineLessonMeta({
   interactions: [
     {
       id: "agent-control-run",
-      kind: "prediction",
-      title: "下一步控制权单变量实验",
+      kind: "trace",
+      title: "最小 Agent Run 循环追踪",
       objectiveIds: [
         "classify-system",
         "locate-control",
