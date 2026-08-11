@@ -1,0 +1,731 @@
+.topology-vs-run-lesson .tvr-map-trace-compare {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.topology-vs-run-lesson .tvr-map-trace-compare > article {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.topology-vs-run-lesson .tvr-map-trace-compare > article.is-trace {
+  border-color: color-mix(in srgb, var(--green) 30%, var(--border));
+  background: linear-gradient(145deg, var(--surface), var(--green-soft));
+}
+
+.topology-vs-run-lesson .tvr-compare-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.topology-vs-run-lesson .tvr-compare-heading span,
+.topology-vs-run-lesson .tvr-mini-trace b,
+.topology-vs-run-lesson .tvr-graph-vocabulary article > span,
+.topology-vs-run-lesson .tvr-superstep-model article > span,
+.topology-vs-run-lesson .tvr-review-layers article > span {
+  color: var(--blue);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.topology-vs-run-lesson .tvr-compare-heading small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.topology-vs-run-lesson .tvr-mini-topology {
+  display: grid;
+  min-height: 126px;
+  align-items: center;
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-soft);
+  grid-template-columns: auto 22px minmax(86px, 1fr) 22px auto 42px minmax(86px, 1fr);
+  gap: 6px;
+}
+
+.topology-vs-run-lesson .tvr-mini-topology b,
+.topology-vs-run-lesson .tvr-mini-topology em {
+  padding: 8px 9px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-align: center;
+  background: var(--surface);
+  font-size: 11px;
+  font-style: normal;
+}
+
+.topology-vs-run-lesson .tvr-mini-topology > i {
+  color: var(--blue);
+  text-align: center;
+  font-style: normal;
+}
+
+.topology-vs-run-lesson .tvr-mini-topology > span {
+  display: grid;
+  gap: 6px;
+}
+
+.topology-vs-run-lesson .tvr-mini-trace {
+  position: relative;
+  display: grid;
+  min-height: 126px;
+  align-content: center;
+  margin: 18px 0 0;
+  padding: 16px;
+  border: 1px solid color-mix(in srgb, var(--green) 24%, var(--border));
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  list-style: none;
+  gap: 6px;
+}
+
+.topology-vs-run-lesson .tvr-mini-trace::before {
+  position: absolute;
+  top: 44px;
+  right: 11%;
+  left: 11%;
+  height: 2px;
+  background: color-mix(in srgb, var(--green) 35%, var(--border));
+  content: "";
+}
+
+.topology-vs-run-lesson .tvr-mini-trace li {
+  z-index: 1;
+  display: grid;
+  text-align: center;
+  justify-items: center;
+  gap: 9px;
+}
+
+.topology-vs-run-lesson .tvr-mini-trace b {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  border: 2px solid var(--green);
+  border-radius: 50%;
+  color: var(--ink);
+  background: var(--surface);
+  font-size: 8px;
+}
+
+.topology-vs-run-lesson .tvr-mini-trace span {
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.35;
+}
+
+.topology-vs-run-lesson .tvr-map-trace-compare article > p {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.topology-vs-run-lesson .tvr-opening-rule {
+  margin-top: 18px;
+  padding: 18px 22px;
+  border-left: 3px solid var(--green);
+  border-radius: 0 12px 12px 0;
+  background: var(--surface-soft);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.topology-vs-run-lesson .tvr-opening-rule strong {
+  margin-right: 6px;
+}
+
+.topology-vs-run-lesson .tvr-graph-vocabulary,
+.topology-vs-run-lesson .tvr-review-layers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.topology-vs-run-lesson .tvr-graph-vocabulary article,
+.topology-vs-run-lesson .tvr-review-layers article {
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-medium);
+  background: var(--surface);
+}
+
+.topology-vs-run-lesson .tvr-graph-vocabulary article > strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 17px;
+}
+
+.topology-vs-run-lesson .tvr-graph-vocabulary article > p,
+.topology-vs-run-lesson .tvr-review-layers article > p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.topology-vs-run-lesson .tvr-lab-note {
+  margin: 14px 4px 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.tvr-runtime-lab .tvr-runtime-legend {
+  display: flex;
+  min-height: 52px;
+  align-items: center;
+  padding: 12px 22px;
+  border-bottom: 1px solid var(--lab-border);
+  color: var(--lab-muted);
+  background: color-mix(in srgb, var(--lab) 68%, transparent);
+  gap: 18px;
+}
+
+.tvr-runtime-lab .tvr-runtime-legend > span {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  gap: 7px;
+}
+
+.tvr-runtime-lab .tvr-runtime-legend i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.tvr-runtime-lab .tvr-runtime-legend i.is-a { background: var(--lab-success); }
+.tvr-runtime-lab .tvr-runtime-legend i.is-b { background: var(--lab-accent); }
+
+.tvr-runtime-lab .tvr-runtime-legend small {
+  margin-left: auto;
+  font-size: 9px;
+}
+
+.tvr-runtime-lab .tvr-topology {
+  padding: 24px 22px;
+  background:
+    linear-gradient(color-mix(in srgb, var(--lab-text) 2%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--lab-text) 2%, transparent) 1px, transparent 1px),
+    var(--lab);
+  background-size: 24px 24px;
+}
+
+.tvr-runtime-lab .tvr-topology-row,
+.tvr-runtime-lab .tvr-exit-edge {
+  display: grid;
+  max-width: 500px;
+  align-items: center;
+  margin: 0 auto;
+  grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.tvr-runtime-lab .tvr-topology-row > i,
+.tvr-runtime-lab .tvr-exit-edge > i {
+  color: var(--lab-line-strong);
+  text-align: center;
+  font-style: normal;
+}
+
+.tvr-runtime-lab .tvr-graph-node {
+  position: relative;
+  display: grid;
+  min-height: 68px;
+  align-content: center;
+  padding: 12px 14px;
+  border: 1px solid var(--lab-border);
+  border-radius: 12px;
+  color: var(--lab-text-strong);
+  background: var(--lab-raised);
+  transition: border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
+  gap: 4px;
+}
+
+.tvr-runtime-lab .tvr-graph-node > small {
+  color: var(--lab-text-dim);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
+
+.tvr-runtime-lab .tvr-graph-node > strong {
+  font-size: 12px;
+}
+
+.tvr-runtime-lab .tvr-graph-node.is-active-a {
+  border-color: var(--lab-success);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--lab-success) 12%, transparent);
+}
+
+.tvr-runtime-lab .tvr-graph-node.is-active-b {
+  border-color: var(--lab-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--lab-accent) 13%, transparent);
+}
+
+.tvr-runtime-lab .tvr-graph-node.is-active-both {
+  border-color: var(--lab-success);
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--lab-success) 12%, transparent),
+    0 0 0 6px color-mix(in srgb, var(--lab-accent) 10%, transparent);
+}
+
+.tvr-runtime-lab .tvr-node-markers {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  display: flex;
+  gap: 4px;
+}
+
+.tvr-runtime-lab .tvr-node-markers b {
+  display: grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  border-radius: 5px;
+  color: var(--lab);
+  background: var(--lab-success);
+  font-family: var(--font-mono);
+  font-size: 8px;
+}
+
+.tvr-runtime-lab .tvr-node-markers b + b,
+.tvr-runtime-lab .is-active-b .tvr-node-markers b {
+  color: var(--lab);
+  background: var(--lab-accent);
+}
+
+.tvr-runtime-lab .tvr-edge-caption {
+  display: grid;
+  min-height: 48px;
+  place-items: center;
+  color: var(--lab-text-dim);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  gap: 3px;
+}
+
+.tvr-runtime-lab .tvr-edge-caption i {
+  color: var(--lab-line-strong);
+  font-style: normal;
+}
+
+.tvr-runtime-lab .tvr-parallel-pair {
+  display: grid;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 12px;
+  border: 1px dashed var(--lab-line-strong);
+  border-radius: 15px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.tvr-runtime-lab .tvr-branch-pair {
+  display: grid;
+  max-width: 620px;
+  margin: 18px auto 0;
+  grid-template-columns: minmax(0, 1.45fr) minmax(180px, 0.75fr);
+  gap: 12px;
+}
+
+.tvr-runtime-lab .tvr-exit-edge,
+.tvr-runtime-lab .tvr-back-edge {
+  position: relative;
+  padding: 27px 12px 12px;
+  border: 1px dashed var(--lab-line-strong);
+  border-radius: 14px;
+}
+
+.tvr-runtime-lab .tvr-exit-edge {
+  max-width: none;
+}
+
+.tvr-runtime-lab .tvr-exit-edge > span,
+.tvr-runtime-lab .tvr-back-edge > span {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  color: var(--lab-success-text);
+  font-family: var(--font-mono);
+  font-size: 8px;
+}
+
+.tvr-runtime-lab .tvr-back-edge {
+  display: grid;
+  align-content: center;
+  background: color-mix(in srgb, var(--lab-accent) 5%, transparent);
+}
+
+.tvr-runtime-lab .tvr-back-edge > span {
+  color: var(--lab-accent-text);
+}
+
+.tvr-runtime-lab .tvr-back-edge > strong {
+  color: var(--lab-accent-text);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.tvr-runtime-lab .tvr-scrubber {
+  padding: 20px 22px;
+  border-top: 1px solid var(--lab-border);
+  border-bottom: 1px solid var(--lab-border);
+  background: var(--lab-raised);
+}
+
+.tvr-runtime-lab .tvr-scrubber-heading {
+  display: flex;
+  min-height: 30px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.tvr-runtime-lab .tvr-scrubber-heading label {
+  color: var(--lab-text-strong);
+  font-size: 11px;
+  font-weight: 680;
+}
+
+.tvr-runtime-lab .tvr-scrubber-heading button {
+  min-height: 44px;
+  padding: 0 8px;
+  border: 0;
+  color: var(--lab-muted);
+  cursor: pointer;
+  background: transparent;
+  font-size: 10px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.tvr-runtime-lab .tvr-scrubber input[type="range"] {
+  width: 100%;
+  height: 44px;
+  margin: 8px 0 4px;
+  accent-color: var(--lab-accent);
+  cursor: ew-resize;
+}
+
+.tvr-runtime-lab .tvr-scrubber input[type="range"]:focus-visible {
+  outline: 3px solid var(--lab-focus);
+  outline-offset: 3px;
+}
+
+.tvr-runtime-lab .tvr-trace-row {
+  display: grid;
+  align-items: center;
+  margin-top: 8px;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 10px;
+}
+
+.tvr-runtime-lab .tvr-trace-row > strong {
+  color: var(--lab-muted);
+  font-family: var(--font-mono);
+  font-size: 8px;
+}
+
+.tvr-runtime-lab .tvr-trace-dots {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.tvr-runtime-lab .tvr-trace-dots > span {
+  display: grid;
+  min-width: 0;
+  height: 23px;
+  place-items: center;
+  border: 1px solid var(--lab-border);
+  border-radius: 6px;
+  color: var(--lab-text-dim);
+  background: var(--lab-surface-control);
+  font-family: var(--font-mono);
+  font-size: 7px;
+}
+
+.tvr-runtime-lab .tvr-trace-dots > span.is-past {
+  border-color: var(--lab-line-strong);
+  color: var(--lab-muted);
+}
+
+.tvr-runtime-lab .tvr-trace-dots.is-run-a > span.is-current {
+  border-color: var(--lab-success);
+  color: var(--lab);
+  background: var(--lab-success);
+}
+
+.tvr-runtime-lab .tvr-trace-dots.is-run-b > span.is-current {
+  border-color: var(--lab-accent);
+  color: var(--lab);
+  background: var(--lab-accent);
+}
+
+.tvr-runtime-lab .tvr-trace-dots > span.is-settled {
+  border-style: dashed;
+}
+
+.tvr-runtime-lab .tvr-runtime-readout {
+  display: grid;
+  padding: 18px 22px 22px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.tvr-runtime-lab .tvr-runtime-readout article {
+  display: grid;
+  min-height: 124px;
+  padding: 16px;
+  border: 1px solid var(--lab-border);
+  border-radius: 13px;
+  background: var(--lab-surface-control);
+  gap: 5px;
+}
+
+.tvr-runtime-lab .tvr-runtime-readout article.is-a { border-top: 2px solid var(--lab-success); }
+.tvr-runtime-lab .tvr-runtime-readout article.is-b { border-top: 2px solid var(--lab-accent); }
+
+.tvr-runtime-lab .tvr-runtime-readout article > span {
+  color: var(--lab-text-dim);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
+
+.tvr-runtime-lab .tvr-runtime-readout article > strong {
+  color: var(--lab-text-strong);
+  font-size: 13px;
+}
+
+.tvr-runtime-lab .tvr-runtime-readout article > p {
+  margin: 0;
+  color: var(--lab-neutral);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.tvr-runtime-lab .tvr-runtime-readout article > small {
+  align-self: end;
+  color: var(--lab-muted);
+  font-size: 9px;
+}
+
+.topology-vs-run-lesson .tvr-superstep-model {
+  display: grid;
+  align-items: stretch;
+  grid-template-columns: minmax(0, 1fr) 26px minmax(0, 1fr) 26px minmax(0, 1fr);
+  gap: 8px;
+}
+
+.topology-vs-run-lesson .tvr-superstep-model article {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-medium);
+  background: var(--surface);
+}
+
+.topology-vs-run-lesson .tvr-superstep-model article.is-parallel {
+  border-color: color-mix(in srgb, var(--green) 32%, var(--border));
+  background: var(--green-soft);
+}
+
+.topology-vs-run-lesson .tvr-superstep-model article > strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+.topology-vs-run-lesson .tvr-superstep-model article > p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.topology-vs-run-lesson .tvr-superstep-model > i {
+  display: grid;
+  place-items: center;
+  color: var(--blue);
+  font-style: normal;
+}
+
+.topology-vs-run-lesson .tvr-parallel-warning {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-soft);
+  gap: 14px;
+}
+
+.topology-vs-run-lesson .tvr-parallel-warning > span {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: none;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--surface);
+  background: var(--blue);
+  font-size: 18px;
+}
+
+.topology-vs-run-lesson .tvr-parallel-warning p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.topology-vs-run-lesson .tvr-review-layers {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.topology-vs-run-lesson .tvr-review-layers h3 {
+  margin: 10px 0 0;
+  font-size: 17px;
+}
+
+@media (max-width: 760px) {
+  .topology-vs-run-lesson .tvr-map-trace-compare,
+  .topology-vs-run-lesson .tvr-graph-vocabulary,
+  .topology-vs-run-lesson .tvr-review-layers {
+    grid-template-columns: 1fr;
+  }
+
+  .topology-vs-run-lesson .tvr-superstep-model {
+    grid-template-columns: 1fr;
+  }
+
+  .topology-vs-run-lesson .tvr-superstep-model > i {
+    min-height: 20px;
+    transform: rotate(90deg);
+  }
+}
+
+@media (max-width: 560px) {
+  .tvr-runtime-lab .tvr-runtime-legend {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .tvr-runtime-lab .tvr-runtime-legend small {
+    margin-left: 0;
+  }
+
+  .tvr-runtime-lab .tvr-topology {
+    padding: 20px 16px;
+  }
+
+  .tvr-runtime-lab .tvr-topology-row,
+  .tvr-runtime-lab .tvr-exit-edge {
+    grid-template-columns: minmax(0, 1fr) 20px minmax(0, 1fr);
+    gap: 6px;
+  }
+
+  .tvr-runtime-lab .tvr-parallel-pair {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .tvr-runtime-lab .tvr-graph-node {
+    min-height: 72px;
+    padding: 10px;
+  }
+
+  .tvr-runtime-lab .tvr-graph-node > strong {
+    font-size: 11px;
+  }
+
+  .tvr-runtime-lab .tvr-branch-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .tvr-runtime-lab .tvr-back-edge {
+    min-height: 70px;
+  }
+
+  .tvr-runtime-lab .tvr-scrubber {
+    padding: 18px 16px;
+  }
+
+  .tvr-runtime-lab .tvr-scrubber-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .tvr-runtime-lab .tvr-runtime-readout {
+    padding: 16px;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .topology-vs-run-lesson .tvr-map-trace-compare > article,
+  .topology-vs-run-lesson .tvr-graph-vocabulary article,
+  .topology-vs-run-lesson .tvr-review-layers article {
+    padding: 18px;
+  }
+
+  .topology-vs-run-lesson .tvr-compare-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .topology-vs-run-lesson .tvr-mini-topology {
+    grid-template-columns: 1fr 18px 1fr;
+  }
+
+  .topology-vs-run-lesson .tvr-mini-topology > :nth-child(n + 4) {
+    display: none;
+  }
+
+  .topology-vs-run-lesson .tvr-mini-topology::after {
+    grid-column: 1 / -1;
+    color: var(--muted);
+    content: "… 评估后选择发布或回到修订";
+    font-size: 10px;
+    text-align: center;
+  }
+
+  .topology-vs-run-lesson .tvr-mini-trace {
+    padding: 12px 8px;
+  }
+
+  .topology-vs-run-lesson .tvr-mini-trace span {
+    font-size: 8px;
+  }
+
+  .tvr-runtime-lab .tvr-trace-row {
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 6px;
+  }
+
+  .tvr-runtime-lab .tvr-trace-dots {
+    gap: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tvr-runtime-lab .tvr-graph-node {
+    transition: none;
+  }
+}

@@ -18,7 +18,7 @@ export function HomePage() {
           </h1>
           <p>
             从一次模型调用出发，逐步搭出 Context、Harness、Loop、Graph
-            与持续改进系统。每次只改变一个条件，沿同一条 Run 看清结果为什么不同。
+            与持续改进系统。用循环图、边界轨迹、故障矩阵和证据账本，亲手看见每个概念真正改变了什么。
           </p>
           <div className="hero-actions">
             {firstLesson ? (
@@ -105,7 +105,7 @@ export function HomePage() {
             <h2>从 Prompt 到 Durable Graph</h2>
           </div>
           <p>
-            已开放 {readyLessons.length} 门核心课程，后续内容会沿这条主线逐步补齐。
+            已开放 {readyLessons.length} 门核心课程；每个阶段都用最适合该概念的可视模型，而不是重复同一种交互。
           </p>
         </div>
         <ol className="stage-list">

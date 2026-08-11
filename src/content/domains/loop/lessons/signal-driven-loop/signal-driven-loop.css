@@ -1,0 +1,566 @@
+.signal-driven-loop-lesson .sdl-opening-compare {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.signal-driven-loop-lesson .sdl-opening-compare > article {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.signal-driven-loop-lesson .sdl-opening-compare > article.is-engineered {
+  border-color: color-mix(in srgb, var(--blue) 32%, var(--border));
+  background: linear-gradient(145deg, var(--surface), var(--blue-soft));
+}
+
+.signal-driven-loop-lesson .sdl-opening-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.signal-driven-loop-lesson .sdl-opening-heading span,
+.signal-driven-loop-lesson .sdl-opening-compare li b,
+.signal-driven-loop-lesson .sdl-opening-compare li em,
+.signal-driven-loop-lesson .sdl-opening-rule > span,
+.signal-driven-loop-lesson .sdl-decision-grid article > span,
+.signal-driven-loop-lesson .sdl-signal-stack article > span,
+.signal-driven-loop-lesson .sdl-evaluation-formula span,
+.signal-driven-loop-lesson .sdl-exit-checks article > span {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-style: normal;
+  letter-spacing: 0.08em;
+}
+
+.signal-driven-loop-lesson .sdl-opening-heading span {
+  color: var(--blue);
+  font-weight: 750;
+}
+
+.signal-driven-loop-lesson .sdl-opening-heading small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.signal-driven-loop-lesson .sdl-opening-compare ol {
+  display: grid;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+  gap: 8px;
+}
+
+.signal-driven-loop-lesson .sdl-opening-compare li {
+  display: grid;
+  min-height: 48px;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--surface) 64%, transparent);
+  grid-template-columns: 26px minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.signal-driven-loop-lesson .sdl-opening-compare li b {
+  color: var(--muted);
+}
+
+.signal-driven-loop-lesson .sdl-opening-compare li span {
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.signal-driven-loop-lesson .sdl-opening-compare li em {
+  color: var(--red);
+  font-weight: 750;
+}
+
+.signal-driven-loop-lesson .is-engineered li:nth-child(1) em { color: var(--amber); }
+.signal-driven-loop-lesson .is-engineered li:nth-child(2) em { color: var(--blue); }
+.signal-driven-loop-lesson .is-engineered li:nth-child(3) em { color: var(--green); }
+
+.signal-driven-loop-lesson .sdl-opening-compare article > p {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.signal-driven-loop-lesson .sdl-opening-rule {
+  display: grid;
+  margin-top: 18px;
+  padding: 18px 22px;
+  border-left: 3px solid var(--blue);
+  border-radius: 0 12px 12px 0;
+  background: var(--surface-soft);
+  grid-template-columns: 78px minmax(0, 1fr);
+  gap: 16px;
+}
+
+.signal-driven-loop-lesson .sdl-opening-rule > span {
+  padding-top: 5px;
+  color: var(--blue);
+  font-weight: 750;
+}
+
+.signal-driven-loop-lesson .sdl-opening-rule p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.signal-driven-loop-lesson .sdl-decision-grid,
+.signal-driven-loop-lesson .sdl-exit-checks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.signal-driven-loop-lesson .sdl-decision-grid article,
+.signal-driven-loop-lesson .sdl-exit-checks article {
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-medium);
+  background: var(--surface);
+}
+
+.signal-driven-loop-lesson .sdl-decision-grid article > span,
+.signal-driven-loop-lesson .sdl-exit-checks article > span {
+  color: var(--blue);
+  font-weight: 780;
+}
+
+.signal-driven-loop-lesson .sdl-decision-grid h3,
+.signal-driven-loop-lesson .sdl-exit-checks h3 {
+  margin: 10px 0 7px;
+  font-size: 17px;
+}
+
+.signal-driven-loop-lesson .sdl-decision-grid p,
+.signal-driven-loop-lesson .sdl-exit-checks p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.signal-driven-loop-lesson .sdl-decision-grid small {
+  display: block;
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.signal-driven-loop-lesson .sdl-lab-note {
+  margin: 14px 4px 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.sdl-diagnostic-lab .sdl-lab-goal {
+  display: grid;
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--lab-border);
+  background: color-mix(in srgb, var(--lab) 68%, transparent);
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 14px;
+}
+
+.sdl-diagnostic-lab .sdl-lab-goal span {
+  color: var(--lab-warning-text);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.sdl-diagnostic-lab .sdl-lab-goal strong {
+  color: var(--lab-text-strong);
+  font-size: 12px;
+}
+
+.sdl-diagnostic-lab .sdl-attempt-strip {
+  position: relative;
+  display: grid;
+  margin: 0;
+  padding: 26px 22px;
+  list-style: none;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.sdl-diagnostic-lab .sdl-attempt-strip::before {
+  position: absolute;
+  top: 50px;
+  right: 12%;
+  left: 12%;
+  height: 2px;
+  background: var(--lab-border);
+  content: "";
+}
+
+.sdl-diagnostic-lab .sdl-attempt-strip li {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-height: 146px;
+  align-content: start;
+  padding: 15px;
+  border: 1px solid var(--lab-border);
+  border-radius: 14px;
+  color: var(--lab-muted);
+  background: var(--lab-surface-deep);
+  transition: border-color var(--motion-fast) ease, transform var(--motion-fast) ease;
+}
+
+.sdl-diagnostic-lab .sdl-attempt-strip li > span {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  margin-bottom: 12px;
+  place-items: center;
+  border: 1px solid var(--lab-line-strong);
+  border-radius: 50%;
+  color: var(--lab-neutral);
+  background: var(--lab);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.sdl-diagnostic-lab .sdl-attempt-strip li > small {
+  color: var(--lab-text-dim);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
+
+.sdl-diagnostic-lab .sdl-attempt-strip li > strong {
+  margin-top: 8px;
+  color: var(--lab-text-strong);
+  font-size: 14px;
+}
+
+.sdl-diagnostic-lab .sdl-attempt-strip li > p {
+  margin: 6px 0 0;
+  color: var(--lab-muted);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.sdl-diagnostic-lab .sdl-attempt-strip li.is-current {
+  border-color: var(--lab-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--lab-accent) 11%, transparent);
+  transform: translateY(-2px);
+}
+
+.sdl-diagnostic-lab .sdl-attempt-strip li.is-pending {
+  opacity: 0.55;
+}
+
+.sdl-diagnostic-lab .is-retry { color: var(--lab-warning-text) !important; }
+.sdl-diagnostic-lab .is-repair { color: var(--lab-accent-text) !important; }
+.sdl-diagnostic-lab .is-stop { color: var(--lab-success-text) !important; }
+.sdl-diagnostic-lab .is-escalate { color: var(--lab-danger-text) !important; }
+
+.sdl-diagnostic-lab .sdl-current-diagnosis {
+  display: grid;
+  margin: 0 22px 22px;
+  overflow: hidden;
+  border: 1px solid var(--lab-border);
+  border-radius: 14px;
+  background: var(--lab-surface-control);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sdl-diagnostic-lab .sdl-current-diagnosis:focus {
+  outline: 2px solid var(--lab-focus);
+  outline-offset: 3px;
+}
+
+.sdl-diagnostic-lab .sdl-current-diagnosis > div {
+  min-height: 84px;
+  padding: 14px 16px;
+}
+
+.sdl-diagnostic-lab .sdl-current-diagnosis > div:nth-child(even) {
+  border-left: 1px solid var(--lab-border);
+}
+
+.sdl-diagnostic-lab .sdl-current-diagnosis > div:nth-child(n + 3) {
+  border-top: 1px solid var(--lab-border);
+}
+
+.sdl-diagnostic-lab .sdl-current-diagnosis span,
+.sdl-diagnostic-lab .sdl-boundary-choice legend {
+  color: var(--lab-text-dim);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.sdl-diagnostic-lab .sdl-current-diagnosis p {
+  margin: 7px 0 0;
+  color: var(--lab-text-strong);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.sdl-diagnostic-lab .sdl-current-diagnosis .is-decision {
+  background: color-mix(in srgb, var(--blue) 8%, transparent);
+}
+
+.sdl-diagnostic-lab .sdl-current-diagnosis .sdl-diagnosis-empty {
+  min-height: 96px;
+  grid-column: 1 / -1;
+}
+
+.sdl-diagnostic-lab .sdl-boundary-choice {
+  margin: 0 22px 22px;
+  padding: 0;
+  border: 0;
+}
+
+.sdl-diagnostic-lab .sdl-boundary-choice legend {
+  margin-bottom: 10px;
+  color: var(--lab-accent-text);
+}
+
+.sdl-diagnostic-lab .sdl-boundary-choice > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.sdl-diagnostic-lab .sdl-boundary-choice button {
+  display: grid;
+  min-height: 72px;
+  padding: 13px 15px;
+  border: 1px solid var(--lab-border);
+  border-radius: 12px;
+  color: var(--lab-text);
+  cursor: pointer;
+  text-align: left;
+  background: var(--lab-surface-control);
+  gap: 5px;
+}
+
+.sdl-diagnostic-lab .sdl-boundary-choice button:hover,
+.sdl-diagnostic-lab .sdl-boundary-choice button:focus-visible {
+  border-color: var(--lab-accent);
+  background: var(--lab-surface-selected);
+}
+
+.sdl-diagnostic-lab .sdl-boundary-choice button strong {
+  font-size: 12px;
+}
+
+.sdl-diagnostic-lab .sdl-boundary-choice button small {
+  color: var(--lab-muted);
+  font-size: 10px;
+}
+
+.sdl-diagnostic-lab .sdl-lab-controls {
+  display: flex;
+  min-height: 74px;
+  align-items: center;
+  padding: 14px 22px;
+  border-top: 1px solid var(--lab-border);
+  background: var(--lab-raised);
+  gap: 12px;
+}
+
+.signal-driven-loop-lesson .sdl-signal-stack {
+  display: grid;
+  align-items: stretch;
+  grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1fr) 24px minmax(0, 1fr);
+  gap: 8px;
+}
+
+.signal-driven-loop-lesson .sdl-signal-stack article {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-medium);
+  background: var(--surface);
+}
+
+.signal-driven-loop-lesson .sdl-signal-stack article > span {
+  color: var(--blue);
+}
+
+.signal-driven-loop-lesson .sdl-signal-stack article > strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+.signal-driven-loop-lesson .sdl-signal-stack article > p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.signal-driven-loop-lesson .sdl-signal-stack > i {
+  display: grid;
+  place-items: center;
+  color: var(--blue);
+  font-size: 18px;
+  font-style: normal;
+}
+
+.signal-driven-loop-lesson .sdl-evaluation-formula {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding: 18px 20px;
+  border-radius: 12px;
+  color: var(--lab-text);
+  background: var(--lab);
+  gap: 18px;
+}
+
+.signal-driven-loop-lesson .sdl-evaluation-formula span {
+  color: var(--lab-accent-text);
+}
+
+.signal-driven-loop-lesson .sdl-evaluation-formula strong {
+  font-size: 13px;
+}
+
+.signal-driven-loop-lesson .sdl-exit-checks {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 760px) {
+  .signal-driven-loop-lesson .sdl-opening-compare,
+  .signal-driven-loop-lesson .sdl-decision-grid,
+  .signal-driven-loop-lesson .sdl-exit-checks {
+    grid-template-columns: 1fr;
+  }
+
+  .signal-driven-loop-lesson .sdl-signal-stack {
+    grid-template-columns: 1fr;
+  }
+
+  .signal-driven-loop-lesson .sdl-signal-stack > i {
+    min-height: 20px;
+  }
+
+  .signal-driven-loop-lesson .sdl-evaluation-formula {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .sdl-diagnostic-lab .sdl-attempt-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .sdl-diagnostic-lab .sdl-attempt-strip::before {
+    top: 38px;
+    bottom: 38px;
+    left: 36px;
+    width: 2px;
+    height: auto;
+  }
+
+  .sdl-diagnostic-lab .sdl-attempt-strip li {
+    min-height: 120px;
+    padding-left: 58px;
+  }
+
+  .sdl-diagnostic-lab .sdl-attempt-strip li > span {
+    position: absolute;
+    top: 14px;
+    left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .signal-driven-loop-lesson .sdl-opening-compare > article,
+  .signal-driven-loop-lesson .sdl-decision-grid article,
+  .signal-driven-loop-lesson .sdl-exit-checks article {
+    padding: 18px;
+  }
+
+  .signal-driven-loop-lesson .sdl-opening-heading,
+  .signal-driven-loop-lesson .sdl-opening-rule {
+    align-items: flex-start;
+    grid-template-columns: 1fr;
+  }
+
+  .signal-driven-loop-lesson .sdl-opening-heading {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .signal-driven-loop-lesson .sdl-opening-compare li {
+    align-items: start;
+    grid-template-columns: 24px minmax(0, 1fr);
+  }
+
+  .signal-driven-loop-lesson .sdl-opening-compare li em {
+    grid-column: 2;
+  }
+
+  .sdl-diagnostic-lab .sdl-lab-goal,
+  .sdl-diagnostic-lab .sdl-current-diagnosis {
+    grid-template-columns: 1fr;
+  }
+
+  .sdl-diagnostic-lab .sdl-lab-goal {
+    padding: 14px 16px;
+    gap: 7px;
+  }
+
+  .sdl-diagnostic-lab .sdl-attempt-strip {
+    padding: 20px 16px;
+  }
+
+  .sdl-diagnostic-lab .sdl-attempt-strip::before {
+    left: 30px;
+  }
+
+  .sdl-diagnostic-lab .sdl-attempt-strip li {
+    padding-left: 50px;
+  }
+
+  .sdl-diagnostic-lab .sdl-current-diagnosis,
+  .sdl-diagnostic-lab .sdl-boundary-choice {
+    margin-right: 16px;
+    margin-left: 16px;
+  }
+
+  .sdl-diagnostic-lab .sdl-current-diagnosis > div:nth-child(even) {
+    border-left: 0;
+  }
+
+  .sdl-diagnostic-lab .sdl-current-diagnosis > div + div {
+    border-top: 1px solid var(--lab-border);
+  }
+
+  .sdl-diagnostic-lab .sdl-boundary-choice > div {
+    grid-template-columns: 1fr;
+  }
+
+  .sdl-diagnostic-lab .sdl-lab-controls {
+    align-items: stretch;
+    padding: 14px 16px;
+    flex-direction: column;
+  }
+
+  .sdl-diagnostic-lab .sdl-lab-controls .button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sdl-diagnostic-lab .sdl-attempt-strip li {
+    transition: none;
+  }
+}

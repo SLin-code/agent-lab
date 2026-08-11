@@ -1,0 +1,525 @@
+.auditable-run-lesson .auditable-run-system-map {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.28fr);
+  gap: 14px;
+}
+
+.auditable-run-lesson .auditable-run-system-goal {
+  display: flex;
+  min-height: 340px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 28px;
+  border: 1px solid color-mix(in srgb, var(--blue) 30%, var(--border));
+  border-radius: var(--radius-large);
+  background: color-mix(in srgb, var(--blue-soft) 58%, var(--surface));
+}
+
+.auditable-run-lesson .auditable-run-system-goal span,
+.auditable-run-lesson .auditable-run-layer-ring article span,
+.auditable-run-lesson .auditable-run-ledger-contract article > span,
+.auditable-run-lesson .auditable-run-state-comparison article > span {
+  color: var(--blue);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+}
+
+.auditable-run-lesson .auditable-run-system-goal strong {
+  margin-top: 42px;
+  font-size: 27px;
+  line-height: 1.35;
+}
+
+.auditable-run-lesson .auditable-run-system-goal small {
+  margin-top: 20px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.auditable-run-lesson .auditable-run-layer-ring {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.auditable-run-lesson .auditable-run-layer-ring article {
+  display: flex;
+  min-height: 165px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  background: color-mix(in srgb, var(--surface) 76%, transparent);
+}
+
+.auditable-run-lesson .auditable-run-layer-ring article strong {
+  font-size: 15px;
+}
+
+.auditable-run-lesson .auditable-run-system-note,
+.auditable-run-lesson .auditable-run-reading-rule {
+  margin: 16px 0 0;
+  padding: 16px 18px;
+  border: 1px solid color-mix(in srgb, var(--blue) 18%, var(--border));
+  border-radius: var(--radius-medium);
+  color: var(--muted);
+  background: color-mix(in srgb, var(--blue-soft) 52%, transparent);
+  font-size: 13px;
+}
+
+.auditable-run-lesson .auditable-run-system-note strong,
+.auditable-run-lesson .auditable-run-reading-rule strong {
+  margin-right: 8px;
+  color: var(--blue-dark);
+}
+
+.auditable-run-lesson .auditable-run-ledger-contract {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.auditable-run-lesson .auditable-run-ledger-contract article {
+  display: flex;
+  min-height: 225px;
+  flex-direction: column;
+  padding: 23px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--surface) 76%, transparent);
+}
+
+.auditable-run-lesson .auditable-run-ledger-contract h3,
+.auditable-run-lesson .auditable-run-state-comparison h3 {
+  margin: 25px 0 10px;
+  font-size: 20px;
+}
+
+.auditable-run-lesson .auditable-run-ledger-contract p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.auditable-run-lesson .auditable-run-ledger-contract article > strong {
+  margin-top: auto;
+  padding-top: 18px;
+  color: var(--blue-dark);
+  font-size: 12px;
+}
+
+.auditable-run-lesson .auditable-run-lab-note {
+  margin: 16px 0 0;
+  padding: 15px 17px;
+  border-left: 3px solid var(--amber);
+  color: var(--muted);
+  background: color-mix(in srgb, var(--surface) 58%, transparent);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.auditable-run-lesson .auditable-run-state-comparison {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.auditable-run-lesson .auditable-run-state-comparison article {
+  display: flex;
+  min-height: 310px;
+  flex-direction: column;
+  padding: 22px;
+  border: 1px solid color-mix(in srgb, var(--green) 25%, var(--border));
+  border-radius: 18px;
+  background: var(--surface);
+}
+
+.auditable-run-lesson .auditable-run-state-comparison article.is-warning {
+  border-color: color-mix(in srgb, var(--amber) 52%, var(--border));
+  background: color-mix(in srgb, var(--surface) 86%, var(--amber) 14%);
+}
+
+.auditable-run-lesson .auditable-run-state-comparison dl {
+  display: grid;
+  margin: 12px 0 20px;
+  gap: 8px;
+}
+
+.auditable-run-lesson .auditable-run-state-comparison dl > div {
+  display: grid;
+  padding: 10px 11px;
+  border-radius: var(--radius-small);
+  background: var(--surface-soft);
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 8px;
+}
+
+.auditable-run-lesson .auditable-run-state-comparison dt {
+  color: var(--blue-dark);
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.auditable-run-lesson .auditable-run-state-comparison dd {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.auditable-run-lesson .auditable-run-state-comparison article > strong {
+  margin-top: auto;
+  color: var(--green);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.auditable-run-lesson .auditable-run-state-comparison article.is-warning > strong {
+  color: color-mix(in srgb, var(--amber) 72%, var(--ink));
+}
+
+.auditable-run-lesson .auditable-run-review-list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  list-style: none;
+}
+
+.auditable-run-lesson .auditable-run-review-list li {
+  display: grid;
+  min-height: 128px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.auditable-run-lesson .auditable-run-review-list li > span {
+  color: var(--blue);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.auditable-run-lesson .auditable-run-review-list strong {
+  font-size: 15px;
+}
+
+.auditable-run-lesson .auditable-run-review-list p {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.auditable-run-lab .auditable-run-summary {
+  display: grid;
+  margin: 20px 20px 14px;
+  padding: 16px;
+  border: 1px solid var(--lab-border);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--lab-raised) 78%, transparent);
+  grid-template-columns: minmax(0, 1fr);
+  gap: 7px;
+}
+
+.auditable-run-lab .auditable-run-summary:focus {
+  outline: 2px solid var(--lab-focus);
+  outline-offset: 3px;
+}
+
+.auditable-run-lab .auditable-run-summary > span,
+.auditable-run-lab .auditable-run-ledger > header span,
+.auditable-run-lab .auditable-run-control-grid article > div span {
+  color: var(--lab-accent-text);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+}
+
+.auditable-run-lab .auditable-run-summary > strong {
+  font-size: 16px;
+}
+
+.auditable-run-lab.is-faulted .auditable-run-summary > span,
+.auditable-run-lab.is-faulted .auditable-run-summary > strong {
+  color: var(--lab-warning-text);
+}
+
+.auditable-run-lab.is-recovered .auditable-run-summary > span,
+.auditable-run-lab.is-recovered .auditable-run-summary > strong {
+  color: var(--lab-success-text);
+}
+
+.auditable-run-lab .auditable-run-summary > small {
+  color: var(--lab-muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.auditable-run-lab .auditable-run-control-grid {
+  display: grid;
+  padding: 0 20px 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.auditable-run-lab .auditable-run-control-grid article {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 176px;
+  flex-direction: column;
+  padding: 14px;
+  border: 1px solid var(--lab-border);
+  border-radius: 13px;
+  background: var(--lab-surface-control);
+}
+
+.auditable-run-lab .auditable-run-control-grid article.is-ok {
+  border-color: color-mix(in srgb, var(--lab-success) 42%, var(--lab-border));
+  background: color-mix(in srgb, var(--lab-success-bg) 56%, var(--lab-surface-control));
+}
+
+.auditable-run-lab .auditable-run-control-grid article.is-warning {
+  border-color: color-mix(in srgb, var(--lab-warning) 58%, var(--lab-border));
+  background: color-mix(in srgb, var(--lab-warning-bg) 72%, var(--lab-surface-control));
+}
+
+.auditable-run-lab .auditable-run-control-grid article.is-active {
+  border-color: color-mix(in srgb, var(--lab-accent) 52%, var(--lab-border));
+}
+
+.auditable-run-lab .auditable-run-control-grid article > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.auditable-run-lab .auditable-run-control-grid article > div b {
+  color: var(--lab-muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  text-align: right;
+}
+
+.auditable-run-lab .auditable-run-control-grid article.is-ok > div b {
+  color: var(--lab-success-text);
+}
+
+.auditable-run-lab .auditable-run-control-grid article.is-warning > div b {
+  color: var(--lab-warning-text);
+}
+
+.auditable-run-lab .auditable-run-control-grid article > strong {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.auditable-run-lab .auditable-run-control-grid article > p {
+  margin: 8px 0 0;
+  color: var(--lab-muted);
+  font-size: 10px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.auditable-run-lab .auditable-run-fault-button {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: auto;
+  padding: 8px 10px;
+  border: 1px solid var(--lab-warning);
+  border-radius: 9px;
+  color: var(--lab-warning-text);
+  background: var(--lab-warning-bg);
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.auditable-run-lab .auditable-run-fault-button:focus-visible {
+  outline: 3px solid var(--lab-focus);
+  outline-offset: 3px;
+}
+
+.auditable-run-lab .auditable-run-ledger {
+  margin: 0 20px;
+  border: 1px solid var(--lab-border);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--lab-surface-deep) 86%, transparent);
+}
+
+.auditable-run-lab .auditable-run-ledger > header {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--lab-border);
+}
+
+.auditable-run-lab .auditable-run-ledger > header small {
+  color: var(--lab-muted);
+  font-size: 10px;
+}
+
+.auditable-run-lab .auditable-run-ledger ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.auditable-run-lab .auditable-run-ledger li {
+  display: grid;
+  align-items: center;
+  min-height: 46px;
+  padding: 9px 13px;
+  border-bottom: 1px solid var(--lab-border);
+  grid-template-columns: 88px minmax(0, 1fr) 104px;
+  gap: 12px;
+}
+
+.auditable-run-lab .auditable-run-ledger li:last-child {
+  border-bottom: 0;
+}
+
+.auditable-run-lab .auditable-run-ledger li > strong {
+  color: var(--lab-text-strong);
+  font-size: 11px;
+}
+
+.auditable-run-lab .auditable-run-ledger li > span {
+  min-width: 0;
+  color: var(--lab-muted);
+  font-size: 10px;
+  overflow-wrap: anywhere;
+}
+
+.auditable-run-lab .auditable-run-ledger li > small {
+  color: var(--lab-accent-text);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  text-align: right;
+}
+
+.auditable-run-lab .auditable-run-controls {
+  display: flex;
+  min-height: 76px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px 20px;
+}
+
+.auditable-run-lab .auditable-run-controls > small {
+  color: var(--lab-muted);
+  font-size: 10px;
+  text-align: right;
+}
+
+@media (max-width: 760px) {
+  .auditable-run-lesson .auditable-run-system-map,
+  .auditable-run-lesson .auditable-run-ledger-contract,
+  .auditable-run-lesson .auditable-run-state-comparison,
+  .auditable-run-lesson .auditable-run-review-list {
+    grid-template-columns: 1fr;
+  }
+
+  .auditable-run-lesson .auditable-run-system-goal,
+  .auditable-run-lesson .auditable-run-ledger-contract article,
+  .auditable-run-lesson .auditable-run-state-comparison article {
+    min-height: 0;
+  }
+
+  .auditable-run-lab .auditable-run-control-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .auditable-run-lab .auditable-run-controls {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .auditable-run-lab .auditable-run-controls .button {
+    width: 100%;
+  }
+
+  .auditable-run-lab .auditable-run-controls > small {
+    text-align: left;
+  }
+}
+
+@media (max-width: 390px) {
+  .auditable-run-lesson .auditable-run-layer-ring {
+    grid-template-columns: 1fr;
+  }
+
+  .auditable-run-lesson .auditable-run-system-goal strong {
+    margin-top: 28px;
+    font-size: 23px;
+  }
+
+  .auditable-run-lab .lab-topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .auditable-run-lab .auditable-run-summary {
+    margin: 14px 14px 12px;
+  }
+
+  .auditable-run-lab .auditable-run-control-grid {
+    padding: 0 14px 12px;
+    grid-template-columns: 1fr;
+  }
+
+  .auditable-run-lab .auditable-run-control-grid article {
+    min-height: 150px;
+  }
+
+  .auditable-run-lab .auditable-run-ledger {
+    margin: 0 14px;
+  }
+
+  .auditable-run-lab .auditable-run-ledger > header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .auditable-run-lab .auditable-run-ledger li {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .auditable-run-lab .auditable-run-ledger li > small {
+    text-align: left;
+  }
+
+  .auditable-run-lab .auditable-run-controls {
+    padding: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auditable-run-lesson *,
+  .auditable-run-lesson *::before,
+  .auditable-run-lesson *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

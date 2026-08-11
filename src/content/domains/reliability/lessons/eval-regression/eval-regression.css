@@ -1,0 +1,609 @@
+.eval-regression-lesson .eval-regression-demo-contrast {
+  display: grid;
+  align-items: stretch;
+  grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.eval-regression-lesson .eval-regression-demo-card,
+.eval-regression-lesson .eval-regression-distribution-card {
+  display: flex;
+  min-height: 270px;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+  background: var(--surface);
+}
+
+.eval-regression-lesson .eval-regression-demo-card {
+  border-color: color-mix(in srgb, var(--green) 35%, var(--border));
+}
+
+.eval-regression-lesson .eval-regression-demo-card > div,
+.eval-regression-lesson .eval-regression-distribution-card > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.eval-regression-lesson .eval-regression-demo-card span,
+.eval-regression-lesson .eval-regression-distribution-card span,
+.eval-regression-lesson .eval-regression-evidence-set article > span,
+.eval-regression-lesson .eval-regression-score-trace article > span,
+.eval-regression-lesson .eval-regression-antipatterns article > span {
+  color: var(--blue);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+}
+
+.eval-regression-lesson .eval-regression-demo-card small,
+.eval-regression-lesson .eval-regression-distribution-card small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.eval-regression-lesson .eval-regression-demo-card p {
+  margin: 52px 0 28px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.eval-regression-lesson .eval-regression-demo-card > strong,
+.eval-regression-lesson .eval-regression-distribution-card > strong {
+  margin-top: auto;
+  color: var(--green);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.eval-regression-lesson .eval-regression-distribution-card > strong {
+  color: var(--amber);
+}
+
+.eval-regression-lesson .eval-regression-demo-gap {
+  display: grid;
+  place-items: center;
+  color: var(--amber);
+  font-size: 28px;
+  font-weight: 750;
+}
+
+.eval-regression-lesson .eval-regression-mini-matrix {
+  display: grid;
+  margin: 38px 0 28px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.eval-regression-lesson .eval-regression-mini-matrix i {
+  aspect-ratio: 1.35;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-small);
+  background: var(--surface-soft);
+}
+
+.eval-regression-lesson .eval-regression-mini-matrix i.is-known {
+  border-style: solid;
+  border-color: color-mix(in srgb, var(--green) 40%, var(--border));
+  background: var(--green-soft);
+}
+
+.eval-regression-lesson .eval-regression-key-note,
+.eval-regression-lesson .eval-regression-reading-rule {
+  margin: 16px 0 0;
+  padding: 16px 18px;
+  border: 1px solid color-mix(in srgb, var(--blue) 18%, var(--border));
+  border-radius: var(--radius-medium);
+  color: var(--muted);
+  background: color-mix(in srgb, var(--blue-soft) 52%, transparent);
+  font-size: 13px;
+}
+
+.eval-regression-lesson .eval-regression-key-note strong,
+.eval-regression-lesson .eval-regression-reading-rule strong {
+  margin-right: 8px;
+  color: var(--blue-dark);
+}
+
+.eval-regression-lesson .eval-regression-evidence-set {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.eval-regression-lesson .eval-regression-evidence-set article {
+  display: flex;
+  min-height: 225px;
+  flex-direction: column;
+  padding: 23px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--surface) 76%, transparent);
+}
+
+.eval-regression-lesson .eval-regression-evidence-set h3,
+.eval-regression-lesson .eval-regression-score-trace h3,
+.eval-regression-lesson .eval-regression-antipatterns h3 {
+  margin: 25px 0 10px;
+  font-size: 20px;
+}
+
+.eval-regression-lesson .eval-regression-evidence-set p,
+.eval-regression-lesson .eval-regression-antipatterns p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.eval-regression-lesson .eval-regression-evidence-set article > strong,
+.eval-regression-lesson .eval-regression-antipatterns article > strong {
+  margin-top: auto;
+  padding-top: 18px;
+  color: var(--blue-dark);
+  font-size: 12px;
+}
+
+.eval-regression-lesson .eval-regression-lab-note {
+  margin: 16px 0 0;
+  padding: 15px 17px;
+  border-left: 3px solid var(--amber);
+  color: var(--muted);
+  background: color-mix(in srgb, var(--surface) 58%, transparent);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.eval-regression-lesson .eval-regression-score-trace {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.eval-regression-lesson .eval-regression-score-trace article {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface);
+}
+
+.eval-regression-lesson .eval-regression-score-trace dl {
+  display: grid;
+  margin: 24px 0 18px;
+  gap: 8px;
+}
+
+.eval-regression-lesson .eval-regression-score-trace dl > div {
+  display: grid;
+  padding: 11px 12px;
+  border-radius: var(--radius-small);
+  background: var(--surface-soft);
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 10px;
+}
+
+.eval-regression-lesson .eval-regression-score-trace dt {
+  color: var(--blue-dark);
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.eval-regression-lesson .eval-regression-score-trace dd {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.eval-regression-lesson .eval-regression-score-trace article > strong {
+  color: var(--green);
+  font-size: 12px;
+}
+
+.eval-regression-lesson .eval-regression-antipatterns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.eval-regression-lesson .eval-regression-antipatterns article {
+  display: flex;
+  min-height: 285px;
+  flex-direction: column;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+}
+
+.eval-regression-lab .eval-regression-overview {
+  display: grid;
+  align-items: stretch;
+  padding: 20px 20px 14px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) 176px;
+  gap: 12px;
+}
+
+.eval-regression-lab .eval-regression-judge,
+.eval-regression-lab .eval-regression-summary {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--lab-border);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--lab-raised) 78%, transparent);
+}
+
+.eval-regression-lab .eval-regression-judge > span,
+.eval-regression-lab .eval-regression-summary > span,
+.eval-regression-lab .eval-regression-matrix > header span {
+  color: var(--lab-accent-text);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+}
+
+.eval-regression-lab .eval-regression-judge > strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.eval-regression-lab .eval-regression-judge ul {
+  display: grid;
+  margin: 13px 0 0;
+  padding: 0;
+  color: var(--lab-muted);
+  font-size: 11px;
+  gap: 7px;
+  list-style: none;
+}
+
+.eval-regression-lab .eval-regression-judge p {
+  margin: 13px 0 0;
+  color: var(--lab-muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.eval-regression-lab .eval-regression-judge li::before {
+  margin-right: 7px;
+  color: var(--lab-success);
+  content: "✓";
+}
+
+.eval-regression-lab .eval-regression-summary:focus {
+  outline: 2px solid var(--lab-focus);
+  outline-offset: 3px;
+}
+
+.eval-regression-lab .eval-regression-summary > strong {
+  display: block;
+  margin-top: 13px;
+  color: var(--lab-text);
+  font-family: var(--font-mono);
+  font-size: 25px;
+}
+
+.eval-regression-lab.is-regression .eval-regression-summary > span,
+.eval-regression-lab.is-regression .eval-regression-summary > strong {
+  color: var(--lab-danger-text);
+}
+
+.eval-regression-lab.is-reliable .eval-regression-summary > span,
+.eval-regression-lab.is-reliable .eval-regression-summary > strong {
+  color: var(--lab-success-text);
+}
+
+.eval-regression-lab .eval-regression-summary p {
+  margin: 8px 0 0;
+  color: var(--lab-muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.eval-regression-lab .eval-regression-radar {
+  position: relative;
+  display: grid;
+  width: 176px;
+  min-height: 160px;
+  overflow: hidden;
+  place-items: center;
+  border: 1px solid var(--lab-border);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, transparent 29%, var(--lab-border) 30%, transparent 31%),
+    radial-gradient(circle, transparent 57%, var(--lab-border) 58%, transparent 59%),
+    color-mix(in srgb, var(--lab-surface-deep) 84%, transparent);
+}
+
+.eval-regression-lab .eval-regression-radar::before,
+.eval-regression-lab .eval-regression-radar::after {
+  position: absolute;
+  background: var(--lab-border);
+  content: "";
+}
+
+.eval-regression-lab .eval-regression-radar::before {
+  width: 1px;
+  height: 100%;
+}
+
+.eval-regression-lab .eval-regression-radar::after {
+  width: 100%;
+  height: 1px;
+}
+
+.eval-regression-lab .eval-regression-radar-sweep {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: 72px;
+  height: 2px;
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--lab-accent), transparent);
+}
+
+.eval-regression-lab.is-regression .eval-regression-radar-sweep,
+.eval-regression-lab.is-reliable .eval-regression-radar-sweep {
+  animation: eval-regression-sweep 1.8s ease-out 1;
+}
+
+.eval-regression-lab .eval-regression-radar i {
+  --radar-angle: calc(var(--radar-index) * 45deg);
+  position: absolute;
+  z-index: 2;
+  top: calc(50% - 4px);
+  left: calc(50% - 4px);
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--lab-line-strong);
+  border-radius: 50%;
+  transform: rotate(var(--radar-angle)) translateY(-62px);
+  background: var(--lab-surface-control);
+}
+
+.eval-regression-lab .eval-regression-radar i.is-pass {
+  border-color: var(--lab-success);
+  background: var(--lab-success);
+}
+
+.eval-regression-lab .eval-regression-radar i.is-fail {
+  border-color: var(--lab-danger);
+  background: var(--lab-danger);
+}
+
+.eval-regression-lab .eval-regression-radar b {
+  z-index: 2;
+  color: var(--lab-text);
+  font-family: var(--font-mono);
+  font-size: 22px;
+}
+
+.eval-regression-lab .eval-regression-radar small {
+  position: absolute;
+  z-index: 2;
+  bottom: 30px;
+  color: var(--lab-muted);
+  font-size: 9px;
+}
+
+@keyframes eval-regression-sweep {
+  from { transform: rotate(-90deg); }
+  to { transform: rotate(270deg); }
+}
+
+.eval-regression-lab .eval-regression-matrix {
+  margin: 0 20px;
+  border: 1px solid var(--lab-border);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--lab-surface-deep) 86%, transparent);
+}
+
+.eval-regression-lab .eval-regression-matrix > header {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--lab-border);
+}
+
+.eval-regression-lab .eval-regression-matrix > header small {
+  color: var(--lab-muted);
+  font-size: 10px;
+}
+
+.eval-regression-lab .eval-regression-matrix ol {
+  display: grid;
+  margin: 0;
+  padding: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  list-style: none;
+}
+
+.eval-regression-lab .eval-regression-matrix li {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--lab-border);
+  border-radius: 11px;
+  background: var(--lab-surface-control);
+}
+
+.eval-regression-lab .eval-regression-matrix li.is-pass {
+  border-color: color-mix(in srgb, var(--lab-success) 48%, var(--lab-border));
+  background: color-mix(in srgb, var(--lab-success-bg) 58%, var(--lab-surface-control));
+}
+
+.eval-regression-lab .eval-regression-matrix li.is-fail {
+  border-color: color-mix(in srgb, var(--lab-danger) 62%, var(--lab-border));
+  background: color-mix(in srgb, var(--lab-danger-bg) 72%, var(--lab-surface-control));
+}
+
+.eval-regression-lab .eval-regression-matrix li.is-not-run {
+  border-style: dashed;
+  background: color-mix(
+    in srgb,
+    var(--lab-surface-deep) 78%,
+    var(--lab-surface-control)
+  );
+}
+
+.eval-regression-lab .eval-regression-matrix li > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.eval-regression-lab .eval-regression-matrix li > div span {
+  color: var(--lab-accent-text);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.eval-regression-lab .eval-regression-matrix li > div small {
+  color: var(--lab-muted);
+  font-size: 9px;
+}
+
+.eval-regression-lab .eval-regression-matrix li > strong {
+  display: block;
+  overflow: hidden;
+  margin-top: 12px;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.eval-regression-lab .eval-regression-matrix dl {
+  display: grid;
+  margin: 12px 0 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.eval-regression-lab .eval-regression-matrix dl > div {
+  min-width: 0;
+}
+
+.eval-regression-lab .eval-regression-matrix dt {
+  color: var(--lab-text-dim);
+  font-size: 9px;
+}
+
+.eval-regression-lab .eval-regression-matrix dd {
+  overflow: hidden;
+  margin: 3px 0 0;
+  color: var(--lab-text-strong);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-overflow: ellipsis;
+}
+
+.eval-regression-lab .eval-regression-matrix li.is-fail dd:last-child {
+  color: var(--lab-danger-text);
+}
+
+.eval-regression-lab .eval-regression-controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px 20px;
+}
+
+@media (max-width: 760px) {
+  .eval-regression-lesson .eval-regression-demo-contrast {
+    grid-template-columns: 1fr;
+  }
+
+  .eval-regression-lesson .eval-regression-demo-card,
+  .eval-regression-lesson .eval-regression-distribution-card {
+    min-height: 0;
+  }
+
+  .eval-regression-lesson .eval-regression-demo-gap {
+    min-height: 34px;
+  }
+
+  .eval-regression-lesson .eval-regression-evidence-set,
+  .eval-regression-lesson .eval-regression-score-trace,
+  .eval-regression-lesson .eval-regression-antipatterns {
+    grid-template-columns: 1fr;
+  }
+
+  .eval-regression-lesson .eval-regression-evidence-set article,
+  .eval-regression-lesson .eval-regression-antipatterns article {
+    min-height: 0;
+  }
+
+  .eval-regression-lab .eval-regression-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .eval-regression-lab .eval-regression-radar {
+    width: 168px;
+    min-height: 168px;
+    justify-self: center;
+  }
+
+  .eval-regression-lab .eval-regression-matrix ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .eval-regression-lab .eval-regression-controls {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .eval-regression-lab .eval-regression-controls .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 390px) {
+  .eval-regression-lab .lab-topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .eval-regression-lab .eval-regression-overview {
+    padding: 14px;
+  }
+
+  .eval-regression-lab .eval-regression-matrix {
+    margin: 0 14px;
+  }
+
+  .eval-regression-lab .eval-regression-matrix > header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .eval-regression-lab .eval-regression-matrix ol {
+    grid-template-columns: 1fr;
+  }
+
+  .eval-regression-lab .eval-regression-matrix li > strong {
+    white-space: normal;
+  }
+
+  .eval-regression-lab .eval-regression-controls {
+    padding: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eval-regression-lesson *,
+  .eval-regression-lesson *::before,
+  .eval-regression-lesson *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
